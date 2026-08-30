@@ -1,615 +1,504 @@
 {%- style -%}
-  :root {
-    --color-primary-teal: {{ section.settings.color_primary_teal }};
-    --color-secondary-blue: {{ section.settings.color_secondary_blue }};
-    --color-bg-mint: {{ section.settings.color_bg_mint }};
-    --color-coral: {{ section.settings.color_coral }};
-    --color-text-dark: {{ section.settings.color_text_dark }};
-  }
-
-  .custom-announcement-bar {
-    background-color: var(--color-primary-teal);
-    color: var(--color-bg-mint);
-    padding: 8px 16px;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    line-height: 1.4;
-  }
-
-  .custom-announcement-bar p {
-    margin: 0;
-  }
-
-  .custom-header-wrapper {
-    background-color: var(--color-bg-mint);
-    border-bottom: 1px solid rgba(15, 93, 90, 0.1);
+  /* ─── CSS Variables ──────────────────────────────────── */
+  .lxn-header-wrap-{{ section.id }} {
+    --teal:      {{ section.settings.color_primary_teal }};
+    --mint:      {{ section.settings.color_bg_mint }};
+    --coral:     {{ section.settings.color_coral }};
+    --dark:      {{ section.settings.color_text_dark }};
+    --white:     #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     position: sticky;
     top: 0;
-    z-index: 100;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    z-index: 200;
   }
 
-  .custom-header-container {
+  /* ─── Top Bar (announcement) ─────────────────────────── */
+  .lxn-topbar {
+    background-color: var(--teal);
+    color: var(--mint);
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    padding: 7px 16px;
+    letter-spacing: 0.4px;
+    line-height: 1;
+  }
+
+  /* ─── Main header row ────────────────────────────────── */
+  .lxn-header-main {
+    background-color: var(--teal);
+    padding: 10px 16px;
+  }
+
+  .lxn-header-main-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 12px 16px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 12px;
   }
 
-  @media screen and (min-width: 768px) {
-    .custom-header-container {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 16px 24px;
-    }
-  }
-
-  /* Layout Columns */
-  .header-left-col {
+  /* Logo */
+  .lxn-logo-link {
+    text-decoration: none;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
   }
-
-  @media screen and (min-width: 768px) {
-    .header-left-col {
-      width: auto;
-      justify-content: flex-start;
-      flex: 1;
-      gap: 16px;
-    }
-  }
-
-  .header-center-col {
-    width: 100%;
-  }
-
-  @media screen and (min-width: 768px) {
-    .header-center-col {
-      width: auto;
-      flex: 2;
-      max-width: 500px;
-    }
-  }
-
-  .header-right-col {
-    display: none; /* In mobile, cart is in left column row */
-    align-items: center;
-    gap: 16px;
-    justify-content: flex-end;
-  }
-
-  @media screen and (min-width: 768px) {
-    .header-right-col {
-      display: flex;
-      flex: 1;
-    }
-    .header-left-col .cart-mobile-wrapper {
-      display: none;
-    }
-  }
-
-  /* Logo styling */
-  .header-logo-link {
-    display: inline-block;
-    text-decoration: none;
-    color: var(--color-primary-teal);
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-  }
-
-  .header-logo-img {
+  .lxn-logo-img {
     display: block;
-    height: auto;
     max-height: {{ section.settings.logo_max_height }}px;
     width: auto;
     object-fit: contain;
+    filter: brightness(0) invert(1); /* keeps logo white on teal background */
+  }
+  .lxn-logo-text {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
   }
 
-  /* Search Bar styling */
-  .search-form {
-    position: relative;
-    width: 100%;
+  /* Search bar */
+  .lxn-search-form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 0;
   }
-
-  .search-input {
-    width: 100%;
-    padding: 10px 16px 10px 42px;
-    border: 1px solid rgba(15, 93, 90, 0.2);
-    border-radius: 50px;
-    background-color: #ffffff;
-    color: var(--color-text-dark);
-    font-size: 14px;
-    outline: none;
-    transition: all 0.2s ease-in-out;
-    -webkit-appearance: none;
-  }
-
-  .search-input:focus {
-    border-color: var(--color-primary-teal);
-    box-shadow: 0 0 0 2px rgba(15, 93, 90, 0.15);
-  }
-
-  .search-icon-btn {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
+  .lxn-search-input {
+    flex: 1;
     border: none;
-    padding: 0;
-    color: var(--color-primary-teal);
+    outline: none;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: var(--dark);
+    background: transparent;
+    -webkit-appearance: none;
+    min-width: 0;
+  }
+  .lxn-search-input::placeholder { color: rgba(26,31,30,.45); }
+  .lxn-search-btn {
+    background-color: var(--coral);
+    border: none;
+    padding: 0 16px;
+    height: 100%;
+    min-height: 40px;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
+    transition: background-color .2s ease;
+    flex-shrink: 0;
   }
+  .lxn-search-btn:hover { background-color: #e56b4c; }
+  .lxn-search-btn svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2.5; }
 
-  .search-icon-btn svg {
-    width: 18px;
-    height: 18px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.5;
+  /* Cart & mobile actions */
+  .lxn-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
   }
-
-  /* Cart Link */
-  .cart-link {
+  .lxn-icon-btn {
     position: relative;
-    color: var(--color-primary-teal);
+    color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
     width: 42px;
     height: 42px;
-    border-radius: 50%;
-    transition: background-color 0.2s ease;
+    border-radius: 8px;
     text-decoration: none;
+    transition: background-color .2s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
-
-  .cart-link:hover {
-    background-color: rgba(15, 93, 90, 0.06);
-  }
-
-  .cart-link svg {
-    width: 24px;
-    height: 24px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-  }
-
-  .cart-badge {
+  .lxn-icon-btn:hover { background-color: rgba(255,255,255,.15); }
+  .lxn-icon-btn svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; }
+  .lxn-cart-badge {
     position: absolute;
     top: 2px;
     right: 2px;
-    background-color: var(--color-coral);
-    color: #ffffff;
-    font-size: 11px;
+    background-color: var(--coral);
+    color: #fff;
+    font-size: 10px;
     font-weight: 700;
-    min-width: 18px;
-    height: 18px;
+    min-width: 17px;
+    height: 17px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 4px;
-    box-shadow: 0 2px 4px rgba(255, 122, 89, 0.3);
+    padding: 0 3px;
   }
 
-  /* Mobile menu button styling */
-  .menu-toggle-btn {
-    background: none;
-    border: none;
-    color: var(--color-primary-teal);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    padding: 0;
-    border-radius: 50%;
+  /* ─── Nav bar (second row, white) ───────────────────── */
+  .lxn-navbar {
+    background-color: var(--white);
+    border-bottom: 1px solid rgba(15,93,90,.08);
   }
-
-  .menu-toggle-btn:hover {
-    background-color: rgba(15, 93, 90, 0.06);
-  }
-
-  @media screen and (min-width: 768px) {
-    .menu-toggle-btn {
-      display: none;
-    }
-  }
-
-  .menu-toggle-btn svg {
-    width: 24px;
-    height: 24px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-  }
-
-  /* Navigation menu styling */
-  .desktop-navigation {
-    display: none;
-    background-color: var(--color-bg-mint);
-    border-top: 1px solid rgba(15, 93, 90, 0.05);
-  }
-
-  @media screen and (min-width: 768px) {
-    .desktop-navigation {
-      display: block;
-    }
-  }
-
-  .desktop-nav-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 36px;
-    padding: 10px 24px;
-  }
-
-  .desktop-nav-link {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-text-dark);
-    text-decoration: none;
-    padding: 8px 0;
-    position: relative;
-    transition: color 0.25s ease;
-    letter-spacing: 0.2px;
-  }
-
-  .desktop-nav-link:hover {
-    color: var(--color-primary-teal);
-  }
-
-  .desktop-nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--color-primary-teal);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.25s ease-out;
-  }
-
-  .desktop-nav-link:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-
-  /* Mobile Drawer Menu style */
-  .mobile-drawer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.25s ease, visibility 0.25s ease;
-  }
-
-  .mobile-drawer.is-open {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .mobile-drawer-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(26, 31, 30, 0.5);
-    backdrop-filter: blur(3px);
-  }
-
-  .mobile-drawer-inner {
-    position: absolute;
-    top: 0;
-    left: -300px;
-    width: 300px;
-    max-width: 85%;
-    height: 100%;
-    background-color: var(--color-bg-mint);
-    box-shadow: 5px 0 25px rgba(15, 93, 90, 0.15);
-    padding: 24px 20px;
-    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-    transform: translateX(0);
-  }
-
-  .mobile-drawer.is-open .mobile-drawer-inner {
-    transform: translateX(300px);
-  }
-
-  .mobile-drawer-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 28px;
-    border-bottom: 1px solid rgba(15, 93, 90, 0.1);
-    padding-bottom: 12px;
-  }
-
-  .mobile-drawer-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--color-primary-teal);
-    margin: 0;
-  }
-
-  .mobile-drawer-close {
-    background: none;
-    border: none;
-    color: var(--color-text-dark);
-    cursor: pointer;
-    padding: 6px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .mobile-drawer-close svg {
-    width: 22px;
-    height: 22px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-  }
-
-  .mobile-drawer-close:hover {
-    background-color: rgba(15, 93, 90, 0.05);
-  }
-
-  .mobile-drawer-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    overflow-y: auto;
-  }
-
-  .mobile-drawer-link {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-text-dark);
-    text-decoration: none;
-    display: block;
-    padding: 10px 12px;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-  }
-
-  .mobile-drawer-link:hover {
-    color: var(--color-primary-teal);
-    background-color: rgba(15, 93, 90, 0.05);
-  }
-
-  /* Quick visual details */
-  .mobile-drawer-footer {
-    margin-top: auto;
-    border-top: 1px solid rgba(15, 93, 90, 0.1);
-    padding-top: 20px;
-    font-size: 13px;
-    color: rgba(26, 31, 30, 0.7);
-    line-height: 1.5;
-  }
-
-  .mobile-drawer-footer p {
-    margin: 0 0 8px 0;
+  .lxn-navbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
     display: flex;
     align-items: center;
     gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .lxn-navbar-inner::-webkit-scrollbar { display: none; }
+
+  /* Categories dropdown trigger */
+  .lxn-cat-btn {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--teal);
+    color: var(--white);
+    border: none;
+    border-radius: 0;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color .2s ease;
+  }
+  .lxn-cat-btn:hover { background-color: #0a4947; }
+  .lxn-cat-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.5; transition: transform .2s ease; }
+  .lxn-cat-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+  /* Pill nav links */
+  .lxn-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 6px 0;
+  }
+  .lxn-nav-link {
+    white-space: nowrap;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--dark);
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 50px;
+    border: 1px solid rgba(15,93,90,.12);
+    transition: all .2s ease;
+  }
+  .lxn-nav-link:hover, .lxn-nav-link.active {
+    background-color: var(--teal);
+    color: var(--white);
+    border-color: var(--teal);
+  }
+
+  /* ─── Categories dropdown panel ──────────────────────── */
+  .lxn-cat-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 240px;
+    background: var(--white);
+    border: 1px solid rgba(15,93,90,.1);
+    border-top: none;
+    box-shadow: 0 8px 24px rgba(26,31,30,.1);
+    border-radius: 0 0 8px 8px;
+    z-index: 300;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: all .2s ease;
+  }
+  .lxn-cat-dropdown.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .lxn-cat-dropdown a {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--dark);
+    text-decoration: none;
+    transition: all .15s ease;
+    border-bottom: 1px solid rgba(15,93,90,.04);
+  }
+  .lxn-cat-dropdown a:last-child { border-bottom: none; }
+  .lxn-cat-dropdown a:hover {
+    background-color: var(--mint);
+    color: var(--teal);
+    padding-left: 22px;
+  }
+
+  /* ─── Mobile Drawer ───────────────────────────────────── */
+  .lxn-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .25s ease, visibility .25s ease;
+  }
+  .lxn-drawer.is-open { visibility: visible; opacity: 1; }
+  .lxn-drawer-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26,31,30,.5);
+    backdrop-filter: blur(3px);
+  }
+  .lxn-drawer-panel {
+    position: absolute;
+    top: 0; left: -280px;
+    width: 280px;
+    height: 100%;
+    background: var(--white);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transform: translateX(0);
+    transition: transform .28s cubic-bezier(.4,0,.2,1);
+    overflow-y: auto;
+  }
+  .lxn-drawer.is-open .lxn-drawer-panel { transform: translateX(280px); }
+  .lxn-drawer-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(15,93,90,.1);
+  }
+  .lxn-drawer-head span {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+  .lxn-drawer-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: var(--dark);
+    display: flex;
+    border-radius: 50%;
+  }
+  .lxn-drawer-close:hover { background: rgba(15,93,90,.06); }
+  .lxn-drawer-close svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; }
+  .lxn-drawer-list {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .lxn-drawer-list a {
+    display: block;
+    padding: 11px 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all .2s ease;
+  }
+  .lxn-drawer-list a:hover { background: var(--mint); color: var(--teal); }
+  .lxn-drawer-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(15,93,90,.1);
+    font-size: 12.5px;
+    color: rgba(26,31,30,.6);
+  }
+
+  /* Mobile overrides */
+  @media screen and (min-width: 768px) {
+    .lxn-icon-btn.mobile-only { display: none; }
+    .lxn-navbar { display: block; }
+  }
+  @media screen and (max-width: 767px) {
+    .lxn-header-main { padding: 10px 12px; }
+    .lxn-navbar { display: none; }
   }
 {%- endstyle -%}
 
-<div class="custom-header-wrapper" id="custom-header">
+<div class="lxn-header-wrap-{{ section.id }}" id="lxn-header-{{ section.id }}">
   {%- if section.settings.show_announcement -%}
-    <div class="custom-announcement-bar">
-      <div class="page-width">
-        <p>{{ section.settings.announcement_text | escape }}</p>
-      </div>
-    </div>
+    <div class="lxn-topbar">{{ section.settings.announcement_text | escape }}</div>
   {%- endif -%}
 
-  <header class="custom-header-container">
-    <!-- MOBILE TOP ROW / DESKTOP LAYOUT LEFT -->
-    <div class="header-left-col">
-      <!-- Hamburger Button (Mobile Only) -->
-      <button 
-        type="button" 
-        class="menu-toggle-btn" 
-        aria-label="Abrir Menú" 
-        id="menu-open-trigger"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- MAIN HEADER ROW: Teal background -->
+  <div class="lxn-header-main">
+    <div class="lxn-header-main-inner">
+
+      <!-- Hamburger (mobile only) -->
+      <button class="lxn-icon-btn mobile-only" id="lxn-drawer-open-{{ section.id }}" aria-label="Menú">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M3 12h18M3 6h18M3 18h18" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
 
       <!-- Logo -->
-      <a href="{{ routes.root_url }}" class="header-logo-link">
+      <a href="{{ routes.root_url }}" class="lxn-logo-link">
         {%- if section.settings.logo != blank -%}
-          {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
-          <img 
-            src="{{ section.settings.logo | image_url: width: 400 }}" 
-            alt="{{ logo_alt }}"
-            class="header-logo-img"
+          <img
+            src="{{ section.settings.logo | image_url: width: 400 }}"
+            alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+            class="lxn-logo-img"
+            fetchpriority="high"
             width="{{ section.settings.logo.width }}"
             height="{{ section.settings.logo.height }}"
-            fetchpriority="high"
           >
         {%- else -%}
-          <span>{{ shop.name }}</span>
+          <span class="lxn-logo-text">{{ shop.name }}</span>
         {%- endif -%}
       </a>
 
-      <!-- Mobile Cart Button (Mobile Only) -->
-      <div class="cart-mobile-wrapper">
-        <a href="{{ routes.cart_url }}" class="cart-link" aria-label="Ver Carrito">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <!-- Search -->
+      <form action="{{ routes.search_url }}" method="get" class="lxn-search-form" role="search">
+        <input
+          type="search"
+          name="q"
+          class="lxn-search-input"
+          placeholder="{{ section.settings.search_placeholder | escape }}"
+          value="{{ search.terms | escape }}"
+          autocomplete="off"
+          aria-label="{{ section.settings.search_placeholder | escape }}"
+        >
+        <button type="submit" class="lxn-search-btn" aria-label="Buscar">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Cart -->
+      <div class="lxn-header-actions">
+        <a href="{{ routes.cart_url }}" class="lxn-icon-btn" aria-label="Carrito">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18m-7 4a4 4 0 1 1-8 0" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           {%- if cart.item_count > 0 -%}
-            <span class="cart-badge">{{ cart.item_count }}</span>
+            <span class="lxn-cart-badge">{{ cart.item_count }}</span>
           {%- endif -%}
         </a>
       </div>
     </div>
+  </div>
 
-    <!-- CENTER ROW: SEARCH BAR -->
-    <div class="header-center-col">
-      <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
-        <button class="search-icon-btn" aria-label="Buscar">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="8"/>
-            <path d="m21 21-4.3-4.3"/>
+  <!-- NAV BAR: White row with categories dropdown + pill links -->
+  {%- if section.settings.menu != blank -%}
+    <nav class="lxn-navbar" aria-label="Navegación principal">
+      <div class="lxn-navbar-inner" style="position:relative;">
+        <button class="lxn-cat-btn" id="lxn-cat-btn-{{ section.id }}" aria-expanded="false" aria-controls="lxn-cat-panel-{{ section.id }}">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+          Categorías
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="6 9 12 15 18 9"/>
           </svg>
         </button>
-        <input 
-          type="search" 
-          name="q" 
-          value="{{ search.terms | escape }}" 
-          placeholder="{{ section.settings.search_placeholder | escape }}" 
-          class="search-input"
-          aria-label="{{ section.settings.search_placeholder | escape }}"
-          autocomplete="off"
-        >
-      </form>
-    </div>
 
-    <!-- RIGHT COL: DESKTOP ONLY CART -->
-    <div class="header-right-col">
-      <a href="{{ routes.cart_url }}" class="cart-link" aria-label="Ver Carrito">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18m-7 4a4 4 0 1 1-8 0" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        {%- if cart.item_count > 0 -%}
-          <span class="cart-badge" id="cart-icon-bubble-desktop">{{ cart.item_count }}</span>
-        {%- endif -%}
-      </a>
-    </div>
-  </header>
+        <!-- Dropdown panel -->
+        <div class="lxn-cat-dropdown" id="lxn-cat-panel-{{ section.id }}" role="menu">
+          {%- for link in section.settings.menu.links -%}
+            <a href="{{ link.url }}" role="menuitem">{{ link.title | escape }}</a>
+          {%- endfor -%}
+        </div>
 
-  <!-- DESKTOP NAVIGATION -->
-  {%- if section.settings.menu != blank -%}
-    <nav class="desktop-navigation" aria-label="Navegación principal">
-      <ul class="desktop-nav-list">
-        {%- for link in section.settings.menu.links -%}
-          <li class="desktop-nav-item">
-            <a href="{{ link.url }}" class="desktop-nav-link{% if link.current %} active{% endif %}">
-              {{ link.title | escape }}
-            </a>
-          </li>
-        {%- endfor -%}
-      </ul>
+        <!-- Pill quick-access links -->
+        <ul class="lxn-nav-links">
+          {%- for link in section.settings.menu.links limit: 6 -%}
+            <li>
+              <a href="{{ link.url }}" class="lxn-nav-link{% if link.current %} active{% endif %}">
+                {{ link.title | escape }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
     </nav>
   {%- endif -%}
 </div>
 
-<!-- MOBILE DRAWER MENU -->
-<div class="mobile-drawer" id="mobile-menu-drawer" aria-hidden="true">
-  <div class="mobile-drawer-overlay" id="menu-close-overlay"></div>
-  <div class="mobile-drawer-inner">
-    <div class="mobile-drawer-header">
-      <h2 class="mobile-drawer-title">{{ shop.name }}</h2>
-      <button 
-        type="button" 
-        class="mobile-drawer-close" 
-        aria-label="Cerrar Menú" 
-        id="menu-close-trigger"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<!-- MOBILE DRAWER -->
+<div class="lxn-drawer" id="lxn-drawer-{{ section.id }}" aria-hidden="true">
+  <div class="lxn-drawer-overlay" id="lxn-drawer-overlay-{{ section.id }}"></div>
+  <div class="lxn-drawer-panel">
+    <div class="lxn-drawer-head">
+      <span>{{ shop.name }}</span>
+      <button class="lxn-drawer-close" id="lxn-drawer-close-{{ section.id }}" aria-label="Cerrar menú">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 6 6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
     </div>
-    
     {%- if section.settings.menu != blank -%}
-      <ul class="mobile-drawer-list">
+      <ul class="lxn-drawer-list">
         {%- for link in section.settings.menu.links -%}
-          <li>
-            <a href="{{ link.url }}" class="mobile-drawer-link">
-              {{ link.title | escape }}
-            </a>
-          </li>
+          <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
         {%- endfor -%}
       </ul>
     {%- endif -%}
-
-    <div class="mobile-drawer-footer">
-      <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="1" y="3" width="15" height="13" rx="2" ry="2"/>
-          <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-          <circle cx="5.5" cy="18.5" r="2.5"/>
-          <circle cx="18.5" cy="18.5" r="2.5"/>
-        </svg>
-        Envío rápido a todo Ecuador
-      </p>
-      <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
-          <line x1="12" y1="18" x2="12" y2="18"/>
-          <line x1="-2" y1="10" x2="26" y2="10"/>
-        </svg>
-        Pago contra entrega disponible
-      </p>
+    <div class="lxn-drawer-footer">
+      <p>📦 Envío a todo Ecuador</p>
+      <p>💵 Pago contra entrega disponible</p>
     </div>
   </div>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const openBtn = document.getElementById('menu-open-trigger');
-    const closeBtn = document.getElementById('menu-close-trigger');
-    const overlay = document.getElementById('menu-close-overlay');
-    const drawer = document.getElementById('mobile-menu-drawer');
+(function() {
+  var sid = '{{ section.id }}';
 
-    function toggleMenu() {
-      const isOpen = drawer.classList.contains('is-open');
-      if (isOpen) {
-        drawer.classList.remove('is-open');
-        drawer.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      } else {
-        drawer.classList.add('is-open');
-        drawer.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-    }
+  // Drawer
+  var drawerOpen  = document.getElementById('lxn-drawer-open-' + sid);
+  var drawerClose = document.getElementById('lxn-drawer-close-' + sid);
+  var overlay     = document.getElementById('lxn-drawer-overlay-' + sid);
+  var drawer      = document.getElementById('lxn-drawer-' + sid);
 
-    if (openBtn) openBtn.addEventListener('click', toggleMenu);
-    if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
-    if (overlay) overlay.addEventListener('click', toggleMenu);
-  });
+  function openDrawer()  { drawer.classList.add('is-open'); drawer.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function closeDrawer() { drawer.classList.remove('is-open'); drawer.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+
+  if (drawerOpen)  drawerOpen.addEventListener('click', openDrawer);
+  if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+  if (overlay)     overlay.addEventListener('click', closeDrawer);
+
+  // Categories dropdown
+  var catBtn   = document.getElementById('lxn-cat-btn-' + sid);
+  var catPanel = document.getElementById('lxn-cat-panel-' + sid);
+
+  if (catBtn && catPanel) {
+    catBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var open = catPanel.classList.toggle('is-open');
+      catBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function() {
+      catPanel.classList.remove('is-open');
+      catBtn.setAttribute('aria-expanded','false');
+    });
+  }
+})();
 </script>
 
 {% schema %}
 {
-  "name": "Custom Header & Banner",
+  "name": "Custom Header",
   "class": "custom-header-section",
   "settings": [
     {
@@ -630,18 +519,18 @@
     },
     {
       "type": "header",
-      "content": "Configuración del Header"
+      "content": "Logo y Menú"
     },
     {
       "type": "image_picker",
       "id": "logo",
-      "label": "Imagen del logo"
+      "label": "Logo"
     },
     {
       "type": "range",
       "id": "logo_max_height",
       "min": 20,
-      "max": 100,
+      "max": 80,
       "step": 5,
       "unit": "px",
       "label": "Altura máxima del logo",
@@ -661,30 +550,24 @@
     },
     {
       "type": "header",
-      "content": "Paleta de Colores"
+      "content": "Colores"
     },
     {
       "type": "color",
       "id": "color_primary_teal",
-      "label": "Verde Azulado Principal",
+      "label": "Verde Azulado (Header y Categorías)",
       "default": "#0F5D5A"
     },
     {
       "type": "color",
-      "id": "color_secondary_blue",
-      "label": "Azul Confianza",
-      "default": "#1E88E5"
-    },
-    {
-      "type": "color",
       "id": "color_bg_mint",
-      "label": "Blanco Menta (Fondo)",
+      "label": "Blanco Menta (Fondos)",
       "default": "#F4F9F8"
     },
     {
       "type": "color",
       "id": "color_coral",
-      "label": "Coral (Botones / Acentos)",
+      "label": "Coral (Botón Buscar y Carrito)",
       "default": "#FF7A59"
     },
     {
@@ -696,7 +579,7 @@
   ],
   "presets": [
     {
-      "name": "Custom Header & Banner"
+      "name": "Custom Header"
     }
   ]
 }

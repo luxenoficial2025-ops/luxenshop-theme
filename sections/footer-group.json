@@ -1,102 +1,31 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
-  "name": "t:sections.footer.name",
   "type": "footer",
+  "name": "Footer del Sitio",
   "sections": {
-    "custom_categories_krjqyA": {
-      "type": "custom-categories",
-      "blocks": {
-        "category_Myqf9m": {
-          "type": "category",
-          "settings": {
-            "title": "Cuidado Articular",
-            "link": ""
-          }
-        },
-        "category_Vmgwcf": {
-          "type": "category",
-          "settings": {
-            "title": "Belleza Facial",
-            "link": ""
-          }
-        },
-        "category_nEMagm": {
-          "type": "category",
-          "settings": {
-            "title": "Suplementos",
-            "link": ""
-          }
-        },
-        "category_9EwpRf": {
-          "type": "category",
-          "settings": {
-            "title": "Cuidado Personal",
-            "link": ""
-          }
-        },
-        "category_axqBMQ": {
-          "type": "category",
-          "settings": {
-            "title": "Bienestar",
-            "link": ""
-          }
-        },
-        "category_wmVy66": {
-          "type": "category",
-          "settings": {
-            "title": "Ofertas",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "category_Myqf9m",
-        "category_Vmgwcf",
-        "category_nEMagm",
-        "category_9EwpRf",
-        "category_axqBMQ",
-        "category_wmVy66"
-      ],
-      "disabled": true,
-      "name": "Categorías Destacadas",
+    "custom_footer": {
+      "type": "custom-footer",
       "settings": {
-        "title": "Comprar por Categorías",
-        "title_alignment": "center",
-        "padding_top": 30,
+        "contact_title": "Soporte y Contacto",
+        "contact_intro": "¿Tienes dudas con tu pedido? Escríbenos por WhatsApp.",
+        "phone": "",
+        "email": "",
+        "hours": "Lunes a Sábado: 8:00 AM - 6:00 PM",
+        "whatsapp_link": "",
+        "whatsapp_label": "Chatear por WhatsApp",
+        "links_title": "Políticas Legales",
+        "legal_menu": "",
+        "trust_title": "Paga al Recibir",
+        "trust_description": "Ofrecemos pago contra entrega. Compra con total tranquilidad, pagas en efectivo cuando tu producto llega.",
+        "social_instagram": "",
+        "social_tiktok": "",
+        "social_facebook": "",
+        "padding_top": 40,
         "padding_bottom": 30,
         "bg_color": "#F4F9F8",
         "color_primary_teal": "#0F5D5A",
-        "color_text_dark": "#1A1F1E"
-      }
-    },
-    "footer": {
-      "type": "footer",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "color_text": "#1A1F1E"
       }
     }
   },
-  "order": [
-    "custom_categories_krjqyA",
-    "footer"
-  ]
+  "order": ["custom_footer"]
 }

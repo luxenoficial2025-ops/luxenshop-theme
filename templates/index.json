@@ -1,135 +1,98 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "custom_hero_banner": {
+      "type": "custom-hero-banner",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "slide_1": {
+          "type": "slide",
           "settings": {
-            "heading": "I AM THE BEST",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "heading": "Alivio y bienestar diario",
+            "subheading": "Soluciones para dolores articulares con envío rápido y pago contra entrega.",
+            "button_label": "Ver Productos",
+            "button_link": "shopify://collections/all",
+            "text_alignment": "left"
           }
         }
       },
-      "block_order": [
-        "heading",
-        "button"
-      ],
-      "disabled": true,
+      "block_order": ["slide_1"],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
+        "autoplay": true,
+        "autoplay_interval": 5,
+        "height_mobile": 320,
+        "height_desktop": 480,
+        "border_radius": 12,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "bg_color": "#F4F9F8",
+        "cta_color": "#FF7A59"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "custom_categories": {
+      "type": "custom-categories",
+      "blocks": {
+        "cat_1": { "type": "category", "settings": { "title": "Cuidado Articular", "link": "shopify://collections/all" } },
+        "cat_2": { "type": "category", "settings": { "title": "Belleza Facial",     "link": "shopify://collections/all" } },
+        "cat_3": { "type": "category", "settings": { "title": "Suplementos",        "link": "shopify://collections/all" } },
+        "cat_4": { "type": "category", "settings": { "title": "Cuidado Personal",   "link": "shopify://collections/all" } },
+        "cat_5": { "type": "category", "settings": { "title": "Bienestar",          "link": "shopify://collections/all" } },
+        "cat_6": { "type": "category", "settings": { "title": "Ofertas Especiales", "link": "shopify://collections/all" } }
+      },
+      "block_order": ["cat_1","cat_2","cat_3","cat_4","cat_5","cat_6"],
       "settings": {
+        "title_prefix": "Encuentra en",
+        "title_highlight": "nuestra tienda",
+        "title_suffix": "todo lo que necesitas",
+        "title_alignment": "left",
+        "desktop_columns": 4,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "bg_color": "#F4F9F8",
+        "color_primary_teal": "#0F5D5A",
+        "color_text_dark": "#1A1F1E"
+      }
+    },
+    "custom_featured_collection": {
+      "type": "custom-featured-collection",
+      "settings": {
+        "title": "Ofertas Destacadas",
+        "subtitle": "Ahorra hoy con envío a todo el país y pago en efectivo al recibir",
         "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "products_to_show": 4,
+        "desktop_columns": 4,
+        "text_alignment": "left",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "bg_color": "#ffffff",
+        "color_primary_teal": "#0F5D5A",
+        "color_coral": "#FF7A59",
+        "color_text_dark": "#1A1F1E"
       }
     },
-    "custom_header_BzymaF": {
-      "type": "custom-header",
-      "name": "Custom Header & Banner",
+    "custom_trust_badges": {
+      "type": "custom-trust-badges",
+      "blocks": {
+        "cod":      { "type": "cod_badge",     "settings": { "title": "Pago Contra Entrega",    "description": "Paga en efectivo al recibir en la puerta de tu casa." } },
+        "secure":   { "type": "secure_badge",  "settings": { "title": "Compra 100% Segura",     "description": "Tus datos personales están protegidos con encriptación SSL." } },
+        "shipping": { "type": "shipping_badge","settings": { "title": "Envío a todo el país",   "description": "Entregas en todo el territorio con rastreo de pedido." } },
+        "refund":   { "type": "refund_badge",  "settings": { "title": "Garantía de Devolución", "description": "Si tu producto llega dañado, te lo cambiamos sin costo." } }
+      },
+      "block_order": ["cod","secure","shipping","refund"],
       "settings": {
-        "show_announcement": true,
-        "announcement_text": "Envío a todo Ecuador • Pago contra entrega • Compra 100% segura",
-        "logo_max_height": 40,
-        "search_placeholder": "Buscar productos de salud y belleza...",
-        "menu": "main-menu",
-        "color_primary_teal": "#0f5d5a",
-        "color_secondary_blue": "#1e88e5",
-        "color_bg_mint": "#f4f9f8",
-        "color_coral": "#ff7a59",
-        "color_text_dark": "#1a1f1e"
+        "padding_top": 25,
+        "padding_bottom": 25,
+        "bg_color": "#F4F9F8",
+        "color_primary_teal": "#0F5D5A",
+        "color_text_dark": "#1A1F1E"
       }
     },
-    "custom_testimonials_iWJJbp": {
+    "custom_testimonials": {
       "type": "custom-testimonials",
       "blocks": {
-        "review_EUNFmb": {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "text": "Compré la crema de colágeno facial. La atención por WhatsApp fue muy amable y el producto me llegó al día siguiente a Quito. Pagar en casa me dio total confianza.",
-            "author_name": "Carmen M.",
-            "verified_purchase": true
-          }
-        },
-        "review_YHj3Yq": {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "text": "El suplemento de magnesio llegó sellado y en perfecto estado. Pagué en efectivo al recibir. Excelente servicio en todo Ecuador.",
-            "author_name": "Luis G.",
-            "verified_purchase": true
-          }
-        },
-        "review_n38ptQ": {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "text": "Dudaba de comprar por internet, pero el pago contra entrega me convenció. El producto para dolores articulares de mi mamá es de excelente calidad.",
-            "author_name": "Valeria T.",
-            "verified_purchase": true
-          }
-        }
+        "test_1": { "type": "review", "settings": { "stars": 5, "text": "El gel articular me alivió el dolor de rodillas en solo 3 días. El envío a Guayaquil fue rapidísimo y pagué contra entrega.",  "author_name": "María Belén S.", "verified_purchase": true } },
+        "test_2": { "type": "review", "settings": { "stars": 5, "text": "Compré la crema de colágeno facial. La atención por WhatsApp fue muy amable y el producto me llegó al día siguiente.",           "author_name": "Carmen M.",       "verified_purchase": true } },
+        "test_3": { "type": "review", "settings": { "stars": 5, "text": "El suplemento de magnesio llegó sellado y en perfecto estado. Pagué en efectivo al recibir. Excelente servicio.",              "author_name": "Luis G.",          "verified_purchase": true } }
       },
-      "block_order": [
-        "review_EUNFmb",
-        "review_YHj3Yq",
-        "review_n38ptQ"
-      ],
-      "name": "Testimonios de Clientes",
+      "block_order": ["test_1","test_2","test_3"],
       "settings": {
         "title": "Lo que opinan nuestros clientes",
         "subtitle": "Más de 5,000 ecuatorianos confían en nosotros para su bienestar.",
@@ -142,38 +105,13 @@
         "color_primary_teal": "#0F5D5A",
         "color_text_dark": "#1A1F1E"
       }
-    },
-    "custom_footer_pngDfn": {
-      "type": "custom-footer",
-      "name": "Footer Minimalista",
-      "settings": {
-        "contact_title": "Soporte y Contacto",
-        "contact_intro": "¿Tienes dudas con tu pedido? Escríbenos por WhatsApp.",
-        "phone": "+593 99 999 9999",
-        "email": "soporte@luxenshop.com",
-        "hours": "Lunes a Sábado: 8:00 AM - 6:00 PM",
-        "whatsapp_link": "",
-        "whatsapp_label": "Chatear por WhatsApp",
-        "links_title": "Políticas Legales",
-        "legal_menu": "",
-        "trust_title": "Paga al Recibir",
-        "trust_description": "Ofrecemos pago contra entrega en todo Ecuador. Compra con total tranquilidad, pagas en efectivo cuando tu producto llega a tu puerta.",
-        "social_instagram": "",
-        "social_tiktok": "",
-        "social_facebook": "",
-        "padding_top": 40,
-        "padding_bottom": 30,
-        "bg_color": "#F4F9F8",
-        "color_primary_teal": "#0F5D5A",
-        "color_text": "#1A1F1E"
-      }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection",
-    "custom_header_BzymaF",
-    "custom_testimonials_iWJJbp",
-    "custom_footer_pngDfn"
+    "custom_hero_banner",
+    "custom_categories",
+    "custom_featured_collection",
+    "custom_trust_badges",
+    "custom_testimonials"
   ]
 }

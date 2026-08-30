@@ -1,390 +1,273 @@
 {%- style -%}
-  .custom-hero-carousel-{{ section.id }} {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    background-color: {{ section.settings.color_bg_mint }};
+  .lxn-hero-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 
-  .custom-hero-carousel-{{ section.id }} .hero-slides-outer {
-    position: relative;
-    width: 100%;
-  }
-
-  .custom-hero-carousel-{{ section.id }} .hero-slides-container {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-  }
-
-  .custom-hero-carousel-{{ section.id }} .hero-slide {
-    flex: 0 0 100%;
-    width: 100%;
-    position: relative;
-    min-height: 420px;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-  }
-
   @media screen and (min-width: 768px) {
-    .custom-hero-carousel-{{ section.id }} .hero-slide {
-      min-height: 520px;
+    .lxn-hero-{{ section.id }} {
+      padding-left: 24px;
+      padding-right: 24px;
     }
   }
 
-  .custom-hero-carousel-{{ section.id }} .hero-slide-img-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-
-  .custom-hero-carousel-{{ section.id }} .hero-slide-img-wrapper picture {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-  .custom-hero-carousel-{{ section.id }} .hero-slide-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .custom-hero-carousel-{{ section.id }} .hero-slide-placeholder {
-    width: 100%;
-    height: 100%;
-    fill: #dedede;
-    background-color: #efefef;
-  }
-
-  .custom-hero-carousel-{{ section.id }} .hero-slide-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(26, 31, 30, 0.2) 0%, rgba(26, 31, 30, 0.6) 100%);
-    z-index: 2;
-  }
-
-  .custom-hero-carousel-{{ section.id }} .hero-slide-content {
+  /* Outer wrapper with rounded corners */
+  .lxn-hero-track-wrap-{{ section.id }} {
     position: relative;
-    z-index: 3;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: {{ section.settings.border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(15,93,90,.1);
+  }
+
+  /* Slides strip */
+  .lxn-hero-track-{{ section.id }} {
+    display: flex;
+    transition: transform .5s cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+  }
+
+  /* Individual slide */
+  .lxn-hero-slide-{{ section.id }} {
+    flex: 0 0 100%;
+    width: 100%;
+    min-height: {{ section.settings.height_mobile }}px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 768px) {
+    .lxn-hero-slide-{{ section.id }} {
+      min-height: {{ section.settings.height_desktop }}px;
+    }
+  }
+
+  /* Background image */
+  .lxn-hero-img-wrap {
+    position: absolute;
+    inset: 0;
+  }
+  .lxn-hero-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+  }
+  .lxn-hero-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #0F5D5A 0%, #1E88E5 100%);
+  }
+
+  /* Overlay */
+  .lxn-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(15,30,26,.65) 0%, rgba(15,30,26,.1) 100%);
+  }
+
+  /* Content */
+  .lxn-hero-content {
+    position: relative;
+    z-index: 2;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 24px;
-    color: #ffffff;
+    padding: 32px 24px;
+    color: #fff;
     box-sizing: border-box;
   }
 
-  /* Content Alignments */
-  .custom-hero-carousel-{{ section.id }} .hero-content-left {
-    text-align: left;
-    margin-right: auto;
-    max-width: 550px;
-  }
-  .custom-hero-carousel-{{ section.id }} .hero-content-center {
-    text-align: center;
-    margin: 0 auto;
-    max-width: 650px;
-  }
-  .custom-hero-carousel-{{ section.id }} .hero-content-right {
-    text-align: right;
-    margin-left: auto;
-    max-width: 550px;
-  }
+  .lxn-hero-content-left  { max-width: 520px; text-align: left; }
+  .lxn-hero-content-center { max-width: 620px; margin: 0 auto; text-align: center; }
+  .lxn-hero-content-right  { max-width: 520px; margin-left: auto; text-align: right; }
 
-  .custom-hero-carousel-{{ section.id }} .hero-slide-heading {
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 1.25;
-    margin: 0 0 12px 0;
-    text-shadow: 0 2px 6px rgba(26, 31, 30, 0.35);
+  .lxn-hero-heading {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 10px;
+    text-shadow: 0 2px 8px rgba(0,0,0,.3);
   }
 
   @media screen and (min-width: 768px) {
-    .custom-hero-carousel-{{ section.id }} .hero-slide-heading {
-      font-size: 44px;
-    }
+    .lxn-hero-heading { font-size: 42px; }
   }
 
-  .custom-hero-carousel-{{ section.id }} .hero-slide-subheading {
-    font-size: 15px;
+  .lxn-hero-sub {
+    font-size: 14px;
     font-weight: 400;
-    line-height: 1.45;
-    margin: 0 0 24px 0;
-    color: {{ section.settings.color_bg_mint }};
-    text-shadow: 0 1px 4px rgba(26, 31, 30, 0.35);
+    line-height: 1.5;
+    margin: 0 0 22px;
+    color: rgba(244,249,248,.9);
+    text-shadow: 0 1px 4px rgba(0,0,0,.3);
   }
 
   @media screen and (min-width: 768px) {
-    .custom-hero-carousel-{{ section.id }} .hero-slide-subheading {
-      font-size: 18px;
-    }
+    .lxn-hero-sub { font-size: 17px; }
   }
 
-  .custom-hero-carousel-{{ section.id }} .hero-slide-cta {
+  .lxn-hero-cta {
     display: inline-block;
-    background-color: {{ section.settings.color_coral }};
-    color: {{ section.settings.color_bg_mint }};
+    background-color: {{ section.settings.cta_color }};
+    color: #fff;
     text-decoration: none;
     font-weight: 700;
     font-size: 14px;
     padding: 12px 28px;
     border-radius: 50px;
-    box-shadow: 0 4px 12px rgba(255, 122, 89, 0.3);
-    transition: all 0.25s ease-in-out;
+    box-shadow: 0 4px 14px rgba(255,122,89,.35);
+    transition: all .25s ease;
   }
 
-  .custom-hero-carousel-{{ section.id }} .hero-slide-cta:hover {
+  .lxn-hero-cta:hover {
     background-color: #e56b4c;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(255, 122, 89, 0.45);
+    box-shadow: 0 6px 18px rgba(255,122,89,.45);
   }
 
-  /* Dots navigation */
-  .custom-hero-carousel-{{ section.id }} .hero-dots {
+  /* Dot navigation */
+  .lxn-hero-dots-{{ section.id }} {
     position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
+    bottom: 16px;
+    left: 0; right: 0;
     display: flex;
     justify-content: center;
     gap: 8px;
-    z-index: 5;
+    z-index: 3;
   }
 
-  .custom-hero-carousel-{{ section.id }} .hero-dot {
-    width: 8px;
-    height: 8px;
+  .lxn-hero-dot {
+    width: 8px; height: 8px;
     border-radius: 50%;
-    background-color: rgba(244, 249, 248, 0.45);
     border: none;
+    background: rgba(255,255,255,.45);
     cursor: pointer;
     padding: 0;
-    transition: all 0.25s ease;
+    transition: all .25s ease;
   }
 
-  .custom-hero-carousel-{{ section.id }} .hero-dot.is-active {
-    background-color: {{ section.settings.color_coral }};
-    width: 22px;
+  .lxn-hero-dot.is-active {
+    width: 24px;
     border-radius: 4px;
+    background: {{ section.settings.cta_color }};
   }
-
-  /* Mobile Stack Layout Option */
-  {%- if section.settings.stack_text_mobile -%}
-    @media screen and (max-width: 767px) {
-      .custom-hero-carousel-{{ section.id }} .hero-slide {
-        flex-direction: column;
-        min-height: auto;
-        background-color: {{ section.settings.color_bg_mint }};
-      }
-
-      .custom-hero-carousel-{{ section.id }} .hero-slide-img-wrapper {
-        position: relative;
-        height: 250px;
-      }
-
-      .custom-hero-carousel-{{ section.id }} .hero-slide-overlay {
-        display: none;
-      }
-
-      .custom-hero-carousel-{{ section.id }} .hero-slide-content {
-        color: {{ section.settings.color_text_dark }};
-        padding: 24px 20px 48px;
-        text-align: center;
-      }
-
-      .custom-hero-carousel-{{ section.id }} .hero-slide-heading {
-        font-size: 22px;
-        color: {{ section.settings.color_text_dark }};
-        text-shadow: none;
-      }
-
-      .custom-hero-carousel-{{ section.id }} .hero-slide-subheading {
-        font-size: 14px;
-        color: rgba(26, 31, 30, 0.8);
-        text-shadow: none;
-      }
-
-      .custom-hero-carousel-{{ section.id }} .hero-dots {
-        bottom: 12px;
-      }
-      
-      .custom-hero-carousel-{{ section.id }} .hero-dot {
-        background-color: rgba(15, 93, 90, 0.2);
-      }
-    }
-  {%- endif -%}
 {%- endstyle -%}
 
-<div class="custom-hero-carousel-{{ section.id }} custom-hero-carousel" 
-     id="Hero-{{ section.id }}" 
-     data-autoplay="{{ section.settings.autoplay }}" 
-     data-interval="{{ section.settings.autoplay_interval | times: 1000 }}"
->
-  <div class="hero-slides-outer">
-    <div class="hero-slides-container" id="slides-container-{{ section.id }}">
+<div class="lxn-hero-{{ section.id }}" id="lxn-hero-{{ section.id }}">
+  <div
+    class="lxn-hero-track-wrap-{{ section.id }}"
+    data-autoplay="{{ section.settings.autoplay }}"
+    data-interval="{{ section.settings.autoplay_interval | times: 1000 }}"
+  >
+    <div class="lxn-hero-track-{{ section.id }}" id="lxn-track-{{ section.id }}">
       {%- for block in section.blocks -%}
-        {%- assign is_first = forloop.first -%}
-        <div class="hero-slide" id="Slide-{{ block.id }}" {{ block.shopify_attributes }}>
-          
-          <div class="hero-slide-img-wrapper">
+        <div class="lxn-hero-slide-{{ section.id }}" {{ block.shopify_attributes }}>
+          <div class="lxn-hero-img-wrap">
             {%- if block.settings.image_desktop != blank -%}
               <picture>
                 {%- if block.settings.image_mobile != blank -%}
-                  <source media="(max-width: 767px)" srcset="{{ block.settings.image_mobile | image_url: width: 750 }}">
+                  <source media="(max-width:767px)" srcset="{{ block.settings.image_mobile | image_url: width: 800 }}">
                 {%- endif -%}
-                <img 
-                  src="{{ block.settings.image_desktop | image_url: width: 1600 }}" 
+                <img
+                  src="{{ block.settings.image_desktop | image_url: width: 1600 }}"
                   alt="{{ block.settings.image_desktop.alt | default: block.settings.heading | escape }}"
-                  class="hero-slide-img"
-                  {% if is_first %}
-                    fetchpriority="high"
-                    loading="eager"
-                  {% else %}
-                    fetchpriority="low"
-                    loading="lazy"
-                  {% endif %}
+                  {% if forloop.first %}fetchpriority="high" loading="eager"{% else %}fetchpriority="low" loading="lazy"{% endif %}
                   width="{{ block.settings.image_desktop.width }}"
                   height="{{ block.settings.image_desktop.height }}"
                 >
               </picture>
             {%- else -%}
-              {{ 'lifestyle-1' | placeholder_svg_tag: 'hero-slide-placeholder' }}
+              <div class="lxn-hero-placeholder"></div>
             {%- endif -%}
           </div>
 
-          <div class="hero-slide-overlay"></div>
+          <div class="lxn-hero-overlay"></div>
 
-          <div class="hero-slide-content hero-content-{{ block.settings.text_alignment }}">
+          <div class="lxn-hero-content lxn-hero-content-{{ block.settings.text_alignment }}">
             {%- if block.settings.heading != blank -%}
-              <h2 class="hero-slide-heading">{{ block.settings.heading | escape }}</h2>
+              <h2 class="lxn-hero-heading">{{ block.settings.heading | escape }}</h2>
             {%- endif -%}
-
             {%- if block.settings.subheading != blank -%}
-              <p class="hero-slide-subheading">{{ block.settings.subheading | escape }}</p>
+              <p class="lxn-hero-sub">{{ block.settings.subheading | escape }}</p>
             {%- endif -%}
-
             {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
-              <a href="{{ block.settings.button_link }}" class="hero-slide-cta">
+              <a href="{{ block.settings.button_link }}" class="lxn-hero-cta">
                 {{ block.settings.button_label | escape }}
               </a>
             {%- endif -%}
           </div>
-
         </div>
       {%- endfor -%}
     </div>
-  </div>
 
-  {%- if section.blocks.size > 1 -%}
-    <div class="hero-dots">
-      {%- for block in section.blocks -%}
-        <button class="hero-dot{% if forloop.first %} is-active{% endif %}" 
-                data-slide-index="{{ forloop.index0 }}"
-                aria-label="Ir al banner {{ forloop.index }}"
-        ></button>
-      {%- endfor -%}
-    </div>
-  {%- endif -%}
+    {%- if section.blocks.size > 1 -%}
+      <div class="lxn-hero-dots-{{ section.id }}" id="lxn-dots-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          <button
+            class="lxn-hero-dot{% if forloop.first %} is-active{% endif %}"
+            data-i="{{ forloop.index0 }}"
+            aria-label="Diapositiva {{ forloop.index }}"
+          ></button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.getElementById('Hero-{{ section.id }}');
-    if (!carousel) return;
+(function(){
+  var id        = '{{ section.id }}';
+  var wrap      = document.querySelector('.lxn-hero-track-wrap-' + id);
+  if (!wrap) return;
 
-    const container = document.getElementById('slides-container-{{ section.id }}');
-    const slides = container.querySelectorAll('.hero-slide');
-    const dots = carousel.querySelectorAll('.hero-dot');
-    
-    if (slides.length <= 1) return;
+  var track     = document.getElementById('lxn-track-' + id);
+  var dotsWrap  = document.getElementById('lxn-dots-' + id);
+  var slides    = track ? track.querySelectorAll('.lxn-hero-slide-' + id) : [];
+  var dots      = dotsWrap ? dotsWrap.querySelectorAll('.lxn-hero-dot') : [];
+  var total     = slides.length;
 
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-    const autoplay = carousel.getAttribute('data-autoplay') === 'true';
-    const intervalTime = parseInt(carousel.getAttribute('data-interval')) || 5000;
-    let autoplayTimer = null;
+  if (total <= 1) return;
 
-    function goToSlide(index) {
-      if (index < 0) index = totalSlides - 1;
-      if (index >= totalSlides) index = 0;
-      
-      currentIndex = index;
-      container.style.transform = `translateX(-${currentIndex * 100}%)`;
-      
-      // Update dots
-      dots.forEach((dot, idx) => {
-        if (idx === currentIndex) {
-          dot.classList.add('is-active');
-        } else {
-          dot.classList.remove('is-active');
-        }
-      });
-    }
+  var current   = 0;
+  var autoplay  = wrap.getAttribute('data-autoplay') === 'true';
+  var interval  = parseInt(wrap.getAttribute('data-interval')) || 5000;
+  var timer     = null;
 
-    function startAutoplay() {
-      if (autoplayTimer) clearInterval(autoplayTimer);
-      autoplayTimer = setInterval(function() {
-        goToSlide(currentIndex + 1);
-      }, intervalTime);
-    }
+  function goTo(n) {
+    if (n < 0) n = total - 1;
+    if (n >= total) n = 0;
+    current = n;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach(function(d, i){ d.classList.toggle('is-active', i === current); });
+  }
 
-    function stopAutoplay() {
-      if (autoplayTimer) clearInterval(autoplayTimer);
-    }
-
-    // Attach click events to dots
-    dots.forEach((dot) => {
-      dot.addEventListener('click', function() {
-        const slideIndex = parseInt(this.getAttribute('data-slide-index'));
-        goToSlide(slideIndex);
-        if (autoplay) startAutoplay(); // Reset timer on user click
-      });
+  dots.forEach(function(d){
+    d.addEventListener('click', function(){
+      goTo(parseInt(this.getAttribute('data-i')));
+      if (autoplay) startTimer();
     });
-
-    // Touch events for swiping
-    let startX = 0;
-    let endX = 0;
-
-    carousel.addEventListener('touchstart', function(e) {
-      startX = e.touches[0].clientX;
-      stopAutoplay();
-    }, { passive: true });
-
-    carousel.addEventListener('touchend', function(e) {
-      endX = e.changedTouches[0].clientX;
-      const threshold = 50; // swipe minimum distance
-      if (startX - endX > threshold) {
-        // Swipe left -> Next slide
-        goToSlide(currentIndex + 1);
-      } else if (endX - startX > threshold) {
-        // Swipe right -> Prev slide
-        goToSlide(currentIndex - 1);
-      }
-      if (autoplay) startAutoplay();
-    }, { passive: true });
-
-    if (autoplay) {
-      startAutoplay();
-      // Pause autoplay when tab is inactive
-      document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-          stopAutoplay();
-        } else {
-          startAutoplay();
-        }
-      });
-    }
   });
+
+  // Touch swipe
+  var sx = 0;
+  wrap.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; stopTimer(); }, {passive:true});
+  wrap.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 45) goTo(dx < 0 ? current + 1 : current - 1);
+    if (autoplay) startTimer();
+  }, {passive:true});
+
+  function tick() { goTo(current + 1); }
+  function startTimer() { stopTimer(); timer = setInterval(tick, interval); }
+  function stopTimer() { if (timer) clearInterval(timer); }
+
+  if (autoplay) {
+    startTimer();
+    document.addEventListener('visibilitychange', function(){
+      document.hidden ? stopTimer() : startTimer();
+    });
+  }
+})();
 </script>
 
 {% schema %}
@@ -396,7 +279,7 @@
     {
       "type": "checkbox",
       "id": "autoplay",
-      "label": "Rotar automáticamente diapositivas",
+      "label": "Rotar automáticamente",
       "default": true
     },
     {
@@ -410,33 +293,66 @@
       "default": 5
     },
     {
-      "type": "checkbox",
-      "id": "stack_text_mobile",
-      "label": "Mostrar texto abajo de la imagen en celular (Recomendado)",
-      "default": true,
-      "info": "Garantiza legibilidad y visibilidad óptima de las imágenes en celulares."
+      "type": "range",
+      "id": "height_mobile",
+      "min": 200,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "label": "Altura en Móvil",
+      "default": 320
     },
     {
-      "type": "header",
-      "content": "Colores predeterminados"
+      "type": "range",
+      "id": "height_desktop",
+      "min": 300,
+      "max": 700,
+      "step": 20,
+      "unit": "px",
+      "label": "Altura en Escritorio",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Radio de esquinas del Banner",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Relleno superior",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Relleno inferior",
+      "default": 0
     },
     {
       "type": "color",
-      "id": "color_bg_mint",
-      "label": "Blanco Menta (Fondo)",
+      "id": "bg_color",
+      "label": "Color de fondo de la sección",
       "default": "#F4F9F8"
     },
     {
       "type": "color",
-      "id": "color_coral",
-      "label": "Coral (CTA / Acentos)",
+      "id": "cta_color",
+      "label": "Color del Botón CTA y Dots",
       "default": "#FF7A59"
-    },
-    {
-      "type": "color",
-      "id": "color_text_dark",
-      "label": "Texto Oscuro",
-      "default": "#1A1F1E"
     }
   ],
   "blocks": [
@@ -447,14 +363,14 @@
         {
           "type": "image_picker",
           "id": "image_desktop",
-          "label": "Imagen de Escritorio",
-          "info": "Tamaño recomendado: 1600x600px o similar."
+          "label": "Imagen Escritorio",
+          "info": "Recomendado: 1600×560px"
         },
         {
           "type": "image_picker",
           "id": "image_mobile",
-          "label": "Imagen de Móvil (Opcional)",
-          "info": "Tamaño recomendado: 750x800px o similar. Si se deja en blanco, se usará la de escritorio."
+          "label": "Imagen Móvil (Opcional)",
+          "info": "Recomendado: 800×700px"
         },
         {
           "type": "text",
@@ -465,8 +381,8 @@
         {
           "type": "text",
           "id": "subheading",
-          "label": "Subtítulo / Beneficios",
-          "default": "Encuentra soluciones clínicamente probadas con envío rápido."
+          "label": "Subtítulo",
+          "default": "Envío rápido a todo el país con pago contra entrega."
         },
         {
           "type": "text",
@@ -482,20 +398,11 @@
         {
           "type": "select",
           "id": "text_alignment",
-          "label": "Alineación del texto (Escritorio)",
+          "label": "Alineación del texto",
           "options": [
-            {
-              "value": "left",
-              "label": "Izquierda"
-            },
-            {
-              "value": "center",
-              "label": "Centro"
-            },
-            {
-              "value": "right",
-              "label": "Derecha"
-            }
+            { "value": "left",   "label": "Izquierda" },
+            { "value": "center", "label": "Centro" },
+            { "value": "right",  "label": "Derecha" }
           ],
           "default": "left"
         }
@@ -510,8 +417,9 @@
           "type": "slide",
           "settings": {
             "heading": "Alivio y bienestar diario",
-            "subheading": "Encuentra soluciones clínicamente probadas con envío rápido y pago contra entrega.",
-            "button_label": "Ver Productos"
+            "subheading": "Soluciones clínicamente probadas con envío rápido y pago contra entrega.",
+            "button_label": "Ver Productos",
+            "text_alignment": "left"
           }
         }
       ]
