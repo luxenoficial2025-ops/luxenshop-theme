@@ -1,11 +1,84 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "custom_categories_krjqyA": {
+      "type": "custom-categories",
+      "blocks": {
+        "category_Myqf9m": {
+          "type": "category",
+          "settings": {
+            "title": "Cuidado Articular",
+            "link": ""
+          }
+        },
+        "category_Vmgwcf": {
+          "type": "category",
+          "settings": {
+            "title": "Belleza Facial",
+            "link": ""
+          }
+        },
+        "category_nEMagm": {
+          "type": "category",
+          "settings": {
+            "title": "Suplementos",
+            "link": ""
+          }
+        },
+        "category_9EwpRf": {
+          "type": "category",
+          "settings": {
+            "title": "Cuidado Personal",
+            "link": ""
+          }
+        },
+        "category_axqBMQ": {
+          "type": "category",
+          "settings": {
+            "title": "Bienestar",
+            "link": ""
+          }
+        },
+        "category_wmVy66": {
+          "type": "category",
+          "settings": {
+            "title": "Ofertas",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_Myqf9m",
+        "category_Vmgwcf",
+        "category_nEMagm",
+        "category_9EwpRf",
+        "category_axqBMQ",
+        "category_wmVy66"
+      ],
+      "disabled": true,
+      "name": "Categorías Destacadas",
+      "settings": {
+        "title": "Comprar por Categorías",
+        "title_alignment": "center",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "bg_color": "#F4F9F8",
+        "color_primary_teal": "#0F5D5A",
+        "color_text_dark": "#1A1F1E"
+      }
+    },
     "footer": {
       "type": "footer",
-      "blocks": {},
-      "block_order": [],
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
@@ -23,6 +96,7 @@
     }
   },
   "order": [
+    "custom_categories_krjqyA",
     "footer"
   ]
 }

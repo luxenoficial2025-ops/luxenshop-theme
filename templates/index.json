@@ -86,17 +86,94 @@
         "logo_max_height": 40,
         "search_placeholder": "Buscar productos de salud y belleza...",
         "menu": "main-menu",
-        "color_primary_teal": "#0F5D5A",
-        "color_secondary_blue": "#1E88E5",
+        "color_primary_teal": "#0f5d5a",
+        "color_secondary_blue": "#1e88e5",
+        "color_bg_mint": "#f4f9f8",
+        "color_coral": "#ff7a59",
+        "color_text_dark": "#1a1f1e"
+      }
+    },
+    "custom_testimonials_iWJJbp": {
+      "type": "custom-testimonials",
+      "blocks": {
+        "review_EUNFmb": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Compré la crema de colágeno facial. La atención por WhatsApp fue muy amable y el producto me llegó al día siguiente a Quito. Pagar en casa me dio total confianza.",
+            "author_name": "Carmen M.",
+            "verified_purchase": true
+          }
+        },
+        "review_YHj3Yq": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "El suplemento de magnesio llegó sellado y en perfecto estado. Pagué en efectivo al recibir. Excelente servicio en todo Ecuador.",
+            "author_name": "Luis G.",
+            "verified_purchase": true
+          }
+        },
+        "review_n38ptQ": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Dudaba de comprar por internet, pero el pago contra entrega me convenció. El producto para dolores articulares de mi mamá es de excelente calidad.",
+            "author_name": "Valeria T.",
+            "verified_purchase": true
+          }
+        }
+      },
+      "block_order": [
+        "review_EUNFmb",
+        "review_YHj3Yq",
+        "review_n38ptQ"
+      ],
+      "name": "Testimonios de Clientes",
+      "settings": {
+        "title": "Lo que opinan nuestros clientes",
+        "subtitle": "Más de 5,000 ecuatorianos confían en nosotros para su bienestar.",
+        "text_alignment": "center",
+        "desktop_columns": 3,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "bg_color": "#ffffff",
         "color_bg_mint": "#F4F9F8",
-        "color_coral": "#FF7A59",
+        "color_primary_teal": "#0F5D5A",
         "color_text_dark": "#1A1F1E"
+      }
+    },
+    "custom_footer_pngDfn": {
+      "type": "custom-footer",
+      "name": "Footer Minimalista",
+      "settings": {
+        "contact_title": "Soporte y Contacto",
+        "contact_intro": "¿Tienes dudas con tu pedido? Escríbenos por WhatsApp.",
+        "phone": "+593 99 999 9999",
+        "email": "soporte@luxenshop.com",
+        "hours": "Lunes a Sábado: 8:00 AM - 6:00 PM",
+        "whatsapp_link": "",
+        "whatsapp_label": "Chatear por WhatsApp",
+        "links_title": "Políticas Legales",
+        "legal_menu": "",
+        "trust_title": "Paga al Recibir",
+        "trust_description": "Ofrecemos pago contra entrega en todo Ecuador. Compra con total tranquilidad, pagas en efectivo cuando tu producto llega a tu puerta.",
+        "social_instagram": "",
+        "social_tiktok": "",
+        "social_facebook": "",
+        "padding_top": 40,
+        "padding_bottom": 30,
+        "bg_color": "#F4F9F8",
+        "color_primary_teal": "#0F5D5A",
+        "color_text": "#1A1F1E"
       }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "custom_header_BzymaF"
+    "custom_header_BzymaF",
+    "custom_testimonials_iWJJbp",
+    "custom_footer_pngDfn"
   ]
 }
