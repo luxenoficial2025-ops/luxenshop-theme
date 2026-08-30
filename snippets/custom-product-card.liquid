@@ -1,0 +1,106 @@
+{% comment %}
+  Renders a custom product card.
+  Accepts:
+  - product: {Object} Product Liquid object
+  - lazy_load: {Boolean} Image should be lazy loaded. Default: true
+{% endcomment %}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign has_discount = false
+  if product.compare_at_price > product.price
+    assign has_discount = true
+    assign discount_diff = product.compare_at_price | minus: product.price
+    assign discount_percent = discount_diff | times: 100.0 | divided_by: product.compare_at_price | round
+  endif
+-%}
+
+<div class="custom-product-card">
+  <!-- Card Media Wrapper -->
+  <div class="card-media-wrapper">
+    <!-- Discount Badge -->
+    {%- if has_discount -%}
+      <span class="card-badge-discount">
+        -{{ discount_percent }}%
+      </span>
+    {%- endif -%}
+
+    <a href="{{ product.url }}" class="card-image-link" aria-label="Ver {{ product.title | escape }}">
+      {%- if product.featured_media -%}
+        <img
+          src="{{ product.featured_media | image_url: width: 500, height: 500, crop: 'center' }}"
+          alt="{{ product.featured_media.alt | default: product.title | escape }}"
+          {% if lazy_load == false %}
+            fetchpriority="high"
+            loading="eager"
+          {% else %}
+            loading="lazy"
+          {% endif %}
+          width="250"
+          height="250"
+        >
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </a>
+  </div>
+
+  <!-- Content Area -->
+  <div class="card-content-area">
+    <!-- Static Star Rating for Trust (COD Store standard) -->
+    <div class="card-rating-stars" aria-label="5 de 5 estrellas">
+      <div class="stars-row">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <!-- Generate a pseudo-random looking but consistent review number based on product title size -->
+      {%- assign seed = product.title.size | times: 3 | plus: 12 -%}
+      {%- assign reviews_count = seed | modulo: 80 | plus: 25 -%}
+      <span class="card-rating-count">({{ reviews_count }})</span>
+    </div>
+
+    <!-- Product Title -->
+    <h3 class="card-product-title-heading">
+      <a href="{{ product.url }}" class="card-product-title">
+        {{ product.title | escape }}
+      </a>
+    </h3>
+
+    <!-- Price Section -->
+    <div class="card-price-container">
+      <span class="card-price-current">
+        {{ product.price | money }}
+      </span>
+      {%- if has_discount -%}
+        <span class="card-price-compare">
+          {{ product.compare_at_price | money }}
+        </span>
+      {%- endif -%}
+    </div>
+
+    <!-- Quick Add Form -->
+    {%- if product.available -%}
+      {%- form 'product', product, class: 'quick-add-form' -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+        <input type="hidden" name="quantity" value="1">
+        
+        <button 
+          type="submit" 
+          name="add" 
+          class="quick-add-btn"
+          aria-label="Agregar {{ product.title | escape }} al carrito"
+        >
+          Agregar
+          <svg class="cart-btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+        </button>
+      {%- endform -%}
+    {%- else -%}
+      <button class="quick-add-btn out-of-stock" disabled>
+        Agotado
+      </button>
+    {%- endif -%}
+  </div>
+</div>

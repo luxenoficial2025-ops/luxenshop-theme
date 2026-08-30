@@ -1,0 +1,521 @@
+{%- style -%}
+  .custom-hero-carousel-{{ section.id }} {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background-color: {{ section.settings.color_bg_mint }};
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slides-outer {
+    position: relative;
+    width: 100%;
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slides-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  @media screen and (min-width: 768px) {
+    .custom-hero-carousel-{{ section.id }} .hero-slide {
+      min-height: 520px;
+    }
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slide-img-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slide-img-wrapper picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slide-placeholder {
+    width: 100%;
+    height: 100%;
+    fill: #dedede;
+    background-color: #efefef;
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(26, 31, 30, 0.2) 0%, rgba(26, 31, 30, 0.6) 100%);
+    z-index: 2;
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slide-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    color: #ffffff;
+    box-sizing: border-box;
+  }
+
+  /* Content Alignments */
+  .custom-hero-carousel-{{ section.id }} .hero-content-left {
+    text-align: left;
+    margin-right: auto;
+    max-width: 550px;
+  }
+  .custom-hero-carousel-{{ section.id }} .hero-content-center {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 650px;
+  }
+  .custom-hero-carousel-{{ section.id }} .hero-content-right {
+    text-align: right;
+    margin-left: auto;
+    max-width: 550px;
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slide-heading {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 12px 0;
+    text-shadow: 0 2px 6px rgba(26, 31, 30, 0.35);
+  }
+
+  @media screen and (min-width: 768px) {
+    .custom-hero-carousel-{{ section.id }} .hero-slide-heading {
+      font-size: 44px;
+    }
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slide-subheading {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.45;
+    margin: 0 0 24px 0;
+    color: {{ section.settings.color_bg_mint }};
+    text-shadow: 0 1px 4px rgba(26, 31, 30, 0.35);
+  }
+
+  @media screen and (min-width: 768px) {
+    .custom-hero-carousel-{{ section.id }} .hero-slide-subheading {
+      font-size: 18px;
+    }
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slide-cta {
+    display: inline-block;
+    background-color: {{ section.settings.color_coral }};
+    color: {{ section.settings.color_bg_mint }};
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(255, 122, 89, 0.3);
+    transition: all 0.25s ease-in-out;
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-slide-cta:hover {
+    background-color: #e56b4c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 122, 89, 0.45);
+  }
+
+  /* Dots navigation */
+  .custom-hero-carousel-{{ section.id }} .hero-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 5;
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(244, 249, 248, 0.45);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.25s ease;
+  }
+
+  .custom-hero-carousel-{{ section.id }} .hero-dot.is-active {
+    background-color: {{ section.settings.color_coral }};
+    width: 22px;
+    border-radius: 4px;
+  }
+
+  /* Mobile Stack Layout Option */
+  {%- if section.settings.stack_text_mobile -%}
+    @media screen and (max-width: 767px) {
+      .custom-hero-carousel-{{ section.id }} .hero-slide {
+        flex-direction: column;
+        min-height: auto;
+        background-color: {{ section.settings.color_bg_mint }};
+      }
+
+      .custom-hero-carousel-{{ section.id }} .hero-slide-img-wrapper {
+        position: relative;
+        height: 250px;
+      }
+
+      .custom-hero-carousel-{{ section.id }} .hero-slide-overlay {
+        display: none;
+      }
+
+      .custom-hero-carousel-{{ section.id }} .hero-slide-content {
+        color: {{ section.settings.color_text_dark }};
+        padding: 24px 20px 48px;
+        text-align: center;
+      }
+
+      .custom-hero-carousel-{{ section.id }} .hero-slide-heading {
+        font-size: 22px;
+        color: {{ section.settings.color_text_dark }};
+        text-shadow: none;
+      }
+
+      .custom-hero-carousel-{{ section.id }} .hero-slide-subheading {
+        font-size: 14px;
+        color: rgba(26, 31, 30, 0.8);
+        text-shadow: none;
+      }
+
+      .custom-hero-carousel-{{ section.id }} .hero-dots {
+        bottom: 12px;
+      }
+      
+      .custom-hero-carousel-{{ section.id }} .hero-dot {
+        background-color: rgba(15, 93, 90, 0.2);
+      }
+    }
+  {%- endif -%}
+{%- endstyle -%}
+
+<div class="custom-hero-carousel-{{ section.id }} custom-hero-carousel" 
+     id="Hero-{{ section.id }}" 
+     data-autoplay="{{ section.settings.autoplay }}" 
+     data-interval="{{ section.settings.autoplay_interval | times: 1000 }}"
+>
+  <div class="hero-slides-outer">
+    <div class="hero-slides-container" id="slides-container-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        {%- assign is_first = forloop.first -%}
+        <div class="hero-slide" id="Slide-{{ block.id }}" {{ block.shopify_attributes }}>
+          
+          <div class="hero-slide-img-wrapper">
+            {%- if block.settings.image_desktop != blank -%}
+              <picture>
+                {%- if block.settings.image_mobile != blank -%}
+                  <source media="(max-width: 767px)" srcset="{{ block.settings.image_mobile | image_url: width: 750 }}">
+                {%- endif -%}
+                <img 
+                  src="{{ block.settings.image_desktop | image_url: width: 1600 }}" 
+                  alt="{{ block.settings.image_desktop.alt | default: block.settings.heading | escape }}"
+                  class="hero-slide-img"
+                  {% if is_first %}
+                    fetchpriority="high"
+                    loading="eager"
+                  {% else %}
+                    fetchpriority="low"
+                    loading="lazy"
+                  {% endif %}
+                  width="{{ block.settings.image_desktop.width }}"
+                  height="{{ block.settings.image_desktop.height }}"
+                >
+              </picture>
+            {%- else -%}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'hero-slide-placeholder' }}
+            {%- endif -%}
+          </div>
+
+          <div class="hero-slide-overlay"></div>
+
+          <div class="hero-slide-content hero-content-{{ block.settings.text_alignment }}">
+            {%- if block.settings.heading != blank -%}
+              <h2 class="hero-slide-heading">{{ block.settings.heading | escape }}</h2>
+            {%- endif -%}
+
+            {%- if block.settings.subheading != blank -%}
+              <p class="hero-slide-subheading">{{ block.settings.subheading | escape }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+              <a href="{{ block.settings.button_link }}" class="hero-slide-cta">
+                {{ block.settings.button_label | escape }}
+              </a>
+            {%- endif -%}
+          </div>
+
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- if section.blocks.size > 1 -%}
+    <div class="hero-dots">
+      {%- for block in section.blocks -%}
+        <button class="hero-dot{% if forloop.first %} is-active{% endif %}" 
+                data-slide-index="{{ forloop.index0 }}"
+                aria-label="Ir al banner {{ forloop.index }}"
+        ></button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('Hero-{{ section.id }}');
+    if (!carousel) return;
+
+    const container = document.getElementById('slides-container-{{ section.id }}');
+    const slides = container.querySelectorAll('.hero-slide');
+    const dots = carousel.querySelectorAll('.hero-dot');
+    
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    const autoplay = carousel.getAttribute('data-autoplay') === 'true';
+    const intervalTime = parseInt(carousel.getAttribute('data-interval')) || 5000;
+    let autoplayTimer = null;
+
+    function goToSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      
+      currentIndex = index;
+      container.style.transform = `translateX(-${currentIndex * 100}%)`;
+      
+      // Update dots
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.classList.add('is-active');
+        } else {
+          dot.classList.remove('is-active');
+        }
+      });
+    }
+
+    function startAutoplay() {
+      if (autoplayTimer) clearInterval(autoplayTimer);
+      autoplayTimer = setInterval(function() {
+        goToSlide(currentIndex + 1);
+      }, intervalTime);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer) clearInterval(autoplayTimer);
+    }
+
+    // Attach click events to dots
+    dots.forEach((dot) => {
+      dot.addEventListener('click', function() {
+        const slideIndex = parseInt(this.getAttribute('data-slide-index'));
+        goToSlide(slideIndex);
+        if (autoplay) startAutoplay(); // Reset timer on user click
+      });
+    });
+
+    // Touch events for swiping
+    let startX = 0;
+    let endX = 0;
+
+    carousel.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+      stopAutoplay();
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', function(e) {
+      endX = e.changedTouches[0].clientX;
+      const threshold = 50; // swipe minimum distance
+      if (startX - endX > threshold) {
+        // Swipe left -> Next slide
+        goToSlide(currentIndex + 1);
+      } else if (endX - startX > threshold) {
+        // Swipe right -> Prev slide
+        goToSlide(currentIndex - 1);
+      }
+      if (autoplay) startAutoplay();
+    }, { passive: true });
+
+    if (autoplay) {
+      startAutoplay();
+      // Pause autoplay when tab is inactive
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          stopAutoplay();
+        } else {
+          startAutoplay();
+        }
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Hero Slideshow",
+  "class": "custom-hero-section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Rotar automáticamente diapositivas",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_interval",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Tiempo de rotación",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_text_mobile",
+      "label": "Mostrar texto abajo de la imagen en celular (Recomendado)",
+      "default": true,
+      "info": "Garantiza legibilidad y visibilidad óptima de las imágenes en celulares."
+    },
+    {
+      "type": "header",
+      "content": "Colores predeterminados"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_mint",
+      "label": "Blanco Menta (Fondo)",
+      "default": "#F4F9F8"
+    },
+    {
+      "type": "color",
+      "id": "color_coral",
+      "label": "Coral (CTA / Acentos)",
+      "default": "#FF7A59"
+    },
+    {
+      "type": "color",
+      "id": "color_text_dark",
+      "label": "Texto Oscuro",
+      "default": "#1A1F1E"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Diapositiva",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Imagen de Escritorio",
+          "info": "Tamaño recomendado: 1600x600px o similar."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Imagen de Móvil (Opcional)",
+          "info": "Tamaño recomendado: 750x800px o similar. Si se deja en blanco, se usará la de escritorio."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Título",
+          "default": "Alivio y bienestar diario"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subtítulo / Beneficios",
+          "default": "Encuentra soluciones clínicamente probadas con envío rápido."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Texto del botón",
+          "default": "Ver Productos"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Enlace del botón"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Alineación del texto (Escritorio)",
+          "options": [
+            {
+              "value": "left",
+              "label": "Izquierda"
+            },
+            {
+              "value": "center",
+              "label": "Centro"
+            },
+            {
+              "value": "right",
+              "label": "Derecha"
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Hero Slideshow",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "heading": "Alivio y bienestar diario",
+            "subheading": "Encuentra soluciones clínicamente probadas con envío rápido y pago contra entrega.",
+            "button_label": "Ver Productos"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

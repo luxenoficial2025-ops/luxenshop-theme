@@ -1,0 +1,491 @@
+{%- style -%}
+  .custom-testimonials-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  @media screen and (min-width: 768px) {
+    .custom-testimonials-{{ section.id }} {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  .custom-testimonials-{{ section.id }} .section-header {
+    text-align: {{ section.settings.text_alignment }};
+    margin-bottom: 28px;
+  }
+
+  .custom-testimonials-{{ section.id }} .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: {{ section.settings.color_text_dark }};
+    margin: 0 0 6px 0;
+    line-height: 1.25;
+  }
+
+  @media screen and (min-width: 768px) {
+    .custom-testimonials-{{ section.id }} .section-title {
+      font-size: 28px;
+    }
+  }
+
+  .custom-testimonials-{{ section.id }} .section-subtitle {
+    font-size: 14px;
+    color: rgba(26, 31, 30, 0.65);
+    margin: 0;
+  }
+
+  /* Testimonials container scrollable mobile, grid desktop */
+  .custom-testimonials-{{ section.id }} .testimonials-scroller-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .custom-testimonials-{{ section.id }} .testimonials-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 16px;
+    padding: 6px 6px 20px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Hide scrollbar */
+  .custom-testimonials-{{ section.id }} .testimonials-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .custom-testimonials-{{ section.id }} .testimonials-grid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .custom-testimonials-{{ section.id }} .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat({{ section.settings.desktop_columns }}, 1fr);
+      gap: 24px;
+      overflow-x: visible;
+      padding: 0;
+    }
+  }
+
+  /* Card styling */
+  .custom-testimonials-{{ section.id }} .testimonial-card {
+    flex: 0 0 calc(85% - 8px); /* Peak next card on mobile */
+    scroll-snap-align: start;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(26, 31, 30, 0.05);
+    border: 1px solid rgba(15, 93, 90, 0.04);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  @media screen and (min-width: 768px) {
+    .custom-testimonials-{{ section.id }} .testimonial-card {
+      flex: none;
+    }
+    .custom-testimonials-{{ section.id }} .testimonial-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(15, 93, 90, 0.1);
+    }
+  }
+
+  .custom-testimonials-{{ section.id }} .stars-line {
+    font-size: 16px;
+    color: #ffb100;
+    margin-bottom: 12px;
+  }
+
+  .custom-testimonials-{{ section.id }} .testimonial-text {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: rgba(26, 31, 30, 0.85);
+    margin: 0 0 16px 0;
+    flex-grow: 1;
+    font-style: italic;
+  }
+
+  .custom-testimonials-{{ section.id }} .customer-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    border-top: 1px solid rgba(15, 93, 90, 0.08);
+    padding-top: 12px;
+  }
+
+  .custom-testimonials-{{ section.id }} .customer-avatar-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: {{ section.settings.color_bg_mint }};
+    border: 1px solid rgba(15, 93, 90, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .custom-testimonials-{{ section.id }} .customer-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .custom-testimonials-{{ section.id }} .customer-avatar-placeholder {
+    width: 22px;
+    height: 22px;
+    color: {{ section.settings.color_primary_teal }};
+  }
+
+  .custom-testimonials-{{ section.id }} .customer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .custom-testimonials-{{ section.id }} .customer-name {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: {{ section.settings.color_text_dark }};
+    margin: 0;
+  }
+
+  .custom-testimonials-{{ section.id }} .verification-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: {{ section.settings.color_primary_teal }};
+  }
+
+  .custom-testimonials-{{ section.id }} .verification-badge svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+  }
+
+  /* Slider Dots (Mobile) */
+  .custom-testimonials-{{ section.id }} .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .custom-testimonials-{{ section.id }} .slider-dots {
+      display: none;
+    }
+  }
+
+  .custom-testimonials-{{ section.id }} .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(15, 93, 90, 0.2);
+    border: none;
+    padding: 0;
+  }
+
+  .custom-testimonials-{{ section.id }} .dot.is-active {
+    background-color: {{ section.settings.color_primary_teal }};
+    width: 16px;
+    border-radius: 3px;
+  }
+{%- endstyle -%}
+
+<div class="custom-testimonials-{{ section.id }}">
+  {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+    <div class="section-header page-width">
+      {%- if section.settings.title != blank -%}
+        <h2 class="section-title">{{ section.settings.title | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="section-subtitle">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="testimonials-scroller-wrap page-width">
+    <div class="testimonials-grid" id="TestimonialGrid-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        <div class="testimonial-card" {{ block.shopify_attributes }}>
+          <!-- Stars -->
+          <div class="stars-line">
+            {%- for i in (1..block.settings.stars) -%}
+              ★
+            {%- endfor -%}
+          </div>
+          
+          <!-- Review text -->
+          <blockquote class="testimonial-text">
+            &ldquo;{{ block.settings.text | escape }}&rdquo;
+          </blockquote>
+
+          <!-- Customer info -->
+          <div class="customer-meta">
+            <div class="customer-avatar-wrap">
+              {%- if block.settings.avatar != blank -%}
+                <img 
+                  src="{{ block.settings.avatar | image_url: width: 100, height: 100, crop: 'center' }}" 
+                  alt="{{ block.settings.author_name | escape }}"
+                  class="customer-avatar"
+                  loading="lazy"
+                  width="44"
+                  height="44"
+                >
+              {%- else -%}
+                <svg class="customer-avatar-placeholder" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              {%- endif -%}
+            </div>
+            <div class="customer-info">
+              <h4 class="customer-name">{{ block.settings.author_name | escape }}</h4>
+              {%- if block.settings.verified_purchase -%}
+                <span class="verification-badge">
+                  <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 0a6 6 0 1 0 6 6 6.007 6.007 0 0 0-6-6zm-1.12 8.65L2.3 6.07a.478.478 0 0 1 0-.68l.68-.68a.478.478 0 0 1 .68 0L4.88 6.94l3.5-3.5a.478.478 0 0 1 .68 0l.68.68a.478.478 0 0 1 0 .68l-4.52 4.52a.477.477 0 0 1-.68.03z"/>
+                  </svg>
+                  Compra Verificada
+                </span>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.blocks.size > 1 -%}
+      <div class="slider-dots" id="TestimonialDots-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          <button class="dot{% if forloop.first %} is-active{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Opinión {{ forloop.index }}"></button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const grid = document.getElementById('TestimonialGrid-{{ section.id }}');
+    const dotsWrap = document.getElementById('TestimonialDots-{{ section.id }}');
+    if (!grid || !dotsWrap) return;
+
+    const dots = dotsWrap.querySelectorAll('.dot');
+    const cards = grid.querySelectorAll('.testimonial-card');
+
+    grid.addEventListener('scroll', function() {
+      const scrollLeft = grid.scrollLeft;
+      const width = grid.clientWidth;
+      
+      // Calculate snapped item index
+      let activeIndex = 0;
+      let minDiff = Infinity;
+      
+      cards.forEach((card, idx) => {
+        const cardOffset = card.offsetLeft - grid.offsetLeft;
+        const diff = Math.abs(cardOffset - scrollLeft);
+        if (diff < minDiff) {
+          minDiff = diff;
+          activeIndex = idx;
+        }
+      });
+
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.classList.add('is-active');
+        } else {
+          dot.classList.remove('is-active');
+        }
+      });
+    });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', function() {
+        const idx = parseInt(this.getAttribute('data-index'));
+        const targetCard = cards[idx];
+        if (targetCard) {
+          grid.scrollTo({
+            left: targetCard.offsetLeft - grid.offsetLeft,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Testimonios de Clientes",
+  "class": "custom-testimonials-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título de la Sección",
+      "default": "Lo que opinan nuestros clientes"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Más de 5,000 ecuatorianos confían en nosotros para su bienestar."
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Alineación del Título",
+      "options": [
+        {
+          "value": "left",
+          "label": "Izquierda"
+        },
+        {
+          "value": "center",
+          "label": "Centro"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Columnas en Escritorio",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Relleno superior",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Relleno inferior",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Paleta de Colores"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fondo de la Sección",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_mint",
+      "label": "Fondo Menta (Para Avatars)",
+      "default": "#F4F9F8"
+    },
+    {
+      "type": "color",
+      "id": "color_primary_teal",
+      "label": "Verde Azulado (Detalles)",
+      "default": "#0F5D5A"
+    },
+    {
+      "type": "color",
+      "id": "color_text_dark",
+      "label": "Texto Oscuro",
+      "default": "#1A1F1E"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Reseña",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "min": 3,
+          "max": 5,
+          "step": 1,
+          "label": "Estrellas",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texto de la Reseña",
+          "default": "El gel articular me alivió el dolor de rodillas en solo 3 días. El envío a Guayaquil fue rapidísimo y pagué contra entrega. ¡Súper recomendados!"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Nombre del Cliente",
+          "default": "María Belén S."
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Foto del Cliente (Opcional)"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified_purchase",
+          "label": "Compra Verificada",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonios de Clientes",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "author_name": "Carmen M.",
+            "text": "Compré la crema de colágeno facial. La atención por WhatsApp fue muy amable y el producto me llegó al día siguiente a Quito. Pagar en casa me dio total confianza."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "author_name": "Luis G.",
+            "text": "El suplemento de magnesio llegó sellado y en perfecto estado. Pagué en efectivo al recibir. Excelente servicio en todo Ecuador."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "author_name": "Valeria T.",
+            "text": "Dudaba de comprar por internet, pero el pago contra entrega me convenció. El producto para dolores articulares de mi mamá es de excelente calidad."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
