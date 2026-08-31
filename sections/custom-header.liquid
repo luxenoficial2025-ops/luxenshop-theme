@@ -1,496 +1,204 @@
-{%- style -%}
-  /* ─── CSS Variables ──────────────────────────────────── */
-  .lxn-header-wrap-{{ section.id }} {
-    --teal:      {{ section.settings.color_primary_teal }};
-    --mint:      {{ section.settings.color_bg_mint }};
-    --coral:     {{ section.settings.color_coral }};
-    --dark:      {{ section.settings.color_text_dark }};
-    --white:     #ffffff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+﻿{%- style -%}
+  :root {
+    --color-bg-dark: #0D0D0D;
+    --color-gold: #D4A24C;
+    --color-text-light: #FFFFFF;
+  }
+
+  .lxn-announcement-bar {
+    background-color: var(--color-bg-dark);
+    color: var(--color-gold);
+    text-align: center;
+    padding: 8px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(212, 162, 76, 0.15);
+  }
+  
+  .lxn-header-wrapper {
+    background-color: var(--color-bg-dark);
+    padding: 12px 20px;
     position: sticky;
     top: 0;
-    z-index: 200;
+    z-index: 999;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
   }
 
-  /* ─── Top Bar (announcement) ─────────────────────────── */
-  .lxn-topbar {
-    background-color: var(--coral); color: #000000;
-    font-size: 12px;
-    font-weight: 500;
-    text-align: center;
-    padding: 7px 16px;
-    letter-spacing: 0.4px;
-    line-height: 1;
-  }
-
-  /* ─── Main header row ────────────────────────────────── */
-  .lxn-header-main {
-    background-color: var(--teal);
-    padding: 10px 16px;
-  }
-
-  .lxn-header-main-inner {
+  .lxn-header-inner {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
+    gap: 15px;
   }
 
-  /* Logo */
-  .lxn-logo-link {
-    text-decoration: none;
-    flex-shrink: 0;
+  /* Logo LUXEN con Rayo */
+  .lxn-logo-container {
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: var(--color-text-light);
   }
-  .lxn-logo-img {
-    display: block;
-    max-height: {{ section.settings.logo_max_height }}px;
-    width: auto;
-    object-fit: contain;
-    filter: brightness(0) invert(1); /* keeps logo white on teal background */
+  .lxn-logo-icon {
+    color: var(--color-gold);
+    margin-right: 6px;
+    display: flex;
   }
   .lxn-logo-text {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 800;
-    color: var(--white);
-    letter-spacing: -0.5px;
+    letter-spacing: 2px;
   }
 
-  /* Search bar */
+  /* Buscador (Centered, White bg, Gold button) */
   .lxn-search-form {
     flex: 1;
+    max-width: 500px;
     display: flex;
-    align-items: center;
-    background: var(--white);
-    border-radius: 8px;
+    background: #FFFFFF;
+    border-radius: 4px;
     overflow: hidden;
-    min-width: 0;
+    margin: 0 15px;
   }
   .lxn-search-input {
     flex: 1;
     border: none;
-    outline: none;
-    padding: 10px 14px;
-    font-size: 14px;
-    color: var(--dark);
     background: transparent;
-    -webkit-appearance: none;
-    min-width: 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    color: #000;
+    outline: none;
   }
-  .lxn-search-input::placeholder { color: rgba(26,31,30,.45); }
+  .lxn-search-input::placeholder {
+    color: #666;
+    font-style: italic;
+  }
   .lxn-search-btn {
-    background-color: var(--coral);
+    background-color: var(--color-gold);
     border: none;
-    padding: 0 16px;
-    height: 100%;
-    min-height: 40px;
+    padding: 0 18px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color .2s ease;
-    flex-shrink: 0;
+    color: #000;
+    transition: background 0.2s ease;
   }
-  .lxn-search-btn:hover { background-color: #d4952b; }
-  .lxn-search-btn svg { width: 18px; height: 18px; fill: none; stroke: #000; stroke-width: 2.5; }
+  .lxn-search-btn:hover {
+    background-color: #b88a3e;
+  }
 
-  /* Cart & mobile actions */
-  .lxn-header-actions {
+  /* Íconos (User, Cart) */
+  .lxn-header-icons {
     display: flex;
     align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
+    gap: 16px;
   }
-  .lxn-icon-btn {
-    position: relative;
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 8px;
+  .lxn-icon-link {
+    color: var(--color-text-light);
     text-decoration: none;
-    transition: background-color .2s ease;
-    background: none;
-    border: none;
-    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s ease;
   }
-  .lxn-icon-btn:hover { background-color: rgba(255,255,255,.15); }
-  .lxn-icon-btn svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; }
-  .lxn-cart-badge {
+  .lxn-icon-link:hover {
+    color: var(--color-gold);
+  }
+  .lxn-cart-count {
     position: absolute;
-    top: 2px;
-    right: 2px;
-    background-color: var(--coral);
+    top: -6px;
+    right: -8px;
+    background-color: var(--color-gold);
     color: #000;
     font-size: 10px;
-    font-weight: 700;
-    min-width: 17px;
-    height: 17px;
+    font-weight: 800;
+    min-width: 16px;
+    height: 16px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 3px;
   }
 
-  /* ─── Nav bar (second row, white) ───────────────────── */
-  .lxn-navbar {
-    background-color: var(--white);
-    border-bottom: 1px solid rgba(15,93,90,.08);
-  }
-  .lxn-navbar-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .lxn-navbar-inner::-webkit-scrollbar { display: none; }
-
-  /* Categories dropdown trigger */
-  .lxn-cat-btn {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background-color: var(--teal);
-    color: var(--white);
-    border: none;
-    border-radius: 0;
-    padding: 10px 16px;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background-color .2s ease;
-  }
-  .lxn-cat-btn:hover { background-color: #0a4947; }
-  .lxn-cat-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.5; transition: transform .2s ease; }
-  .lxn-cat-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
-
-  /* Pill nav links */
-  .lxn-nav-links {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    list-style: none;
-    margin: 0;
-    padding: 6px 0;
-  }
-  .lxn-nav-link {
-    white-space: nowrap;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--dark);
-    text-decoration: none;
-    padding: 5px 12px;
-    border-radius: 50px;
-    border: 1px solid rgba(15,93,90,.12);
-    transition: all .2s ease;
-  }
-  .lxn-nav-link:hover, .lxn-nav-link.active {
-    background-color: var(--teal);
-    color: var(--white);
-    border-color: var(--teal);
-  }
-
-  /* ─── Categories dropdown panel ──────────────────────── */
-  .lxn-cat-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 240px;
-    background: var(--white);
-    border: 1px solid rgba(15,93,90,.1);
-    border-top: none;
-    box-shadow: 0 8px 24px rgba(26,31,30,.1);
-    border-radius: 0 0 8px 8px;
-    z-index: 300;
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: all .2s ease;
-  }
-  .lxn-cat-dropdown.is-open {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .lxn-cat-dropdown a {
-    display: flex;
-    align-items: center;
-    padding: 10px 16px;
-    font-size: 13.5px;
-    font-weight: 500;
-    color: var(--dark);
-    text-decoration: none;
-    transition: all .15s ease;
-    border-bottom: 1px solid rgba(15,93,90,.04);
-  }
-  .lxn-cat-dropdown a:last-child { border-bottom: none; }
-  .lxn-cat-dropdown a:hover {
-    background-color: var(--mint);
-    color: var(--teal);
-    padding-left: 22px;
-  }
-
-  /* ─── Mobile Drawer ───────────────────────────────────── */
-  .lxn-drawer {
-    position: fixed;
-    inset: 0;
-    z-index: 500;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .25s ease, visibility .25s ease;
-  }
-  .lxn-drawer.is-open { visibility: visible; opacity: 1; }
-  .lxn-drawer-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(26,31,30,.5);
-    backdrop-filter: blur(3px);
-  }
-  .lxn-drawer-panel {
-    position: absolute;
-    top: 0; left: -280px;
-    width: 280px;
-    height: 100%;
-    background: var(--white);
-    padding: 24px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    transform: translateX(0);
-    transition: transform .28s cubic-bezier(.4,0,.2,1);
-    overflow-y: auto;
-  }
-  .lxn-drawer.is-open .lxn-drawer-panel { transform: translateX(280px); }
-  .lxn-drawer-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid rgba(15,93,90,.1);
-  }
-  .lxn-drawer-head span {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--teal);
-  }
-  .lxn-drawer-close {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 6px;
-    color: var(--dark);
-    display: flex;
-    border-radius: 50%;
-  }
-  .lxn-drawer-close:hover { background: rgba(15,93,90,.06); }
-  .lxn-drawer-close svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; }
-  .lxn-drawer-list {
-    list-style: none;
-    margin: 0; padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .lxn-drawer-list a {
-    display: block;
-    padding: 11px 12px;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--dark);
-    text-decoration: none;
-    border-radius: 8px;
-    transition: all .2s ease;
-  }
-  .lxn-drawer-list a:hover { background: var(--mint); color: var(--teal); }
-  .lxn-drawer-footer {
-    margin-top: auto;
-    padding-top: 20px;
-    border-top: 1px solid rgba(15,93,90,.1);
-    font-size: 12.5px;
-    color: rgba(26,31,30,.6);
-  }
-
-  /* Mobile overrides */
-  @media screen and (min-width: 768px) {
-    .lxn-icon-btn.mobile-only { display: none; }
-    .lxn-navbar { display: block; }
-  }
-  @media screen and (max-width: 767px) {
-    .lxn-header-main { padding: 10px 12px; }
-    .lxn-navbar { display: none; }
+  /* Mobile */
+  @media screen and (max-width: 768px) {
+    .lxn-header-inner {
+      flex-wrap: wrap;
+    }
+    .lxn-search-form {
+      order: 3;
+      width: 100%;
+      max-width: 100%;
+      margin: 10px 0 0 0;
+    }
   }
 {%- endstyle -%}
 
-<div class="lxn-header-wrap-{{ section.id }}" id="lxn-header-{{ section.id }}">
-  {%- if section.settings.show_announcement -%}
-    <div class="lxn-topbar">{{ section.settings.announcement_text | escape }}</div>
-  {%- endif -%}
+<!-- Announcement Bar -->
+{%- if section.settings.show_announcement -%}
+  <div class="lxn-announcement-bar">
+    {{ section.settings.announcement_text | escape }}
+  </div>
+{%- endif -%}
 
-  <!-- MAIN HEADER ROW: Teal background -->
-  <div class="lxn-header-main">
-    <div class="lxn-header-main-inner">
+<!-- Header Main -->
+<header class="lxn-header-wrapper">
+  <div class="lxn-header-inner">
+    
+    <!-- Mobile Menu Toggle (Opcional, oculto en mockup pero necesario funcionalmente) -->
+    <details-modal class="header__icon header__icon--menu header__icon--summary link focus-inset" id="Details-menu-drawer-container">
+      <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="Menu" style="color:#fff; border:none; background:transparent;">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </span>
+      </summary>
+    </details-modal>
 
-      <!-- Hamburger (mobile only) -->
-      <button class="lxn-icon-btn mobile-only" id="lxn-drawer-open-{{ section.id }}" aria-label="Menú">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 12h18M3 6h18M3 18h18" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+    <!-- Logo con Rayo -->
+    <a href="{{ routes.root_url }}" class="lxn-logo-container">
+      <span class="lxn-logo-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      </span>
+      <span class="lxn-logo-text">LUXEN</span>
+    </a>
+
+    <!-- Buscador -->
+    <form action="{{ routes.search_url }}" method="get" class="lxn-search-form" role="search">
+      <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="{{ section.settings.search_placeholder | escape }}" class="lxn-search-input">
+      <input type="hidden" name="options[prefix]" value="last">
+      <button type="submit" class="lxn-search-btn" aria-label="Buscar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       </button>
+    </form>
 
-      <!-- Logo -->
-      <a href="{{ routes.root_url }}" class="lxn-logo-link"><img src="{{ 'logo.jpg' | asset_url }}" alt="LUXEN" style="width: 160px; height: auto; object-fit: contain; mix-blend-mode: screen;"></a>
-
-      <!-- Search -->
-      <form action="{{ routes.search_url }}" method="get" class="lxn-search-form" role="search">
-        <input
-          type="search"
-          name="q"
-          class="lxn-search-input"
-          placeholder="{{ section.settings.search_placeholder | escape }}"
-          value="{{ search.terms | escape }}"
-          autocomplete="off"
-          aria-label="{{ section.settings.search_placeholder | escape }}"
-        >
-        <button type="submit" class="lxn-search-btn" aria-label="Buscar">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
-          </svg>
-        </button>
-      </form>
-
-      <!-- Cart -->
-      <div class="lxn-header-actions">
-        <a href="{{ routes.cart_url }}" class="lxn-icon-btn" aria-label="Carrito">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18m-7 4a4 4 0 1 1-8 0" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          {%- if cart.item_count > 0 -%}
-            <span class="lxn-cart-badge">{{ cart.item_count }}</span>
-          {%- endif -%}
+    <!-- Iconos -->
+    <div class="lxn-header-icons">
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="lxn-icon-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </a>
-      </div>
+      {%- endif -%}
+      
+      <a href="{{ routes.cart_url }}" class="lxn-icon-link" id="cart-icon-bubble">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        {%- if cart != empty -%}
+          <span class="lxn-cart-count">{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
     </div>
+
   </div>
-
-  <!-- NAV BAR: White row with categories dropdown + pill links -->
-  {%- if section.settings.menu != blank -%}
-    <nav class="lxn-navbar" aria-label="Navegación principal">
-      <div class="lxn-navbar-inner" style="position:relative;">
-        <button class="lxn-cat-btn" id="lxn-cat-btn-{{ section.id }}" aria-expanded="false" aria-controls="lxn-cat-panel-{{ section.id }}">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-          </svg>
-          Categorías
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-
-        <!-- Dropdown panel -->
-        <div class="lxn-cat-dropdown" id="lxn-cat-panel-{{ section.id }}" role="menu">
-          {%- for link in section.settings.menu.links -%}
-            <a href="{{ link.url }}" role="menuitem">{{ link.title | escape }}</a>
-          {%- endfor -%}
-        </div>
-
-        <!-- Pill quick-access links -->
-        <ul class="lxn-nav-links">
-          {%- for link in section.settings.menu.links limit: 6 -%}
-            <li>
-              <a href="{{ link.url }}" class="lxn-nav-link{% if link.current %} active{% endif %}">
-                {{ link.title | escape }}
-              </a>
-            </li>
-          {%- endfor -%}
-        </ul>
-      </div>
-    </nav>
-  {%- endif -%}
-</div>
-
-<!-- MOBILE DRAWER -->
-<div class="lxn-drawer" id="lxn-drawer-{{ section.id }}" aria-hidden="true">
-  <div class="lxn-drawer-overlay" id="lxn-drawer-overlay-{{ section.id }}"></div>
-  <div class="lxn-drawer-panel">
-    <div class="lxn-drawer-head">
-      <span>{{ shop.name }}</span>
-      <button class="lxn-drawer-close" id="lxn-drawer-close-{{ section.id }}" aria-label="Cerrar menú">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18 6 6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </div>
-    {%- if section.settings.menu != blank -%}
-      <ul class="lxn-drawer-list">
-        {%- for link in section.settings.menu.links -%}
-          <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
-        {%- endfor -%}
-      </ul>
-    {%- endif -%}
-    <div class="lxn-drawer-footer">
-      <p>📦 Envío a todo Ecuador</p>
-      <p>💵 Pago contra entrega disponible</p>
-    </div>
-  </div>
-</div>
-
-<script>
-(function() {
-  var sid = '{{ section.id }}';
-
-  // Drawer
-  var drawerOpen  = document.getElementById('lxn-drawer-open-' + sid);
-  var drawerClose = document.getElementById('lxn-drawer-close-' + sid);
-  var overlay     = document.getElementById('lxn-drawer-overlay-' + sid);
-  var drawer      = document.getElementById('lxn-drawer-' + sid);
-
-  function openDrawer()  { drawer.classList.add('is-open'); drawer.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-  function closeDrawer() { drawer.classList.remove('is-open'); drawer.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-
-  if (drawerOpen)  drawerOpen.addEventListener('click', openDrawer);
-  if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
-  if (overlay)     overlay.addEventListener('click', closeDrawer);
-
-  // Categories dropdown
-  var catBtn   = document.getElementById('lxn-cat-btn-' + sid);
-  var catPanel = document.getElementById('lxn-cat-panel-' + sid);
-
-  if (catBtn && catPanel) {
-    catBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var open = catPanel.classList.toggle('is-open');
-      catBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    document.addEventListener('click', function() {
-      catPanel.classList.remove('is-open');
-      catBtn.setAttribute('aria-expanded','false');
-    });
-  }
-})();
-</script>
+</header>
 
 {% schema %}
 {
-  "name": "Custom Header",
-  "class": "custom-header-section",
+  "name": "Header LUXEN Lujo",
+  "class": "lxn-section-header",
   "settings": [
-    {
-      "type": "header",
-      "content": "Anuncio Superior"
-    },
     {
       "type": "checkbox",
       "id": "show_announcement",
@@ -501,78 +209,14 @@
       "type": "text",
       "id": "announcement_text",
       "label": "Texto del anuncio",
-      "default": "Envío a todo Ecuador • Pago contra entrega • Compra 100% segura"
-    },
-    {
-      "type": "header",
-      "content": "Logo y Menú"
-    },
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo"
-    },
-    {
-      "type": "range",
-      "id": "logo_max_height",
-      "min": 20,
-      "max": 80,
-      "step": 5,
-      "unit": "px",
-      "label": "Altura máxima del logo",
-      "default": 40
+      "default": "ENVÍOS RÁPIDOS A TODO ECUADOR | PAGO CONTRA ENTREGA"
     },
     {
       "type": "text",
       "id": "search_placeholder",
-      "label": "Placeholder del buscador",
-      "default": "Buscar en LUXEN (Cuidado, Lujo, Bienestar)..."
-    },
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Menú principal",
-      "default": "main-menu"
-    },
-    {
-      "type": "header",
-      "content": "Colores"
-    },
-    {
-      "type": "color",
-      "id": "color_primary_teal",
-      "label": "Verde Azulado (Header y Categorías)",
-      "default": "#0B0B0C"
-    },
-    {
-      "type": "color",
-      "id": "color_bg_mint",
-      "label": "Blanco Menta (Fondos)",
-      "default": "#F8FAFC"
-    },
-    {
-      "type": "color",
-      "id": "color_coral",
-      "label": "Coral (Botón Buscar y Carrito)",
-      "default": "#E5A93C"
-    },
-    {
-      "type": "color",
-      "id": "color_text_dark",
-      "label": "Texto Oscuro",
-      "default": "#000000"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Custom Header"
+      "label": "Texto Buscador",
+      "default": "Buscar productos..."
     }
   ]
 }
 {% endschema %}
-
-
-
-
-
-

@@ -1,291 +1,137 @@
-{%- style -%}
-  .custom-trust-badges-{{ section.id }} {
-    background-color: {{ section.settings.bg_color }};
-    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    border-top: 1px solid rgba(15, 93, 90, 0.08);
-    border-bottom: 1px solid rgba(15, 93, 90, 0.08);
+﻿{%- style -%}
+  .lxn-trust-section {
+    background-color: #0D0D0D;
+    padding: 50px 20px;
+    border-top: 1px solid rgba(212, 162, 76, 0.2);
+    border-bottom: 1px solid rgba(212, 162, 76, 0.2);
   }
-
-  .custom-trust-badges-{{ section.id }} .badges-container {
+  .lxn-trust-inner {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  @media screen and (min-width: 768px) {
-    .custom-trust-badges-{{ section.id }} .badges-container {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-  }
-
-  .custom-trust-badges-{{ section.id }} .badge-item {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
-    text-align: center;
-    padding: 16px;
-    box-sizing: border-box;
+    justify-content: space-between;
+    gap: 30px;
   }
-
-  @media screen and (min-width: 768px) {
-    .custom-trust-badges-{{ section.id }} .badge-item {
-      padding: 8px;
-    }
+  
+  /* Left Side: Big Shield + Main Text */
+  .lxn-trust-main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    min-width: 300px;
   }
-
-  .custom-trust-badges-{{ section.id }} .badge-icon-wrap {
-    color: #E5A93C;
-    margin-bottom: 12px;
+  .lxn-trust-shield {
+    color: #D4A24C;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease;
+  }
+  .lxn-trust-shield svg {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 0 15px rgba(212,162,76,0.4));
+  }
+  .lxn-trust-main-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .lxn-trust-main-text h3 {
+    color: #D4A24C;
+    font-size: 24px;
+    font-weight: 900;
+    margin: 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+  .lxn-trust-main-text p {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
   }
 
-  .custom-trust-badges-{{ section.id }} .badge-item:hover .badge-icon-wrap {
-    transform: scale(1.08);
+  /* Right Side: Circular Badges */
+  .lxn-trust-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+    min-width: 250px;
   }
-
-  .custom-trust-badges-{{ section.id }} .badge-icon-wrap svg {
+  .lxn-badge-item {
+    display: flex;
+    align-items: center;
+    background: rgba(212, 162, 76, 0.1);
+    border: 1px solid rgba(212, 162, 76, 0.3);
+    border-radius: 50px;
+    padding: 10px 20px;
+    gap: 15px;
+  }
+  .lxn-badge-icon {
+    background: #D4A24C;
+    color: #000;
     width: 36px;
     height: 36px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
-
-  @media screen and (min-width: 768px) {
-    .custom-trust-badges-{{ section.id }} .badge-icon-wrap svg {
-      width: 42px;
-      height: 42px;
-    }
-  }
-
-  .custom-trust-badges-{{ section.id }} .badge-title {
-    font-size: 14px;
+  .lxn-badge-text {
+    color: #FFFFFF;
+    font-size: 15px;
     font-weight: 700;
-    color: {{ section.settings.color_text_dark }};
-    margin: 0 0 6px 0;
-    line-height: 1.3;
+    text-transform: uppercase;
   }
 
-  @media screen and (min-width: 768px) {
-    .custom-trust-badges-{{ section.id }} .badge-title {
-      font-size: 15px;
-    }
-  }
-
-  .custom-trust-badges-{{ section.id }} .badge-description {
-    font-size: 12px;
-    color: rgba(26, 31, 30, 0.7);
-    margin: 0;
-    line-height: 1.4;
+  @media screen and (max-width: 768px) {
+    .lxn-trust-inner { flex-direction: column; text-align: center; }
+    .lxn-trust-main { flex-direction: column; }
+    .lxn-trust-main-text h3 { font-size: 20px; }
+    .lxn-trust-main-text p { font-size: 16px; }
   }
 {%- endstyle -%}
 
-<div class="custom-trust-badges-{{ section.id }}">
-  <div class="badges-container">
-    {%- for block in section.blocks -%}
-      <div class="badge-item" {{ block.shopify_attributes }}>
-        <div class="badge-icon-wrap">
-          {%- case block.type -%}
-            {%- when 'cod_badge' -%}
-              <!-- Hand holding cash/box COD -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="5" width="20" height="14" rx="2" ry="2" />
-                <line x1="2" y1="10" x2="22" y2="10" />
-                <path d="M6 14h2M10 14h4" />
-                <circle cx="18" cy="14" r="1.5" />
-              </svg>
-            {%- when 'secure_badge' -%}
-              <!-- Secure check (shield + lock) -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <circle cx="12" cy="11" r="2" />
-                <path d="M12 13v3" />
-              </svg>
-            {%- when 'shipping_badge' -%}
-              <!-- Shipping truck -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="1" y="3" width="15" height="13" rx="2" ry="2" />
-                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
-                <circle cx="5.5" cy="18.5" r="2.5" />
-                <circle cx="18.5" cy="18.5" r="2.5" />
-              </svg>
-            {%- when 'refund_badge' -%}
-              <!-- Guarantee medal / return -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12A10 10 0 0 1 12 2z" />
-                <path d="m9 12 2 2 4-4" />
-              </svg>
-            {%- else -%}
-              <!-- Generic badge -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="16" x2="12" y2="12" />
-                <line x1="12" y1="8" x2="12.01" y2="8" />
-              </svg>
-          {%- endcase -%}
-        </div>
-        <h3 class="badge-title">{{ block.settings.title | escape }}</h3>
-        <p class="badge-description">{{ block.settings.description | escape }}</p>
+<div class="lxn-trust-section">
+  <div class="lxn-trust-inner">
+    
+    <div class="lxn-trust-main">
+      <div class="lxn-trust-shield">
+        <!-- Escudo con Rayo tipo Mockup -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+          <path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4zm-1 15l-3-4 1.41-1.41L11 14.17l5.59-5.59L18 10l-7 7z" opacity="0.3"></path>
+          <path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4zm1 14h-2v-4H8l5-8v4h3l-3 8z"></path>
+        </svg>
       </div>
-    {%- endfor -%}
+      <div class="lxn-trust-main-text">
+        <h3>ENVÍO RÁPIDO & SEGURO</h3>
+        <p>PAGO CONTRA ENTREGA</p>
+      </div>
+    </div>
+
+    <div class="lxn-trust-badges">
+      <div class="lxn-badge-item">
+        <div class="lxn-badge-icon">✓</div>
+        <div class="lxn-badge-text">GARANTÍA DE SATISFACCIÓN</div>
+      </div>
+      <div class="lxn-badge-item">
+        <div class="lxn-badge-icon">📞</div>
+        <div class="lxn-badge-text">SOPORTE 24/7 WHATSAPP</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Sellos de Confianza",
-  "class": "custom-trust-badges-section",
-  "max_blocks": 4,
-  "settings": [
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 10,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "label": "Relleno superior",
-      "default": 25
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 10,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "label": "Relleno inferior",
-      "default": 25
-    },
-    {
-      "type": "header",
-      "content": "Paleta de Colores"
-    },
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Fondo de la Sección",
-      "default": "#F8FAFC"
-    },
-    {
-      "type": "color",
-      "id": "color_primary_teal",
-      "label": "Color Verde Azulado (Íconos)",
-      "default": "#0B0B0C"
-    },
-    {
-      "type": "color",
-      "id": "color_text_dark",
-      "label": "Color de Títulos",
-      "default": "#000000"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "cod_badge",
-      "name": "Pago Contra Entrega",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Título del Sello",
-          "default": "Pago Contra Entrega"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Descripción corta",
-          "default": "Paga en efectivo al recibir en la puerta de tu casa."
-        }
-      ]
-    },
-    {
-      "type": "secure_badge",
-      "name": "Compra Segura",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Título del Sello",
-          "default": "Compra 100% Segura"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Descripción corta",
-          "default": "Tus datos personales están protegidos con encriptación SSL."
-        }
-      ]
-    },
-    {
-      "type": "shipping_badge",
-      "name": "Envío a todo el país",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Título del Sello",
-          "default": "Envío a todo el país"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Descripción corta",
-          "default": "Entregas en todo el territorio con rastreo de pedido."
-        }
-      ]
-    },
-    {
-      "type": "refund_badge",
-      "name": "Devolución Garantizada",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Título del Sello",
-          "default": "Garantía de Devolución"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Descripción corta",
-          "default": "Si tu producto llega dañado, te lo cambiamos sin costo."
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Sellos de Confianza",
-      "blocks": [
-        {
-          "type": "cod_badge"
-        },
-        {
-          "type": "secure_badge"
-        },
-        {
-          "type": "shipping_badge"
-        },
-        {
-          "type": "refund_badge"
-        }
-      ]
-    }
-  ]
+  "name": "Confianza Premium",
+  "class": "lxn-section-trust"
 }
 {% endschema %}
-
-
-
