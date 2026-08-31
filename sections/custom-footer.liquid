@@ -1,8 +1,45 @@
 ﻿  {%- style -%}
-    .custom-footer-{{ section.id }} {
+        .custom-footer-{{ section.id }} {
       background-color: #000000;
       color: #D1D5DB;
-      padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+      padding: 40px 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      border-top: 1px solid rgba(229, 169, 60, 0.2);
+    }
+    
+    .custom-footer-{{ section.id }} .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 40px;
+    }
+    
+    @media screen and (min-width: 768px) {
+      .custom-footer-{{ section.id }} .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+    }
+
+    .footer-logo-img {
+      max-width: 140px !important;
+      width: 140px !important;
+      height: auto !important;
+      object-fit: contain !important;
+      mix-blend-mode: screen !important;
+      display: block;
+      margin-bottom: 15px;
+    }
+    
+    .footer-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #E5A93C;
+      margin: 0 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }}px 16px {{ section.settings.padding_bottom }}px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       border-top: 1px solid rgba(229, 169, 60, 0.2);
     }
@@ -196,46 +233,20 @@
   {%- endstyle -%}
 
 <footer class="custom-footer-{{ section.id }}">
-  <div class="footer-grid">
+    <div class="footer-grid">
     
-    <!-- COLUMN 1: CONTACT -->
+    <!-- COLUMN 1: BRAND & WHATSAPP -->
     <div class="footer-col footer-col--contact">
-      <h3 class="footer-title">{{ section.settings.contact_title | escape }}</h3>
+      <div class="footer-logo-wrap">
+        <img src="{{ 'logo.jpg' | asset_url }}" alt="LUXEN" class="footer-logo-img">
+      </div>
       <p class="footer-text">{{ section.settings.contact_intro | escape }}</p>
       
-      {%- if section.settings.phone != blank -%}
-        <div class="contact-item">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          <span>{{ section.settings.phone | escape }}</span>
-        </div>
-      {%- endif -%}
-
-      {%- if section.settings.email != blank -%}
-        <div class="contact-item">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <polyline points="22,6 12,13 2,6"/>
-          </svg>
-          <span>{{ section.settings.email | escape }}</span>
-        </div>
-      {%- endif -%}
-
-      {%- if section.settings.hours != blank -%}
-        <div class="contact-item">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-          </svg>
-          <span>{{ section.settings.hours | escape }}</span>
-        </div>
-      {%- endif -%}
-
       {%- if section.settings.whatsapp_link != blank -%}
         <a href="{{ section.settings.whatsapp_link }}" class="whatsapp-btn" target="_blank" rel="noopener">
           <!-- WhatsApp Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.948h.003c4.368 0 7.927-3.558 7.929-7.928a7.86 7.86 0 0 0-2.324-5.594zm-5.6 11.233c-1.18 0-2.34-.316-3.35-.916l-.24-.143-2.483.65.663-2.42-.157-.25a6.602 6.602 0 0 1-1.01-3.6c.003-3.64 2.984-6.621 6.624-6.621 1.765 0 3.423.689 4.67 1.936a6.57 6.57 0 0 1 1.93 4.68c-.003 3.65-2.983 6.628-6.624 6.628z"/>
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c-.003 1.396.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c.003-3.625 2.952-6.57 6.577-6.571 1.756.001 3.406.686 4.649 1.932A6.584 6.584 0 0 1 14.569 7.93c-.003 3.628-2.951 6.575-6.575 6.571zm3.608-4.93c-.198-.1-1.17-.578-1.352-.644-.182-.066-.315-.1-.448.1-.133.198-.513.643-.628.776-.115.133-.231.149-.429.05-.198-.1-.836-.308-1.592-.985-.588-.525-.985-1.175-1.1-1.372-.115-.198-.012-.305.087-.404.09-.089.198-.231.297-.347.1-.116.133-.198.198-.33.065-.134.034-.251-.015-.35-.05-.1-.448-1.08-.613-1.48-.16-.39-.323-.337-.448-.344-.12-.006-.256-.006-.39-.006-.133 0-.348.05-.53.248-.182.198-.695.678-.695 1.652 0 .973.712 1.914.81 2.046.1.132 1.396 2.132 3.383 2.991.472.204.84.326 1.127.418.475.152.907.13 1.246.088.379-.047 1.17-.478 1.335-.94.166-.462.166-.857.116-.94-.05-.082-.182-.132-.38-.231z"/>
           </svg>
           {{ section.settings.whatsapp_label | escape }}
         </a>
@@ -248,16 +259,16 @@
       <ul class="footer-links-list">
         {%- if section.settings.legal_menu != blank -%}
           {%- for link in section.settings.legal_menu.links -%}
-            <li>
+            <li class="footer-link-item">
               <a href="{{ link.url }}" class="footer-link">{{ link.title | escape }}</a>
             </li>
           {%- endfor -%}
         {%- else -%}
           <!-- Auto fallbacks for standard policies -->
-          <li><a href="/policies/refund-policy" class="footer-link">PolÃ­tica de Reembolso</a></li>
-          <li><a href="/policies/shipping-policy" class="footer-link">PolÃ­tica de EnvÃ­o</a></li>
-          <li><a href="/policies/terms-of-service" class="footer-link">TÃ©rminos del Servicio</a></li>
-          <li><a href="/policies/privacy-policy" class="footer-link">PolÃ­tica de Privacidad</a></li>
+          <li class="footer-link-item"><a href="/policies/refund-policy" class="footer-link">Política de Reembolso</a></li>
+          <li class="footer-link-item"><a href="/policies/shipping-policy" class="footer-link">Política de Envío</a></li>
+          <li class="footer-link-item"><a href="/policies/terms-of-service" class="footer-link">Términos del Servicio</a></li>
+          <li class="footer-link-item"><a href="/policies/privacy-policy" class="footer-link">Política de Privacidad</a></li>
         {%- endif -%}
       </ul>
     </div>
@@ -270,18 +281,15 @@
       <!-- Payments Accepted Icons -->
       <div class="payment-icons">
         <span class="payment-badge-cod">
-          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
-          Contra Entrega (Efectivo)
+          Pago Contra Entrega
         </span>
-        <!-- General credit card and transfer logos for visual reassurance -->
-        <span class="payment-badge-cod" >Visa / Master</span>
-        <span class="payment-badge-cod" >Transferencia</span>
       </div>
 
       <!-- Social Networks -->
-      <div class="social-icons-wrap">
+      <div class="social-icons-wrap social-links">
         {%- if section.settings.social_instagram != blank -%}
           <a href="{{ section.settings.social_instagram }}" class="social-icon-link" target="_blank" rel="noopener" aria-label="Instagram">
             <svg viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
@@ -301,9 +309,7 @@
         {%- endif -%}
       </div>
     </div>
-
   </div>
-
   <!-- COPYRIGHT LINE -->
   <div class="footer-bottom">
     <p class="copyright-text">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos los derechos reservados.</p>
@@ -466,6 +472,7 @@
   ]
 }
 {% endschema %}
+
 
 
 
