@@ -19,13 +19,13 @@
 
         <div class="product-form__buttons">
           <!-- Botón de Acción Principal Forzado (Siempre Activo para COD) -->
-          <button
+                    <button
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
             class="product-form__submit lxn-giant-cta"
           >
-            👉 PEDIR AHORA - PAGO CONTRA ENTREGA (EN EFECTIVO)
+            👉 PEDIR CONTRA ENTREGA - {{ product.price | money }}
             {%- render 'loading-spinner' -%}
           </button>
         </div>
@@ -35,12 +35,9 @@
           ⚠️ Solo quedan <strong class="stock-random">7</strong> unidades disponibles
         </div>
 
-        <!-- Franja de Beneficios con Íconos -->
-        <div class="lxn-benefits-strip">
-          <div class="lxn-benefit-item">
-            <span class="lxn-benefit-icon">🚚</span>
-            <span class="lxn-benefit-text">Envío Rápido a todo el país (24-48h)</span>
-          </div>
+                <div class="lxn-cta-subtitle">
+          🛡️ Garantía de Devolución | Pagas en Efectivo al Recibir en Casa
+        </div>
           <div class="lxn-benefit-item">
             <span class="lxn-benefit-icon">💵</span>
             <span class="lxn-benefit-text">Pagas en efectivo al recibir en tu puerta</span>
@@ -225,5 +222,13 @@
     box-shadow: 0 -4px 20px rgba(0,0,0,0.15) !important;
   }
 }
+.lxn-cta-subtitle {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  margin-top: 12px;
+}
 </style>
+
 
