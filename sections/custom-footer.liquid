@@ -1,220 +1,199 @@
-{%- style -%}
-  .custom-footer-{{ section.id }} {
-    background-color: {{ section.settings.bg_color }};
-    color: {{ section.settings.color_text }};
-    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    border-top: 1px solid rgba(15, 93, 90, 0.1);
-  }
-
-  @media screen and (min-width: 768px) {
+﻿  {%- style -%}
     .custom-footer-{{ section.id }} {
-      padding-left: 24px;
-      padding-right: 24px;
-      padding-top: {{ section.settings.padding_top | plus: 15 }}px;
-      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+      background-color: #000000;
+      color: #D1D5DB;
+      padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      border-top: 1px solid rgba(229, 169, 60, 0.2);
     }
-  }
-
-  .custom-footer-{{ section.id }} .footer-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
-  }
-
-  @media screen and (min-width: 768px) {
-    .custom-footer-{{ section.id }} .footer-grid {
-      flex-direction: row;
+    
+    .custom-footer-{{ section.id }} .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       gap: 40px;
     }
-  }
 
-  .custom-footer-{{ section.id }} .footer-col {
-    flex: 1;
-  }
-
-  /* Specific column adjustments */
-  @media screen and (min-width: 768px) {
-    .custom-footer-{{ section.id }} .footer-col--contact {
-      max-width: 300px;
+    .custom-footer-{{ section.id }} .footer-column {
+      flex: 1;
+      min-width: 250px;
     }
-    .custom-footer-{{ section.id }} .footer-col--links {
-      max-width: 250px;
+    
+    .custom-footer-{{ section.id }} .footer-logo-wrap {
+      margin-bottom: 20px;
     }
-    .custom-footer-{{ section.id }} .footer-col--trust {
-      max-width: 350px;
+    .custom-footer-{{ section.id }} .footer-logo img {
+      mix-blend-mode: screen;
     }
-  }
 
-  .custom-footer-{{ section.id }} .footer-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: {{ section.settings.color_primary_gold }};
-    margin: 0 0 16px 0;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-  }
+    .custom-footer-{{ section.id }} .footer-heading {
+      font-size: 15px;
+      font-weight: 800;
+      color: #E5A93C;
+      margin: 0 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
-  .custom-footer-{{ section.id }} .footer-text {
-    font-size: 13.5px;
-    line-height: 1.5;
-    color: rgba(226, 232, 240, 0.8);
-    margin: 0 0 12px 0;
-  }
+    .custom-footer-{{ section.id }} .footer-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #D1D5DB;
+      margin: 0 0 12px 0;
+    }
 
-  .custom-footer-{{ section.id }} .footer-links-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+    .custom-footer-{{ section.id }} .footer-link-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .custom-footer-{{ section.id }} .footer-link-item {
+      margin-bottom: 10px;
+    }
 
-  .custom-footer-{{ section.id }} .footer-link {
-    font-size: 13.5px;
-    color: rgba(226, 232, 240, 0.8);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
+    .custom-footer-{{ section.id }} .footer-link {
+      font-size: 14px;
+      color: #D1D5DB;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
 
-  .custom-footer-{{ section.id }} .footer-link:hover {
-    color: {{ section.settings.color_primary_gold }};
-  }
+    .custom-footer-{{ section.id }} .footer-link:hover {
+      color: #E5A93C;
+    }
 
-  /* Contact specifics */
-  .custom-footer-{{ section.id }} .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-    font-size: 13.5px;
-    color: rgba(226, 232, 240, 0.85);
-  }
+    .custom-footer-{{ section.id }} .contact-info {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+    }
 
-  .custom-footer-{{ section.id }} .contact-item svg {
-    width: 18px;
-    height: 18px;
-    color: {{ section.settings.color_primary_gold }};
-    flex-shrink: 0;
-  }
+    .custom-footer-{{ section.id }} .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #D1D5DB;
+    }
 
-  .custom-footer-{{ section.id }} .whatsapp-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #25D366;
-    color: #ffffff;
-    padding: 10px 18px;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 13px;
-    text-decoration: none;
-    margin-top: 6px;
-    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
-    transition: all 0.2s ease;
-  }
+    .custom-footer-{{ section.id }} .contact-icon {
+      width: 18px;
+      height: 18px;
+      color: #E5A93C;
+      flex-shrink: 0;
+    }
 
-  .custom-footer-{{ section.id }} .whatsapp-btn:hover {
-    background-color: #20ba59;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 14px rgba(37, 211, 102, 0.3);
-  }
+    .custom-footer-{{ section.id }} .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #E5A93C;
+      color: #000000;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-weight: 800;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
 
-  /* Social Icons */
-  .custom-footer-{{ section.id }} .social-icons-wrap {
-    display: flex;
-    gap: 12px;
-    margin-top: 16px;
-  }
+    .custom-footer-{{ section.id }} .whatsapp-btn:hover {
+      background-color: #b88a3e;
+      transform: translateY(-2px);
+    }
 
-  .custom-footer-{{ section.id }} .social-icon-link {
-    color: {{ section.settings.color_primary_gold }};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background-color: rgba(226, 232, 240, 0.05);
-    border-radius: 50%;
-    transition: all 0.2s ease;
-  }
+    .custom-footer-{{ section.id }} .whatsapp-btn svg {
+      width: 18px;
+      height: 18px;
+    }
 
-  .custom-footer-{{ section.id }} .social-icon-link:hover {
-    background-color: {{ section.settings.color_primary_gold }};
-    color: #ffffff;
-    transform: translateY(-2px);
-  }
+    .custom-footer-{{ section.id }} .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
 
-  .custom-footer-{{ section.id }} .social-icon-link svg {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
-  }
+    .custom-footer-{{ section.id }} .social-icon-link {
+      color: #E5A93C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background-color: rgba(229, 169, 60, 0.1);
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
 
-  /* Payment list & guarantee */
-  .custom-footer-{{ section.id }} .payment-icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 14px;
-  }
+    .custom-footer-{{ section.id }} .social-icon-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
 
-  .custom-footer-{{ section.id }} .payment-badge-cod {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    background-color: {{ section.settings.color_primary_gold }};
-    color: #ffffff;
-    padding: 4px 8px;
-    border-radius: 4px;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    letter-spacing: 0.5px;
-  }
+    .custom-footer-{{ section.id }} .social-icon-link:hover {
+      background-color: #E5A93C;
+      color: #000000;
+      transform: translateY(-2px);
+    }
 
-  .custom-footer-{{ section.id }} .payment-logo {
-    height: 20px;
-    width: auto;
-    object-fit: contain;
-    opacity: 0.85;
-    background: #ffffff;
-    border: 1px solid rgba(26, 31, 30, 0.08);
-    border-radius: 4px;
-    padding: 2px 6px;
-  }
+    .custom-footer-{{ section.id }} .trust-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      background-color: #E5A93C;
+      color: #000000;
+      padding: 6px 12px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
 
-  /* Bottom line */
-  .custom-footer-{{ section.id }} .footer-bottom {
-    margin-top: 36px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(15, 93, 90, 0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
-  }
-
-  @media screen and (min-width: 768px) {
     .custom-footer-{{ section.id }} .footer-bottom {
-      flex-direction: row;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
-      text-align: left;
-      margin-top: 48px;
+      align-items: center;
+      gap: 16px;
     }
-  }
 
-  .custom-footer-{{ section.id }} .copyright-text {
-    font-size: 12px;
-    color: rgba(226, 232, 240, 0.55);
-    margin: 0;
-  }
-{%- endstyle -%}
+    .custom-footer-{{ section.id }} .copyright-text {
+      font-size: 13px;
+      color: #9CA3AF;
+      margin: 0;
+    }
+
+    .custom-footer-{{ section.id }} .payment-icons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .custom-footer-{{ section.id }} .payment-badge-cod {
+      display: inline-block;
+      background-color: #111111;
+      border: 1px solid #333333;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #D1D5DB;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .custom-footer-{{ section.id }} .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  {%- endstyle -%}
 
 <footer class="custom-footer-{{ section.id }}">
   <div class="footer-grid">
@@ -275,10 +254,10 @@
           {%- endfor -%}
         {%- else -%}
           <!-- Auto fallbacks for standard policies -->
-          <li><a href="/policies/refund-policy" class="footer-link">Política de Reembolso</a></li>
-          <li><a href="/policies/shipping-policy" class="footer-link">Política de Envío</a></li>
-          <li><a href="/policies/terms-of-service" class="footer-link">Términos del Servicio</a></li>
-          <li><a href="/policies/privacy-policy" class="footer-link">Política de Privacidad</a></li>
+          <li><a href="/policies/refund-policy" class="footer-link">PolÃ­tica de Reembolso</a></li>
+          <li><a href="/policies/shipping-policy" class="footer-link">PolÃ­tica de EnvÃ­o</a></li>
+          <li><a href="/policies/terms-of-service" class="footer-link">TÃ©rminos del Servicio</a></li>
+          <li><a href="/policies/privacy-policy" class="footer-link">PolÃ­tica de Privacidad</a></li>
         {%- endif -%}
       </ul>
     </div>
@@ -297,8 +276,8 @@
           Contra Entrega (Efectivo)
         </span>
         <!-- General credit card and transfer logos for visual reassurance -->
-        <span class="payment-badge-cod" style="background-color: #888888;">Visa / Master</span>
-        <span class="payment-badge-cod" style="background-color: #888888;">Transferencia</span>
+        <span class="payment-badge-cod" >Visa / Master</span>
+        <span class="payment-badge-cod" >Transferencia</span>
       </div>
 
       <!-- Social Networks -->
@@ -328,7 +307,7 @@
   <!-- COPYRIGHT LINE -->
   <div class="footer-bottom">
     <p class="copyright-text">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos los derechos reservados.</p>
-    <p class="copyright-text" style="opacity: 0.8;">Salud y Bienestar garantizados con envío seguro.</p>
+    <p class="copyright-text" >Salud y Bienestar garantizados con envÃ­o seguro.</p>
   </div>
 </footer>
 
@@ -344,32 +323,32 @@
     {
       "type": "text",
       "id": "contact_title",
-      "label": "Título de Contacto",
+      "label": "TÃ­tulo de Contacto",
       "default": "Soporte y Contacto"
     },
     {
       "type": "text",
       "id": "contact_intro",
       "label": "Texto introductorio",
-      "default": "¿Tienes dudas con tu pedido? Escríbenos por WhatsApp."
+      "default": "Â¿Tienes dudas con tu pedido? EscrÃ­benos por WhatsApp."
     },
     {
       "type": "text",
       "id": "phone",
-      "label": "Teléfono",
+      "label": "TelÃ©fono",
       "default": "+593 99 999 9999"
     },
     {
       "type": "text",
       "id": "email",
-      "label": "Correo Electrónico",
+      "label": "Correo ElectrÃ³nico",
       "default": "soporte@luxenshop.com"
     },
     {
       "type": "text",
       "id": "hours",
-      "label": "Horarios de Atención",
-      "default": "Lunes a Sábado: 8:00 AM - 6:00 PM"
+      "label": "Horarios de AtenciÃ³n",
+      "default": "Lunes a SÃ¡bado: 8:00 AM - 6:00 PM"
     },
     {
       "type": "url",
@@ -379,39 +358,39 @@
     {
       "type": "text",
       "id": "whatsapp_label",
-      "label": "Texto del botón WhatsApp",
+      "label": "Texto del botÃ³n WhatsApp",
       "default": "Chatear por WhatsApp"
     },
     {
       "type": "header",
-      "content": "Columna 2: Políticas y Enlaces"
+      "content": "Columna 2: PolÃ­ticas y Enlaces"
     },
     {
       "type": "text",
       "id": "links_title",
-      "label": "Título de Enlaces",
-      "default": "Políticas Legales"
+      "label": "TÃ­tulo de Enlaces",
+      "default": "PolÃ­ticas Legales"
     },
     {
       "type": "link_list",
       "id": "legal_menu",
-      "label": "Menú Legal (Opcional)",
-      "info": "Si se deja en blanco, se generarán enlaces automáticos a las políticas estándar."
+      "label": "MenÃº Legal (Opcional)",
+      "info": "Si se deja en blanco, se generarÃ¡n enlaces automÃ¡ticos a las polÃ­ticas estÃ¡ndar."
     },
     {
       "type": "header",
-      "content": "Columna 3: Garantía y Confianza"
+      "content": "Columna 3: GarantÃ­a y Confianza"
     },
     {
       "type": "text",
       "id": "trust_title",
-      "label": "Título de Garantía",
+      "label": "TÃ­tulo de GarantÃ­a",
       "default": "Paga al Recibir"
     },
     {
       "type": "textarea",
       "id": "trust_description",
-      "label": "Descripción de Confianza",
+      "label": "DescripciÃ³n de Confianza",
       "default": "Ofrecemos pago contra entrega en todo Ecuador. Compra con total tranquilidad, pagas en efectivo cuando tu producto llega a tu puerta."
     },
     {
@@ -435,7 +414,7 @@
     },
     {
       "type": "header",
-      "content": "Ajustes de Diseño"
+      "content": "Ajustes de DiseÃ±o"
     },
     {
       "type": "range",
@@ -487,6 +466,10 @@
   ]
 }
 {% endschema %}
+
+
+
+
 
 
 
