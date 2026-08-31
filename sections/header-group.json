@@ -1,13 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
-{
+﻿{
   "type": "header",
   "name": "Header del Sitio",
   "sections": {
@@ -15,7 +6,7 @@
       "type": "custom-header",
       "settings": {
         "show_announcement": true,
-        "announcement_text": "Envío a todo Ecuador • Pago contra entrega • Compra 100% segura",
+        "announcement_text": "ENVÍOS RÁPIDOS A TODO EL PAÍS | PAGO CONTRA ENTREGA EN EFECTIVO",
         "logo_max_height": 40,
         "search_placeholder": "Buscar productos de salud y belleza...",
         "menu": "main-menu",
@@ -28,4 +19,3 @@
   },
   "order": ["custom_header"]
 }
-

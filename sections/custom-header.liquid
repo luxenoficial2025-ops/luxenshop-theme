@@ -14,8 +14,7 @@
 
   /* ─── Top Bar (announcement) ─────────────────────────── */
   .lxn-topbar {
-    background-color: var(--teal);
-    color: var(--mint);
+    background-color: var(--coral); color: #000000;
     font-size: 12px;
     font-weight: 500;
     text-align: center;
@@ -352,20 +351,7 @@
       </button>
 
       <!-- Logo -->
-      <a href="{{ routes.root_url }}" class="lxn-logo-link">
-        {%- if section.settings.logo != blank -%}
-          <img
-            src="{{ section.settings.logo | image_url: width: 400 }}"
-            alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
-            class="lxn-logo-img"
-            fetchpriority="high"
-            width="{{ section.settings.logo.width }}"
-            height="{{ section.settings.logo.height }}"
-          >
-        {%- else -%}
-          <span class="lxn-logo-text">{{ shop.name }}</span>
-        {%- endif -%}
-      </a>
+      <a href="{{ routes.root_url }}" class="lxn-logo-link"><img src="{{ 'logo.jpg' | asset_url }}" alt="LUXEN" style="max-height: 40px; width: auto; object-fit: contain;"></a>
 
       <!-- Search -->
       <form action="{{ routes.search_url }}" method="get" class="lxn-search-form" role="search">
@@ -584,6 +570,7 @@
   ]
 }
 {% endschema %}
+
 
 
 

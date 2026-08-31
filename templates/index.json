@@ -1,180 +1,115 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
-{
+﻿{
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "custom_hero_banner": {
+      "type": "custom-hero-banner",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "slide_1": {
+          "type": "slide",
           "settings": {
-            "heading": "I AM THE BEST",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "heading": "LUXEN: LUJO, CUIDADO & BIENESTAR",
+            "subheading": "",
+            "button_label": "COMPRAR AHORA",
+            "button_link": "shopify://collections/all",
+            "text_alignment": "center"
           }
         }
       },
-      "block_order": [
-        "heading",
-        "button"
-      ],
-      "disabled": true,
+      "block_order": ["slide_1"],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
+        "autoplay": true,
+        "autoplay_interval": 5,
+        "height_mobile": 400,
+        "height_desktop": 550,
+        "border_radius": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "bg_color": "#0B0B0C",
+        "cta_color": "#E5A93C"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "custom_categories": {
+      "type": "custom-categories",
+      "blocks": {
+        "cat_1": { "type": "category", "settings": { "title": "Tecnología del Cuidado", "link": "shopify://collections/all" } },
+        "cat_2": { "type": "category", "settings": { "title": "Salud & Bienestar", "link": "shopify://collections/all" } },
+        "cat_3": { "type": "category", "settings": { "title": "Hogar Consciente", "link": "shopify://collections/all" } },
+        "cat_4": { "type": "category", "settings": { "title": "Joyas & Lujo", "link": "shopify://collections/all" } }
+      },
+      "block_order": ["cat_1","cat_2","cat_3","cat_4"],
       "settings": {
+        "title_prefix": "LO MÁS VENDIDO Y",
+        "title_highlight": "NOVEDADES",
+        "title_suffix": "",
+        "title_alignment": "center",
+        "desktop_columns": 4,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "bg_color": "#F8FAFC",
+        "color_primary_teal": "#E5A93C",
+        "color_text_dark": "#0B0B0C"
+      }
+    },
+    "custom_featured_collection": {
+      "type": "custom-featured-collection",
+      "settings": {
+        "title": "Colección Exclusiva",
+        "subtitle": "Descubre nuestros productos premium seleccionados para ti.",
         "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
-    "custom_header_BzymaF": {
-      "type": "custom-header",
-      "disabled": true,
-      "name": "Custom Header & Banner",
-      "settings": {
-        "show_announcement": true,
-        "announcement_text": "Envío a todo Ecuador • Pago contra entrega • Compra 100% segura",
-        "logo_max_height": 40,
-        "search_placeholder": "Buscar productos de salud y belleza...",
-        "menu": "main-menu",
+        "products_to_show": 4,
+        "desktop_columns": 4,
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "bg_color": "#FFFFFF",
         "color_primary_teal": "#0B0B0C",
-        "color_bg_mint": "#F8FAFC",
         "color_coral": "#E5A93C",
-        "color_text_dark": "#000000"
+        "color_text_dark": "#0B0B0C"
       }
     },
-    "custom_testimonials_iWJJbp": {
+    "custom_trust_badges": {
+      "type": "custom-trust-badges",
+      "blocks": {
+        "shipping": { "type": "shipping_badge", "settings": { "title": "ENVÍO RÁPIDO & SEGURO", "description": "Entregas express a todo el país." } },
+        "cod": { "type": "cod_badge", "settings": { "title": "PAGO CONTRA ENTREGA EN EFECTIVO", "description": "Paga en casa al recibir." } },
+        "refund": { "type": "refund_badge", "settings": { "title": "GARANTÍA DE SATISFACCIÓN", "description": "Calidad premium asegurada." } },
+        "secure": { "type": "secure_badge", "settings": { "title": "SOPORTE 24/7 WHATSAPP", "description": "Atención personalizada." } }
+      },
+      "block_order": ["shipping","cod","refund","secure"],
+      "settings": {
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "bg_color": "#0B0B0C",
+        "color_primary_teal": "#E5A93C",
+        "color_text_dark": "#FFFFFF"
+      }
+    },
+    "custom_testimonials": {
       "type": "custom-testimonials",
       "blocks": {
-        "review_EUNFmb": {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "text": "Compré la crema de colágeno facial. La atención por WhatsApp fue muy amable y el producto me llegó al día siguiente a Quito. Pagar en casa me dio total confianza.",
-            "author_name": "Carmen M.",
-            "verified_purchase": true
-          }
-        },
-        "review_YHj3Yq": {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "text": "El suplemento de magnesio llegó sellado y en perfecto estado. Pagué en efectivo al recibir. Excelente servicio en todo Ecuador.",
-            "author_name": "Luis G.",
-            "verified_purchase": true
-          }
-        },
-        "review_n38ptQ": {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "text": "Dudaba de comprar por internet, pero el pago contra entrega me convenció. El producto para dolores articulares de mi mamá es de excelente calidad.",
-            "author_name": "Valeria T.",
-            "verified_purchase": true
-          }
-        }
+        "test_1": { "type": "review", "settings": { "stars": 5, "text": "Excelente calidad en la rasuradora, llegó en 48h y pagué en efectivo al recibir.", "author_name": "Carlos M. (Quito)", "verified_purchase": true } },
+        "test_2": { "type": "review", "settings": { "stars": 5, "text": "Los suplementos llegaron sellados y la atención por WhatsApp fue inmediata.", "author_name": "Andrea S. (Guayaquil)", "verified_purchase": true } },
+        "test_3": { "type": "review", "settings": { "stars": 5, "text": "El reloj y la cadena tienen un acabado de primera. 100% recomendado.", "author_name": "David R. (Cuenca)", "verified_purchase": true } }
       },
-      "block_order": [
-        "review_EUNFmb",
-        "review_YHj3Yq",
-        "review_n38ptQ"
-      ],
-      "name": "Testimonios de Clientes",
+      "block_order": ["test_1","test_2","test_3"],
       "settings": {
-        "title": "Lo que opinan nuestros clientes",
-        "subtitle": "Más de 5,000 ecuatorianos confían en nosotros para su bienestar.",
+        "title": "OPINIONES DE NUESTROS CLIENTES",
+        "subtitle": "★★★★★",
         "text_alignment": "center",
         "desktop_columns": 3,
         "padding_top": 40,
         "padding_bottom": 40,
-        "bg_color": "#ffffff",
-        "color_bg_mint": "#F8FAFC",
-        "color_primary_teal": "#0B0B0C",
-        "color_text_dark": "#000000"
-      }
-    },
-    "custom_footer_pngDfn": {
-      "type": "custom-footer",
-      "name": "Footer Minimalista",
-      "settings": {
-        "contact_title": "Soporte y Contacto",
-        "contact_intro": "¿Tienes dudas con tu pedido? Escríbenos por WhatsApp.",
-        "phone": "+593 99 999 9999",
-        "email": "soporte@luxenshop.com",
-        "hours": "Lunes a Sábado: 8:00 AM - 6:00 PM",
-        "whatsapp_link": "",
-        "whatsapp_label": "Chatear por WhatsApp",
-        "links_title": "Políticas Legales",
-        "legal_menu": "",
-        "trust_title": "Paga al Recibir",
-        "trust_description": "Ofrecemos pago contra entrega en todo Ecuador. Compra con total tranquilidad, pagas en efectivo cuando tu producto llega a tu puerta.",
-        "social_instagram": "",
-        "social_tiktok": "",
-        "social_facebook": "",
-        "padding_top": 40,
-        "padding_bottom": 30,
         "bg_color": "#F8FAFC",
-        "color_primary_teal": "#0B0B0C",
-        "color_text": "#000000"
+        "color_bg_mint": "#FFFFFF",
+        "color_primary_teal": "#E5A93C",
+        "color_text_dark": "#1E293B"
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection",
-    "custom_header_BzymaF",
-    "custom_testimonials_iWJJbp",
-    "custom_footer_pngDfn"
+    "custom_hero_banner",
+    "custom_categories",
+    "custom_featured_collection",
+    "custom_trust_badges",
+    "custom_testimonials"
   ]
 }
-

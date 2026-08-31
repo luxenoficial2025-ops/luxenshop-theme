@@ -83,7 +83,7 @@
   .lxn-cat-card-label {
     font-size: 13px;
     font-weight: 800;
-    color: #ffffff;
+    color: #000000;
     line-height: 1.3;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -120,16 +120,14 @@
   .lxn-cat-card-placeholder {
     width: 60%;
     height: 60%;
-    color: rgba(255,255,255,.7);
+    color: #1E293B;
   }
 
   /* Preset card background colors */
   {% assign colors = "#0B0B0C,#18181B,#27272A,#3F3F46,#52525B,#64748B,#475569,#334155" | split: "," %}
   {% for block in section.blocks %}
     {% assign color_index = forloop.index0 | modulo: colors.size %}
-    .lxn-cat-card[data-block="{{ block.id }}"] {
-      background-color: {{ block.settings.card_color | default: colors[color_index] }};
-    }
+    .lxn-cat-card[data-block="{{ block.id }}"] { background-color: #FFFFFF; border: 1px solid #E5A93C; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
   {% endfor %}
 {%- endstyle -%}
 
@@ -155,9 +153,7 @@
           data-block="{{ block.id }}"
           {{ block.shopify_attributes }}
         >
-          <div class="lxn-cat-card-text">
-            <span class="lxn-cat-card-label">{{ block.settings.title | escape }}</span>
-          </div>
+          <div class="lxn-cat-card-text"><span class="lxn-cat-card-label">{{ block.settings.title | escape }}</span><span class="lxn-cat-btn-faux">VER COLECCIÓN</span></div>
           <div class="lxn-cat-card-img-wrap">
             {%- if block.settings.image != blank -%}
               <img
@@ -307,5 +303,8 @@
   ]
 }
 {% endschema %}
+
+
+
 
 

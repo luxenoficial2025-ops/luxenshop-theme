@@ -1,24 +1,14 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
-{
+﻿{
   "type": "footer",
   "name": "Footer del Sitio",
   "sections": {
     "custom_footer": {
       "type": "custom-footer",
-      "disabled": true,
       "settings": {
         "contact_title": "Soporte y Contacto",
         "contact_intro": "¿Tienes dudas con tu pedido? Escríbenos por WhatsApp.",
-        "phone": "",
-        "email": "",
+        "phone": "+593 99 999 9999",
+        "email": "soporte@luxenshop.com",
         "hours": "Lunes a Sábado: 8:00 AM - 6:00 PM",
         "whatsapp_link": "",
         "whatsapp_label": "Chatear por WhatsApp",
@@ -33,13 +23,9 @@
         "padding_bottom": 30,
         "bg_color": "#0B0B0C",
         "color_primary_gold": "#E5A93C",
-        "color_text": "#E2E8F0"
+        "color_text": "#FFFFFF"
       }
     }
   },
-  "order": [
-    "custom_footer"
-  ]
+  "order": ["custom_footer"]
 }
-
-
