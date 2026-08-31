@@ -10,7 +10,7 @@
         "logo_max_height": 40,
         "search_placeholder": "Buscar en LUXEN (Cuidado, Lujo, Bienestar)...",
         "menu": "main-menu",
-        "color_primary_teal": "#0B0B0C",
+        "color_primary_teal": "#000000",
         "color_bg_mint": "#F8FAFC",
         "color_coral": "#E5A93C",
         "color_text_dark": "#000000"
@@ -19,4 +19,5 @@
   },
   "order": ["custom_header"]
 }
+
 
