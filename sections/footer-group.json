@@ -7,10 +7,10 @@
       "settings": {
         "contact_title": "Soporte y Contacto",
         "contact_intro": "¿Tienes dudas con tu pedido? Escríbenos por WhatsApp.",
-        "phone": "+593 99 999 9999",
+        "phone": "+593 96 928 0600 / +593 96 751 9740",
         "email": "soporte@luxenshop.com",
         "hours": "Lunes a Sábado: 8:00 AM - 6:00 PM",
-        "whatsapp_link": "",
+        "whatsapp_link": "https://wa.me/593969280600?text=Hola%20LUXEN,%20deseo%20información%20sobre%20un%20pedido",
         "whatsapp_label": "Chatear por WhatsApp",
         "links_title": "Políticas Legales",
         "legal_menu": "",
@@ -29,3 +29,4 @@
   },
   "order": ["custom_footer"]
 }
+
