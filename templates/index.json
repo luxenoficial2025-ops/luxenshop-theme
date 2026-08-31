@@ -87,10 +87,10 @@
         "logo_max_height": 40,
         "search_placeholder": "Buscar productos de salud y belleza...",
         "menu": "main-menu",
-        "color_primary_teal": "#0f5d5a",
-        "color_bg_mint": "#f4f9f8",
-        "color_coral": "#ff7a59",
-        "color_text_dark": "#1a1f1e"
+        "color_primary_teal": "#0B0B0C",
+        "color_bg_mint": "#F8FAFC",
+        "color_coral": "#E5A93C",
+        "color_text_dark": "#000000"
       }
     },
     "custom_testimonials_iWJJbp": {
@@ -138,9 +138,9 @@
         "padding_top": 40,
         "padding_bottom": 40,
         "bg_color": "#ffffff",
-        "color_bg_mint": "#f4f9f8",
-        "color_primary_teal": "#0f5d5a",
-        "color_text_dark": "#1a1f1e"
+        "color_bg_mint": "#F8FAFC",
+        "color_primary_teal": "#0B0B0C",
+        "color_text_dark": "#000000"
       }
     },
     "custom_footer_pngDfn": {
@@ -163,9 +163,9 @@
         "social_facebook": "",
         "padding_top": 40,
         "padding_bottom": 30,
-        "bg_color": "#f4f9f8",
-        "color_primary_teal": "#0f5d5a",
-        "color_text": "#1a1f1e"
+        "bg_color": "#F8FAFC",
+        "color_primary_teal": "#0B0B0C",
+        "color_text": "#000000"
       }
     }
   },
@@ -177,3 +177,4 @@
     "custom_footer_pngDfn"
   ]
 }
+

@@ -19,12 +19,13 @@
         "logo_max_height": 40,
         "search_placeholder": "Buscar productos de salud y belleza...",
         "menu": "main-menu",
-        "color_primary_teal": "#0F5D5A",
-        "color_bg_mint": "#F4F9F8",
-        "color_coral": "#FF7A59",
-        "color_text_dark": "#1A1F1E"
+        "color_primary_teal": "#0B0B0C",
+        "color_bg_mint": "#F8FAFC",
+        "color_coral": "#E5A93C",
+        "color_text_dark": "#000000"
       }
     }
   },
   "order": ["custom_header"]
 }
+

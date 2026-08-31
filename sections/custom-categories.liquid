@@ -124,7 +124,7 @@
   }
 
   /* Preset card background colors */
-  {% assign colors = "#1E7F70,#E76B39,#1E88E5,#7B3F9E,#C4A100,#2E7D32,#B33A3A,#00838F" | split: "," %}
+  {% assign colors = "#0B0B0C,#18181B,#27272A,#3F3F46,#52525B,#64748B,#475569,#334155" | split: "," %}
   {% for block in section.blocks %}
     {% assign color_index = forloop.index0 | modulo: colors.size %}
     .lxn-cat-card[data-block="{{ block.id }}"] {
@@ -246,19 +246,19 @@
       "type": "color",
       "id": "bg_color",
       "label": "Fondo de la Sección",
-      "default": "#F4F9F8"
+      "default": "#F8FAFC"
     },
     {
       "type": "color",
       "id": "color_primary_teal",
       "label": "Verde Azulado (Resaltado en Título)",
-      "default": "#0F5D5A"
+      "default": "#0B0B0C"
     },
     {
       "type": "color",
       "id": "color_text_dark",
       "label": "Texto Oscuro",
-      "default": "#1A1F1E"
+      "default": "#000000"
     }
   ],
   "blocks": [
@@ -307,3 +307,5 @@
   ]
 }
 {% endschema %}
+
+
