@@ -8,7 +8,7 @@
         "show_announcement": true,
         "announcement_text": "ENVÍOS RÁPIDOS A TODO EL PAÍS | PAGO CONTRA ENTREGA EN EFECTIVO",
         "logo_max_height": 40,
-        "search_placeholder": "Buscar productos de salud y belleza...",
+        "search_placeholder": "Buscar en LUXEN (Cuidado, Lujo, Bienestar)...",
         "menu": "main-menu",
         "color_primary_teal": "#0B0B0C",
         "color_bg_mint": "#F8FAFC",
@@ -19,3 +19,4 @@
   },
   "order": ["custom_header"]
 }
+

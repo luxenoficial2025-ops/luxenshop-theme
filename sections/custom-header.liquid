@@ -351,7 +351,7 @@
       </button>
 
       <!-- Logo -->
-      <a href="{{ routes.root_url }}" class="lxn-logo-link"><img src="{{ 'logo.jpg' | asset_url }}" alt="LUXEN" style="max-height: 40px; width: auto; object-fit: contain;"></a>
+      <a href="{{ routes.root_url }}" class="lxn-logo-link"><img src="{{ 'logo.jpg' | asset_url }}" alt="LUXEN" style="width: 150px; height: auto; object-fit: contain;"></a>
 
       <!-- Search -->
       <form action="{{ routes.search_url }}" method="get" class="lxn-search-form" role="search">
@@ -526,7 +526,7 @@
       "type": "text",
       "id": "search_placeholder",
       "label": "Placeholder del buscador",
-      "default": "Buscar productos de salud y belleza..."
+      "default": "Buscar en LUXEN (Cuidado, Lujo, Bienestar)..."
     },
     {
       "type": "link_list",
@@ -570,6 +570,7 @@
   ]
 }
 {% endschema %}
+
 
 
 

@@ -1,4 +1,4 @@
-﻿{
+{
   "sections": {
     "custom_hero_banner": {
       "type": "custom-hero-banner",
@@ -30,10 +30,10 @@
     "custom_categories": {
       "type": "custom-categories",
       "blocks": {
-        "cat_1": { "type": "category", "settings": { "title": "Tecnología del Cuidado", "link": "shopify://collections/all" } },
+        "cat_1": { "type": "category", "settings": { "title": "Cuidado Facial / Tecnología", "link": "shopify://collections/all" } },
         "cat_2": { "type": "category", "settings": { "title": "Salud & Bienestar", "link": "shopify://collections/all" } },
-        "cat_3": { "type": "category", "settings": { "title": "Hogar Consciente", "link": "shopify://collections/all" } },
-        "cat_4": { "type": "category", "settings": { "title": "Joyas & Lujo", "link": "shopify://collections/all" } }
+        "cat_3": { "type": "category", "settings": { "title": "Joyas & Lujo", "link": "shopify://collections/all" } },
+        "cat_4": { "type": "category", "settings": { "title": "Hogar Consciente", "link": "shopify://collections/all" } }
       },
       "block_order": ["cat_1","cat_2","cat_3","cat_4"],
       "settings": {
@@ -49,7 +49,7 @@
         "color_text_dark": "#0B0B0C"
       }
     },
-    "custom_featured_collection": {
+    "featured_products": {
       "type": "custom-featured-collection",
       "settings": {
         "title": "Colección Exclusiva",
@@ -69,12 +69,12 @@
     "custom_trust_badges": {
       "type": "custom-trust-badges",
       "blocks": {
-        "shipping": { "type": "shipping_badge", "settings": { "title": "ENVÍO RÁPIDO & SEGURO", "description": "Entregas express a todo el país." } },
         "cod": { "type": "cod_badge", "settings": { "title": "PAGO CONTRA ENTREGA EN EFECTIVO", "description": "Paga en casa al recibir." } },
+        "shipping": { "type": "shipping_badge", "settings": { "title": "ENVÍOS RÁPIDOS A TODO EL PAÍS", "description": "Entregas express a nivel nacional." } },
         "refund": { "type": "refund_badge", "settings": { "title": "GARANTÍA DE SATISFACCIÓN", "description": "Calidad premium asegurada." } },
         "secure": { "type": "secure_badge", "settings": { "title": "SOPORTE 24/7 WHATSAPP", "description": "Atención personalizada." } }
       },
-      "block_order": ["shipping","cod","refund","secure"],
+      "block_order": ["cod","shipping","refund","secure"],
       "settings": {
         "padding_top": 30,
         "padding_bottom": 30,
@@ -86,9 +86,9 @@
     "custom_testimonials": {
       "type": "custom-testimonials",
       "blocks": {
-        "test_1": { "type": "review", "settings": { "stars": 5, "text": "Excelente calidad en la rasuradora, llegó en 48h y pagué en efectivo al recibir.", "author_name": "Carlos M. (Quito)", "verified_purchase": true } },
-        "test_2": { "type": "review", "settings": { "stars": 5, "text": "Los suplementos llegaron sellados y la atención por WhatsApp fue inmediata.", "author_name": "Andrea S. (Guayaquil)", "verified_purchase": true } },
-        "test_3": { "type": "review", "settings": { "stars": 5, "text": "El reloj y la cadena tienen un acabado de primera. 100% recomendado.", "author_name": "David R. (Cuenca)", "verified_purchase": true } }
+        "test_1": { "type": "review", "settings": { "stars": 5, "text": "Excelente calidad en la rasuradora, llegó en 48h y pagué en efectivo al recibir.", "author_name": "Carlos M.", "verified_purchase": true } },
+        "test_2": { "type": "review", "settings": { "stars": 5, "text": "Los suplementos llegaron sellados y la atención por WhatsApp fue inmediata.", "author_name": "Andrea S.", "verified_purchase": true } },
+        "test_3": { "type": "review", "settings": { "stars": 5, "text": "El reloj y la cadena tienen un acabado de primera. 100% recomendado.", "author_name": "David R.", "verified_purchase": true } }
       },
       "block_order": ["test_1","test_2","test_3"],
       "settings": {
@@ -108,7 +108,7 @@
   "order": [
     "custom_hero_banner",
     "custom_categories",
-    "custom_featured_collection",
+    "featured_products",
     "custom_trust_badges",
     "custom_testimonials"
   ]
