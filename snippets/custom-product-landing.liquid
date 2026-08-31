@@ -1,0 +1,176 @@
+﻿<div class="lxn-landing-description">
+  <!-- Acordeones / Cajas de Descripción -->
+  <div class="lxn-accordion-wrap">
+    
+    <details class="lxn-accordion" open>
+      <summary class="lxn-accordion-summary">
+        <span class="lxn-summary-title">✨ Beneficios Principales</span>
+        <span class="lxn-summary-icon">+</span>
+      </summary>
+      <div class="lxn-accordion-content">
+        <ul class="lxn-benefits-list">
+          <li><span class="check">✓</span> Resultados visibles desde la primera semana.</li>
+          <li><span class="check">✓</span> Calidad premium garantizada.</li>
+          <li><span class="check">✓</span> Diseño ergonómico y fácil de usar.</li>
+          <li><span class="check">✓</span> Materiales altamente resistentes.</li>
+        </ul>
+        <div class="rte">
+          {{ product.description }}
+        </div>
+      </div>
+    </details>
+
+    <details class="lxn-accordion">
+      <summary class="lxn-accordion-summary">
+        <span class="lxn-summary-title">📝 Modo de Uso / Instrucciones</span>
+        <span class="lxn-summary-icon">+</span>
+      </summary>
+      <div class="lxn-accordion-content">
+        <p>1. Úsalo diariamente para mejores resultados.</p>
+        <p>2. Sigue las instrucciones del empaque detalladamente.</p>
+        <p>3. Ante cualquier duda, nuestro equipo de soporte por WhatsApp te ayudará de inmediato.</p>
+      </div>
+    </details>
+
+    <details class="lxn-accordion">
+      <summary class="lxn-accordion-summary">
+        <span class="lxn-summary-title">🛡️ Garantía y Devolución</span>
+        <span class="lxn-summary-icon">+</span>
+      </summary>
+      <div class="lxn-accordion-content">
+        <p><strong>Garantía de Satisfacción Total:</strong> Si el producto llega con algún defecto de fábrica, te enviamos uno nuevo o te devolvemos tu dinero. Compra 100% libre de riesgo.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- Prueba Social -->
+  <div class="lxn-social-proof">
+    <h3 class="lxn-sp-title">Clientes 100% Satisfechos</h3>
+    
+    <div class="lxn-review-card">
+      <div class="lxn-review-header">
+        <div class="lxn-stars">★★★★★</div>
+        <div class="lxn-verified">✓ Compra Verificada</div>
+      </div>
+      <p class="lxn-review-text">"¡Me encantó! Llegó súper rápido a mi casa y el repartidor fue muy amable. Pagar en efectivo me dio muchísima confianza. Lo recomiendo a ojos cerrados."</p>
+      <p class="lxn-review-author">- María F. (Guayaquil)</p>
+    </div>
+
+    <div class="lxn-review-card">
+      <div class="lxn-review-header">
+        <div class="lxn-stars">★★★★★</div>
+        <div class="lxn-verified">✓ Compra Verificada</div>
+      </div>
+      <p class="lxn-review-text">"Excelente calidad. Tenía dudas al principio pero el pago contra entrega es real. El producto vino perfectamente sellado."</p>
+      <p class="lxn-review-author">- Jorge T. (Quito)</p>
+    </div>
+
+    <div class="lxn-review-card">
+      <div class="lxn-review-header">
+        <div class="lxn-stars">★★★★★</div>
+        <div class="lxn-verified">✓ Compra Verificada</div>
+      </div>
+      <p class="lxn-review-text">"De las mejores compras que he hecho por internet. Todo transparente y muy seguro. Volveré a comprar pronto."</p>
+      <p class="lxn-review-author">- Ana Paula S. (Cuenca)</p>
+    </div>
+
+  </div>
+</div>
+
+<style>
+.lxn-accordion-wrap {
+  margin-top: 20px;
+}
+.lxn-accordion {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.lxn-accordion-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  color: #0B0B0C;
+  list-style: none;
+}
+.lxn-accordion-summary::-webkit-details-marker {
+  display: none;
+}
+.lxn-accordion-content {
+  padding: 0 16px 16px;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.lxn-benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+.lxn-benefits-list li {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+}
+.lxn-benefits-list .check {
+  color: #E5A93C;
+  font-weight: 900;
+  margin-right: 8px;
+}
+
+.lxn-social-proof {
+  margin-top: 35px;
+  padding-top: 25px;
+  border-top: 2px dashed #E2E8F0;
+}
+.lxn-sp-title {
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0B0B0C;
+}
+.lxn-review-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.lxn-review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.lxn-review-header .lxn-stars {
+  color: #E5A93C;
+  letter-spacing: 1px;
+}
+.lxn-review-header .lxn-verified {
+  color: #10B981;
+  font-size: 12px;
+  font-weight: 700;
+}
+.lxn-review-text {
+  font-size: 14px;
+  color: #1E293B;
+  font-style: italic;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.lxn-review-author {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0B0B0C;
+  margin: 0;
+  text-align: right;
+}
+</style>
