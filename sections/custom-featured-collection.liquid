@@ -17,7 +17,7 @@
     text-align: {{ section.settings.text_alignment }};
   }
 
-  .custom-collection-{{ section.id }} .section-title {
+  .custom-collection-{{ section.id }} .section-title { position: relative; padding-bottom: 12px; margin-bottom: 20px; 
     font-size: 22px;
     font-weight: 700;
     color: {{ section.settings.color_text_dark }};
@@ -26,19 +26,21 @@
   }
 
   @media screen and (min-width: 768px) {
-    .custom-collection-{{ section.id }} .section-title {
+    .custom-collection-{{ section.id }} .section-title { position: relative; padding-bottom: 12px; margin-bottom: 20px; 
       font-size: 28px;
     }
   }
 
-  .custom-collection-{{ section.id }} .section-subtitle {
+  .custom-collection-{{ section.id }} .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: #E5A93C; border-radius: 2px; }
+  .section-subtitle {
     font-size: 14px;
     color: rgba(26, 31, 30, 0.7);
     margin: 0;
   }
 
   @media screen and (min-width: 768px) {
-    .custom-collection-{{ section.id }} .section-subtitle {
+    .custom-collection-{{ section.id }} .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: #E5A93C; border-radius: 2px; }
+  .section-subtitle {
       font-size: 16px;
     }
   }
@@ -423,4 +425,5 @@
   ]
 }
 {% endschema %}
+
 
