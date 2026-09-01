@@ -1,0 +1,446 @@
+﻿{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign base_price = current_variant.price -%}
+
+<div id="cod-form-container" class="cod-wrapper">
+  <div class="cod-header">
+    <h3 class="cod-title">🚚 Completa tus datos para enviar tu pedido</h3>
+    <p class="cod-subtitle">Pagas en efectivo al recibir el producto en tus manos.</p>
+  </div>
+
+  <form id="cod-checkout-form" class="cod-form">
+    <!-- SELECCIÓN DE CANTIDAD Y OFERTAS -->
+    <div class="cod-section-title">1. Elige tu promoción</div>
+    <div class="cod-volume-selector">
+      <!-- 1 Unidad -->
+      <label class="cod-radio-card" id="card-qty-1">
+        <div class="cod-radio-header">
+          <input type="radio" name="cod_qty" value="1" data-discount="0">
+          <span class="cod-radio-label">1 Unidad</span>
+        </div>
+        <div class="cod-price-display" id="price-display-1"></div>
+      </label>
+
+      <!-- 2 Unidades (Default) -->
+      <label class="cod-radio-card active" id="card-qty-2">
+        <div class="cod-badge">🔥 MÁS POPULAR / AHORRA MÁS</div>
+        <div class="cod-radio-header">
+          <input type="radio" name="cod_qty" value="2" data-discount="0.15" checked>
+          <span class="cod-radio-label">2 Unidades (15% DCTO)</span>
+        </div>
+        <div class="cod-price-display" id="price-display-2"></div>
+      </label>
+
+      <!-- 3 Unidades -->
+      <label class="cod-radio-card" id="card-qty-3">
+        <div class="cod-badge-alt">💎 MEJOR VALOR / MÁXIMO AHORRO</div>
+        <div class="cod-radio-header">
+          <input type="radio" name="cod_qty" value="3" data-discount="0.25">
+          <span class="cod-radio-label">3 Unidades (25% DCTO)</span>
+        </div>
+        <div class="cod-price-display" id="price-display-3"></div>
+      </label>
+    </div>
+
+    <!-- DATOS DE ENVÍO -->
+    <div class="cod-section-title">2. Dirección de Envío</div>
+    <div class="cod-input-group">
+      <input type="text" id="cod_name" name="cod_name" placeholder="Nombre y Apellido *" required>
+    </div>
+    <div class="cod-input-group">
+      <input type="tel" id="cod_phone" name="cod_phone" placeholder="Número de Teléfono / WhatsApp *" pattern="[0-9]+" title="Solo caracteres numéricos" required>
+    </div>
+    <div class="cod-row">
+      <div class="cod-input-group">
+        <input type="text" id="cod_state" name="cod_state" placeholder="Provincia / Depto *" required>
+      </div>
+      <div class="cod-input-group">
+        <input type="text" id="cod_city" name="cod_city" placeholder="Ciudad *" required>
+      </div>
+    </div>
+    <div class="cod-input-group">
+      <textarea id="cod_address" name="cod_address" placeholder="Dirección exacta, número de casa, calles y referencias (Ej. Al lado de la farmacia) *" rows="3" required></textarea>
+    </div>
+
+    <!-- RESUMEN Y CTA -->
+    <div class="cod-summary">
+      <div class="cod-summary-row">
+        <span>Subtotal:</span>
+        <span id="cod-subtotal"></span>
+      </div>
+      <div class="cod-summary-row cod-discount-row">
+        <span>Descuento aplicado:</span>
+        <span id="cod-discount-amount"></span>
+      </div>
+      <div class="cod-summary-row cod-total-row">
+        <span>Total a pagar al recibir:</span>
+        <span id="cod-total-price"></span>
+      </div>
+    </div>
+
+    <div id="cod-error" class="cod-error hidden"></div>
+
+    <button type="submit" id="cod-submit-btn" class="cod-submit-btn">
+      🚚 ¡CONFIRMAR PEDIDO Y PAGAR AL RECIBIR!
+    </button>
+    
+    <div class="cod-trust-badges">
+      <div class="cod-trust-item"><span>📦</span> Envío Prioritario Gratis</div>
+      <div class="cod-trust-item"><span>💵</span> Pago 100% Seguro en Efectivo al Recibir</div>
+      <div class="cod-trust-item"><span>🛡️</span> Garantía de Satisfacción</div>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 1. Configuración y Datos Base de Shopify
+    const productData = {
+      productName: {{ product.title | json }},
+      sku: {{ current_variant.sku | json }} || "N/A",
+      variantId: {{ current_variant.id | json }},
+      basePriceCents: {{ base_price | default: 0 }}
+    };
+
+    // Formateador de moneda simple
+    function formatMoney(cents) {
+      return "$" + (cents / 100).toFixed(2);
+    }
+
+    // Referencias al DOM
+    const radios = document.querySelectorAll('input[name="cod_qty"]');
+    const displaySubtotal = document.getElementById('cod-subtotal');
+    const displayDiscount = document.getElementById('cod-discount-amount');
+    const displayTotal = document.getElementById('cod-total-price');
+    const form = document.getElementById('cod-checkout-form');
+    const submitBtn = document.getElementById('cod-submit-btn');
+    const errorBox = document.getElementById('cod-error');
+    
+    let currentTotalValue = 0; // Guardará el total numérico
+
+    // 2. Inicializar precios en las tarjetas
+    function initPrices() {
+      const p1 = productData.basePriceCents;
+      const p2 = productData.basePriceCents * 2 * (1 - 0.15);
+      const p3 = productData.basePriceCents * 3 * (1 - 0.25);
+      
+      document.getElementById('price-display-1').innerText = formatMoney(p1);
+      document.getElementById('price-display-2').innerText = formatMoney(p2);
+      document.getElementById('price-display-3').innerText = formatMoney(p3);
+    }
+
+    // 3. Lógica dinámica de cálculo
+    function updateTotals() {
+      const selectedRadio = document.querySelector('input[name="cod_qty"]:checked');
+      const qty = parseInt(selectedRadio.value);
+      const discountRate = parseFloat(selectedRadio.dataset.discount);
+      
+      // Actualizar estilos de tarjeta activa
+      document.querySelectorAll('.cod-radio-card').forEach(card => card.classList.remove('active'));
+      selectedRadio.closest('.cod-radio-card').classList.add('active');
+
+      // Calcular
+      const subtotalCents = productData.basePriceCents * qty;
+      const discountCents = subtotalCents * discountRate;
+      const totalCents = subtotalCents - discountCents;
+      currentTotalValue = totalCents / 100; // Guardamos en valor float para enviar al server
+
+      // Mostrar
+      displaySubtotal.innerText = formatMoney(subtotalCents);
+      displayDiscount.innerText = "-" + formatMoney(discountCents);
+      displayTotal.innerText = formatMoney(totalCents);
+    }
+
+    // Escuchar cambios en los radio buttons
+    radios.forEach(radio => radio.addEventListener('change', updateTotals));
+
+    // Ejecutar inicio
+    initPrices();
+    updateTotals();
+
+    // 4. Manejo del Submit y Petición Fetch
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Reset errores y estado del botón
+      errorBox.classList.add('hidden');
+      errorBox.innerText = '';
+      
+      // Validar teléfono solo números nativo de JS por seguridad
+      const phoneInput = document.getElementById('cod_phone').value;
+      if(!/^[0-9]+$/.test(phoneInput)) {
+        errorBox.innerText = "Por favor, ingresa un número de teléfono válido (solo números).";
+        errorBox.classList.remove('hidden');
+        return;
+      }
+
+      // Preparar Payload
+      const qty = parseInt(document.querySelector('input[name="cod_qty"]:checked').value);
+      const payload = {
+        product_name: productData.productName,
+        sku: productData.sku,
+        variant_id: productData.variantId,
+        quantity: qty,
+        total_price: parseFloat(currentTotalValue.toFixed(2)),
+        customer: {
+          name: document.getElementById('cod_name').value.trim(),
+          phone: phoneInput.trim(),
+          state: document.getElementById('cod_state').value.trim(),
+          city: document.getElementById('cod_city').value.trim(),
+          address: document.getElementById('cod_address').value.trim()
+        },
+        source_domain: window.location.hostname || "luxenshop.com"
+      };
+
+      // Estado Loading
+      const originalBtnText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "Procesando pedido...";
+      submitBtn.classList.add('btn-loading');
+
+      try {
+        const response = await fetch('https://api.luxenshop.com/v1/cod-order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Redirección exitosa
+          const orderId = data.order_id || 'PROCESADO';
+          window.location.href = /pages/gracias?order= + orderId;
+        } else {
+          // Error desde el backend
+          throw new Error(data.message || "Hubo un error al procesar tu pedido. Intenta nuevamente.");
+        }
+      } catch (error) {
+        // Mostrar error
+        errorBox.innerText = error.message || "Error de conexión. Revisa tu internet e intenta de nuevo.";
+        errorBox.classList.remove('hidden');
+        
+        // Restaurar botón
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.classList.remove('btn-loading');
+      }
+    });
+  });
+</script>
+
+<style>
+  .cod-wrapper {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 20px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .cod-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #E2E8F0;
+    padding-bottom: 15px;
+  }
+  .cod-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #111827;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+  }
+  .cod-subtitle {
+    font-size: 14px;
+    color: #475569;
+    margin: 0;
+  }
+  .cod-section-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #0F172A;
+    margin: 20px 0 12px;
+    text-transform: uppercase;
+  }
+  /* Selector de Volumen */
+  .cod-volume-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cod-radio-card {
+    position: relative;
+    border: 2px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F8FAFC;
+  }
+  .cod-radio-card:hover {
+    border-color: #CBD5E1;
+  }
+  .cod-radio-card.active {
+    border-color: #27AE60;
+    background: #F0FDF4;
+    box-shadow: 0 4px 10px rgba(39,174,96,0.1);
+  }
+  .cod-radio-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cod-radio-card input[type="radio"] {
+    accent-color: #27AE60;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+  .cod-radio-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1E293B;
+  }
+  .cod-price-display {
+    font-size: 18px;
+    font-weight: 900;
+    color: #0F172A;
+  }
+  .cod-badge, .cod-badge-alt {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+  .cod-badge {
+    background: #DC2626;
+    color: #FFF;
+  }
+  .cod-badge-alt {
+    background: #E5A93C;
+    color: #000;
+  }
+  /* Formulario Inputs */
+  .cod-input-group {
+    margin-bottom: 12px;
+  }
+  .cod-row {
+    display: flex;
+    gap: 12px;
+  }
+  .cod-row .cod-input-group {
+    flex: 1;
+  }
+  .cod-form input, .cod-form textarea {
+    width: 100%;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: #0F172A;
+    background: #FFFFFF;
+    outline: none;
+    transition: border 0.2s ease;
+  }
+  .cod-form input:focus, .cod-form textarea:focus {
+    border-color: #27AE60;
+    box-shadow: 0 0 0 3px rgba(39,174,96,0.1);
+  }
+  /* Resumen */
+  .cod-summary {
+    background: #F8FAFC;
+    border: 1px dashed #CBD5E1;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+  }
+  .cod-summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #475569;
+    margin-bottom: 6px;
+  }
+  .cod-discount-row {
+    color: #DC2626;
+    font-weight: 600;
+  }
+  .cod-total-row {
+    font-size: 18px;
+    font-weight: 900;
+    color: #0F172A;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #E2E8F0;
+  }
+  /* Submit Button */
+  .cod-submit-btn {
+    width: 100%;
+    background: #27AE60;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 900;
+    border: none;
+    border-radius: 10px;
+    padding: 18px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(39,174,96,0.3);
+  }
+  .cod-submit-btn:hover {
+    background: #219653;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(39,174,96,0.4);
+  }
+  .cod-submit-btn:disabled {
+    background: #94A3B8;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  /* Badges Inferiores */
+  .cod-trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 16px;
+  }
+  .cod-trust-item {
+    font-size: 12px;
+    color: #64748B;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  /* Errores */
+  .cod-error {
+    background: #FEF2F2;
+    color: #DC2626;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 15px;
+    border: 1px solid #FCA5A5;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
