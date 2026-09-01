@@ -1,0 +1,178 @@
+﻿{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign base_price = current_variant.price -%}
+{%- assign img_url = product.featured_image | image_url: width: 100 -%}
+
+<!-- Datos para JS -->
+<div id="cod-product-data" style="display:none;" 
+     data-base-price="{{ base_price }}"
+     data-product-name="{{ product.title | escape }}"
+     data-product-sku="{{ current_variant.sku | escape }}"
+     data-variant-id="{{ current_variant.id }}"></div>
+
+<!-- Sticky Mobile Trigger -->
+<div class="cod-sticky-trigger">
+  <button onclick="openCodModal()" style="width:100%;background:#E5A93C;color:#000;font-weight:900;padding:15px;border:none;border-radius:10px;text-transform:uppercase;">
+    🚚 Pedir ahora y pagar al recibir | ¡Envío Gratis!
+  </button>
+</div>
+
+<!-- Modal Overlay -->
+<div id="cod-modal-overlay" class="cod-modal-overlay">
+  <div class="cod-modal-content">
+    
+    <div class="cod-modal-header">
+      <h2>PAGO CONTRA ENTREGA</h2>
+      <button id="cod-modal-close" class="cod-modal-close">✕</button>
+    </div>
+
+    <!-- Ofertas por Volumen -->
+    <div class="cod-bundles">
+      
+      <!-- 1 Unidad -->
+      <label class="cod-bundle-card">
+        <div class="cod-bundle-badge secondary">ENVÍO GRATIS 🎁</div>
+        <input type="radio" name="cod_qty_selector" value="1" data-discount="0" class="cod-bundle-radio">
+        <div class="cod-bundle-image"><img src="{{ img_url }}" alt="1 Unidad"></div>
+        <div class="cod-bundle-info">
+          <div class="cod-bundle-title">1 Unidad</div>
+          <div class="cod-bundle-price">{{ base_price | money }}</div>
+        </div>
+      </label>
+
+      <!-- 2 Unidades -->
+      <label class="cod-bundle-card is-active">
+        <div class="cod-bundle-badge primary">MÁS POPULAR / AHORRA 15% 🔥</div>
+        <input type="radio" name="cod_qty_selector" value="2" data-discount="0.15" class="cod-bundle-radio" checked>
+        <div class="cod-bundle-image"><img src="{{ img_url }}" alt="2 Unidades"></div>
+        <div class="cod-bundle-info">
+          <div class="cod-bundle-title">2 Unidades</div>
+          {%- assign price2_old = base_price | times: 2 -%}
+          {%- assign price2_new = price2_old | times: 0.85 -%}
+          <div class="cod-bundle-price">
+            <span class="cod-bundle-price-old">{{ price2_old | money }}</span>
+            {{ price2_new | money }}
+          </div>
+        </div>
+      </label>
+
+      <!-- 3 Unidades -->
+      <label class="cod-bundle-card">
+        <div class="cod-bundle-badge primary">MÁXIMO AHORRO / 25% OFF ⭐</div>
+        <input type="radio" name="cod_qty_selector" value="3" data-discount="0.25" class="cod-bundle-radio">
+        <div class="cod-bundle-image"><img src="{{ img_url }}" alt="3 Unidades"></div>
+        <div class="cod-bundle-info">
+          <div class="cod-bundle-title">3 Unidades</div>
+          {%- assign price3_old = base_price | times: 3 -%}
+          {%- assign price3_new = price3_old | times: 0.75 -%}
+          <div class="cod-bundle-price">
+            <span class="cod-bundle-price-old">{{ price3_old | money }}</span>
+            {{ price3_new | money }}
+          </div>
+        </div>
+      </label>
+
+    </div>
+
+    <!-- Resumen -->
+    <div class="cod-summary-box">
+      <div class="cod-summary-row">
+        <span>Subtotal</span>
+        <span id="cod-subtotal-display"></span>
+      </div>
+      <div class="cod-summary-row">
+        <span>Envío</span>
+        <span class="text-green">GRATIS</span>
+      </div>
+      <div class="cod-summary-row total">
+        <span>Total a Pagar</span>
+        <span id="cod-total-display"></span>
+      </div>
+    </div>
+
+    <!-- Formulario Nativo -->
+    <form id="nativeCodForm" class="cod-form-section">
+      <h3>Datos de Envío</h3>
+      
+      <div class="form-row">
+        <div class="field-wrap">
+          <span class="field-icon">👤</span>
+          <input type="text" id="cod_name" placeholder="Nombre" required>
+          <small class="error-msg">Este campo es obligatorio.</small>
+        </div>
+        <div class="field-wrap">
+          <span class="field-icon">👤</span>
+          <input type="text" id="cod_lastname" placeholder="Apellido" required>
+          <small class="error-msg">Este campo es obligatorio.</small>
+        </div>
+      </div>
+
+      <div class="field-wrap">
+        <span class="field-icon">📱</span>
+        <input type="tel" id="cod_phone" placeholder="WhatsApp / Teléfono" maxlength="10" required>
+        <small class="error-msg">Ingresa un número válido de 10 dígitos.</small>
+      </div>
+
+      <div class="form-row">
+        <div class="field-wrap">
+          <span class="field-icon">🗺️</span>
+          <select id="cod_state" required>
+            <option value="">Provincia...</option>
+            <option value="Azuay">Azuay</option>
+            <option value="Bolivar">Bolívar</option>
+            <option value="Canar">Cañar</option>
+            <option value="Carchi">Carchi</option>
+            <option value="Chimborazo">Chimborazo</option>
+            <option value="Cotopaxi">Cotopaxi</option>
+            <option value="El Oro">El Oro</option>
+            <option value="Esmeraldas">Esmeraldas</option>
+            <option value="Galapagos">Galápagos</option>
+            <option value="Guayas">Guayas</option>
+            <option value="Imbabura">Imbabura</option>
+            <option value="Loja">Loja</option>
+            <option value="Los Rios">Los Ríos</option>
+            <option value="Manabi">Manabí</option>
+            <option value="Morona Santiago">Morona Santiago</option>
+            <option value="Napo">Napo</option>
+            <option value="Orellana">Orellana</option>
+            <option value="Pastaza">Pastaza</option>
+            <option value="Pichincha">Pichincha</option>
+            <option value="Santa Elena">Santa Elena</option>
+            <option value="Santo Domingo">Santo Domingo de los Tsáchilas</option>
+            <option value="Sucumbios">Sucumbíos</option>
+            <option value="Tungurahua">Tungurahua</option>
+            <option value="Zamora Chinchipe">Zamora Chinchipe</option>
+          </select>
+          <small class="error-msg">Selecciona una provincia.</small>
+        </div>
+        <div class="field-wrap">
+          <span class="field-icon">🏙️</span>
+          <input type="text" id="cod_city" placeholder="Ciudad / Cantón" required>
+          <small class="error-msg">Este campo es obligatorio.</small>
+        </div>
+      </div>
+
+      <div class="field-wrap">
+        <span class="field-icon">📍</span>
+        <input type="text" id="cod_address" placeholder="Dirección de Entrega (Ej. Calle Principal 123)" required>
+        <small class="error-msg">Este campo es obligatorio.</small>
+      </div>
+
+      <div class="field-wrap">
+        <span class="field-icon">📝</span>
+        <input type="text" id="cod_reference" placeholder="Referencias adicionales (Casa amarilla...)">
+      </div>
+
+      <div id="cod-error-banner" class="cod-error-banner"></div>
+
+      <button type="submit" id="cod-submit-btn" class="cod-submit-btn">
+        ✔ COMPLETA TU COMPRA / Paga al recibir
+      </button>
+
+      <div class="cod-trust-seal">
+        ⭐ ⭐ ⭐ ⭐ ⭐<br>
+        100% GARANTÍA EN NUESTROS PRODUCTOS | Pago Seguro al Recibir
+      </div>
+    </form>
+
+  </div>
+</div>

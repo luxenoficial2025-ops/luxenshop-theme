@@ -1,16 +1,12 @@
-﻿{% comment %}
-  Render the highly optimized dynamic COD Form for LatAm.
-{% endcomment %}
-<div {{ block.shopify_attributes }}>
+﻿<div {{ block.shopify_attributes }}>
   {%- if product != blank -%}
-    {% render 'cod-form-dinamico', product: product %}
-  {%- else -%}
-    <div class="product-form">
-      <div class="product-form__buttons form">
-        <button type="submit" name="add" class="product-form__submit button button--full-width button--primary" disabled>
-          {{ 'products.product.sold_out' | t }}
-        </button>
-      </div>
+    <button onclick="openCodModal()" class="product-form__submit lxn-giant-cta" style="width: 100%; height: 54px; background-color: #E5A93C; color: #000; font-size: 16px; font-weight: 900; border-radius: 10px; border: none; cursor: pointer; text-transform: uppercase; animation: lxn-pulse 2s infinite;">
+      👉 PEDIR CONTRA ENTREGA - {{ product.price | money }}
+    </button>
+    <div style="text-align: center; font-size: 13px; font-weight: 700; color: #475569; margin-top: 12px;">
+      🛡️ Garantía de Devolución | Pagas en Efectivo al Recibir en Casa
     </div>
+  {%- else -%}
+    <button disabled>Agotado</button>
   {%- endif -%}
 </div>

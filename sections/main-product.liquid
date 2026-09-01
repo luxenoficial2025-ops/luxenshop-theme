@@ -689,6 +689,9 @@
   </product-component>
 </product-info>
 
+{{ 'cod-drawer-modal.css' | asset_url | stylesheet_tag }}
+{% render 'cod-drawer-modal', product: product %}
+<script src="{{ 'cod-drawer-modal.js' | asset_url }}" defer="defer"></script>
 {% schema %}
 {
   "name": "t:sections.main-product.name",
@@ -2260,6 +2263,7 @@
   ]
 }
 {% endschema %}
+
 
 
 
