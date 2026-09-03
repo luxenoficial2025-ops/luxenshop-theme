@@ -213,3 +213,133 @@
   margin: 0;
   line-height: 1.4;
 }
+
+/* Logo List (Couriers/Aliados) */
+.cro-logo-list {
+  padding: 30px 0;
+  border-bottom: 1px solid #E5E7EB;
+}
+.cro-logo-list__title {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #6B7280;
+  text-transform: uppercase;
+  margin: 0 0 20px 0;
+}
+.cro-logo-list__grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.cro-logo-list__item {
+  display: flex;
+  justify-content: center;
+}
+.cro-logo-list__image {
+  max-height: 40px;
+  width: auto;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+.cro-logo-list__image:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+.cro-logo-placeholder {
+  background: #E5E7EB;
+  color: #9CA3AF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+/* Testimonios */
+.cro-testimonials {
+  padding: 50px 0;
+}
+.cro-testimonials__title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--cro-text-dark);
+  margin: 0 0 40px 0;
+}
+.cro-testimonial-card {
+  background: #FFFFFF;
+  border: 1px solid #F3F4F6;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+.cro-testimonial__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.cro-testimonial__stars {
+  color: var(--cro-brand-color);
+  display: flex;
+  gap: 2px;
+}
+.cro-testimonial__verified {
+  font-size: 11px;
+  font-weight: 700;
+  color: #059669;
+  background: #D1FAE5;
+  padding: 4px 8px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.cro-testimonial__text {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  font-style: italic;
+}
+.cro-testimonial__author-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid #F3F4F6;
+  padding-top: 15px;
+}
+.cro-testimonial__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.cro-testimonial__avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--cro-brand-color);
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+.cro-testimonial__author-info {
+  display: flex;
+  flex-direction: column;
+}
+.cro-testimonial__author-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--cro-text-dark);
+}
+.cro-testimonial__author-location {
+  font-size: 12px;
+  color: #6B7280;
+}

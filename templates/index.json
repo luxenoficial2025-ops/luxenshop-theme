@@ -132,34 +132,34 @@
                                                               }
                                              },
                      "custom_testimonials":  {
-                                                 "type":  "custom-testimonials",
+                                                 "type":  "cro-testimonials",
                                                  "blocks":  {
-                                                                "test_1":  {
-                                                                               "type":  "review",
+                                                                "test_3":  {
                                                                                "settings":  {
-                                                                                                "stars":  5,
-                                                                                                "text":  "Excelente calidad en la rasuradora, llegÃ³ en 48h y paguÃ© en efectivo al recibir.",
-                                                                                                "author_name":  "Carlos M.",
-                                                                                                "verified_purchase":  true
-                                                                                            }
+                                                                                                "verified":  true,
+                                                                                                "author":  "David R.",
+                                                                                                "location":  "Cuenca",
+                                                                                                "text":  "Tienen garantía real. Tuve una duda con el uso y el soporte por WhatsApp fue inmediato."
+                                                                                            },
+                                                                               "type":  "review"
+                                                                           },
+                                                                "test_1":  {
+                                                                               "settings":  {
+                                                                                                "verified":  true,
+                                                                                                "author":  "Carlos M.",
+                                                                                                "location":  "Guayaquil",
+                                                                                                "text":  "Excelente servicio. Pedí en la mañana y me llegó por Servientrega. Pagué en efectivo al motorizado."
+                                                                                            },
+                                                                               "type":  "review"
                                                                            },
                                                                 "test_2":  {
-                                                                               "type":  "review",
                                                                                "settings":  {
-                                                                                                "stars":  5,
-                                                                                                "text":  "Los suplementos llegaron sellados y la atenciÃ³n por WhatsApp fue inmediata.",
-                                                                                                "author_name":  "Andrea S.",
-                                                                                                "verified_purchase":  true
-                                                                                            }
-                                                                           },
-                                                                "test_3":  {
-                                                                               "type":  "review",
-                                                                               "settings":  {
-                                                                                                "stars":  5,
-                                                                                                "text":  "El reloj y la cadena tienen un acabado de primera. 100% recomendado.",
-                                                                                                "author_name":  "David R.",
-                                                                                                "verified_purchase":  true
-                                                                                            }
+                                                                                                "verified":  true,
+                                                                                                "author":  "Andrea S.",
+                                                                                                "location":  "Quito",
+                                                                                                "text":  "Me encantó la calidad del producto, es exactamente lo que ofrecen. Súper recomendado."
+                                                                                            },
+                                                                               "type":  "review"
                                                                            }
                                                             },
                                                  "block_order":  [
@@ -168,24 +168,40 @@
                                                                      "test_3"
                                                                  ],
                                                  "settings":  {
-                                                                  "title":  "OPINIONES DE NUESTROS CLIENTES",
-                                                                  "subtitle":  "â˜…â˜…â˜…â˜…â˜…",
-                                                                  "text_alignment":  "center",
-                                                                  "desktop_columns":  3,
-                                                                  "padding_top":  40,
-                                                                  "padding_bottom":  40,
-                                                                  "bg_color":  "#F8FAFC",
-                                                                  "color_bg_mint":  "#FFFFFF",
-                                                                  "color_primary_teal":  "#E5A93C",
-                                                                  "color_text_dark":  "#1E293B"
+                                                                  "bg_color":  "#F9FAFB",
+                                                                  "title":  "Clientes Felices en todo Ecuador"
                                                               }
-                                             }
+                                             },
+                     "cro_logo_list":  {
+                                           "blocks":  {
+                                                          "logo_2":  {
+                                                                         "type":  "logo_image"
+                                                                     },
+                                                          "logo_1":  {
+                                                                         "type":  "logo_image"
+                                                                     },
+                                                          "logo_3":  {
+                                                                         "type":  "logo_image"
+                                                                     }
+                                                      },
+                                           "block_order":  [
+                                                               "logo_1",
+                                                               "logo_2",
+                                                               "logo_3"
+                                                           ],
+                                           "type":  "cro-logo-list",
+                                           "settings":  {
+                                                            "bg_color":  "#FFFFFF",
+                                                            "title":  "Envíos Seguros a Nivel Nacional"
+                                                        }
+                                       }
                  },
     "order":  [
                   "custom_hero_banner",
                   "custom_categories",
                   "featured_products",
                   "custom_trust_badges",
+                  "cro_logo_list",
                   "custom_testimonials"
               ]
 }
