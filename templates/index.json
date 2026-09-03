@@ -45,9 +45,9 @@
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": true,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "1",
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
