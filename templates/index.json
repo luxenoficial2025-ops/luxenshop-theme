@@ -29,7 +29,7 @@
       "type": "featured-collection",
       "settings": {
         "collection": "all",
-        "products_to_show": 8,
+        "products_to_show": 15,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
@@ -47,7 +47,7 @@
         "show_vendor": true,
         "show_rating": false,
         "quick_add": "none",
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
