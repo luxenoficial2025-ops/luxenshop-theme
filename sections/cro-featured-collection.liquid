@@ -1,0 +1,218 @@
+﻿{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-product-grid.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} isolate gradient">
+  <div class="collection section-{{ section.id }}-padding page-width">
+    <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin center">
+      <h2 class="title {{ section.settings.heading_size }}">
+        {{ section.settings.title | escape }}
+      </h2>
+    </div>
+
+    <slider-component class="slider-mobile-gutter">
+      <ul id="Slider-{{ section.id }}" class="grid product-grid contains-card contains-card--product grid--{{ section.settings.columns_desktop }}-col-desktop grid--2-col-tablet-down slider slider--tablet grid--peek" role="list">
+        {%- assign collection = collections[section.settings.collection] -%}
+        {%- for product in collection.products limit: section.settings.products_to_show -%}
+          <li class="grid__item slider__slide">
+            
+            {%- comment -%} Advertencia de stock para admin {%- endcomment -%}
+            {%- if request.design_mode and product.available == false -%}
+              <div style="background:#FEE2E2;color:#991B1B;font-size:11px;padding:4px;text-align:center;font-weight:bold;margin-bottom:5px;border-radius:4px;">
+                ⚠️ Producto Agotado (No convertirá)
+              </div>
+            {%- endif -%}
+
+            <div class="cro-product-card">
+              <a href="{{ product.url }}" class="cro-card__link">
+                <div class="cro-card__media">
+                  {%- if product.featured_image != blank -%}
+                    <img srcset="{%- if product.featured_image.width >= 165 -%}{{ product.featured_image | image_url: width: 165 }} 165w,{%- endif -%}
+                      {%- if product.featured_image.width >= 360 -%}{{ product.featured_image | image_url: width: 360 }} 360w,{%- endif -%}
+                      {%- if product.featured_image.width >= 533 -%}{{ product.featured_image | image_url: width: 533 }} 533w,{%- endif -%}
+                      {{ product.featured_image | image_url }} {{ product.featured_image.width }}w"
+                      src="{{ product.featured_image | image_url: width: 533 }}"
+                      sizes="(min-width: 1200px) 267px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                      alt="{{ product.title | escape }}"
+                      class="cro-card__image"
+                      loading="lazy"
+                      width="{{ product.featured_image.width }}"
+                      height="{{ product.featured_image.height }}">
+                  {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+
+                  <!-- Badge -->
+                  {%- if product.compare_at_price > product.price -%}
+                    <div class="cro-card__badge">OFERTA</div>
+                  {%- elsif product.available == false -%}
+                    <div class="cro-card__badge cro-card__badge--soldout">AGOTADO</div>
+                  {%- else -%}
+                    <div class="cro-card__badge cro-card__badge--free">ENVÍO GRATIS</div>
+                  {%- endif -%}
+                </div>
+                
+                <div class="cro-card__content">
+                  <h3 class="cro-card__title">{{ product.title | escape }}</h3>
+                  
+                  <div class="cro-card__price">
+                    {%- if product.compare_at_price > product.price -%}
+                      <s class="cro-price__old">{{ product.compare_at_price | money }}</s>
+                    {%- endif -%}
+                    <span class="cro-price__current">{{ product.price | money }}</span>
+                  </div>
+                </div>
+              </a>
+              
+              <!-- AJAX Add to Cart Nativo de Dawn -->
+              {%- if product.available -%}
+                <product-form class="product-form">
+                  <div class="product-form__error-message-wrapper" role="alert" hidden>
+                    <span class="product-form__error-message"></span>
+                  </div>
+                  {%- form 'product', product, id: product.id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+                    <button type="submit" name="add" class="cro-btn-add"
+                      {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+                    >
+                      <span>Añadir al carrito</span>
+                      <div class="loading-overlay__spinner hidden">
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                        </svg>
+                      </div>
+                    </button>
+                  {%- endform -%}
+                </product-form>
+              {%- else -%}
+                <button class="cro-btn-add cro-btn-add--disabled" disabled>Agotado</button>
+              {%- endif -%}
+
+            </div>
+
+          </li>
+        {%- else -%}
+          <!-- Placeholders -->
+          {%- for i in (1..4) -%}
+            <li class="grid__item slider__slide">
+              <div class="cro-product-card">
+                <div class="cro-card__media">
+                  {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+                <div class="cro-card__content">
+                  <h3 class="cro-card__title">Ejemplo de Suplemento</h3>
+                  <div class="cro-card__price"><span class="cro-price__current">.00</span></div>
+                </div>
+              </div>
+            </li>
+          {%- endfor -%}
+        {%- endfor -%}
+      </ul>
+    </slider-component>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "CRO Featured Collection",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Ofertas Destacadas",
+      "label": "Título"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Pequeño" },
+        { "value": "h1", "label": "Mediano" },
+        { "value": "h0", "label": "Grande" }
+      ],
+      "default": "h1",
+      "label": "Tamaño del Título"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Colección"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "label": "Máximo de productos a mostrar"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "Columnas en Desktop"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "accent-1", "label": "t:sections.all.colors.accent_1.label" },
+        { "value": "accent-2", "label": "t:sections.all.colors.accent_2.label" },
+        { "value": "background-1", "label": "t:sections.all.colors.background_1.label" },
+        { "value": "background-2", "label": "t:sections.all.colors.background_2.label" },
+        { "value": "inverse", "label": "t:sections.all.colors.inverse.label" }
+      ],
+      "default": "background-1",
+      "label": "Esquema de colores"
+    },
+    {
+      "type": "header",
+      "content": "Espaciado"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Espaciado Superior",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Espaciado Inferior",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "CRO Featured Collection"
+    }
+  ]
+}
+{% endschema %}
