@@ -1,207 +1,154 @@
-﻿{
-    "sections":  {
-                     "custom_hero_banner":  {
-                                                "type":  "custom-hero-banner",
-                                                "blocks":  {
-                                                               "slide_1":  {
-                                                                               "type":  "slide",
-                                                                               "settings":  {
-                                                                                                "heading":  "LUXEN: LUJO, CUIDADO \u0026 BIENESTAR",
-                                                                                                "subheading":  "",
-                                                                                                "button_label":  "COMPRAR AHORA",
-                                                                                                "button_link":  "shopify://collections/all",
-                                                                                                "text_alignment":  "center"
-                                                                                            }
-                                                                           }
-                                                           },
-                                                "block_order":  [
-                                                                    "slide_1"
-                                                                ],
-                                                "settings":  {
-                                                                 "autoplay":  true,
-                                                                 "autoplay_interval":  5,
-                                                                 "height_mobile":  400,
-                                                                 "height_desktop":  550,
-                                                                 "border_radius":  0,
-                                                                 "padding_top":  0,
-                                                                 "padding_bottom":  0,
-                                                                 "bg_color":  "#0B0B0C",
-                                                                 "cta_color":  "#E5A93C"
-                                                             }
-                                            },
-                     "custom_categories":  {
-                                               "type":  "custom-categories",
-                                               "blocks":  {
-                                                              "cat_1":  {
-                                                                            "type":  "category",
-                                                                            "settings":  {
-                                                                                             "title":  "Cuidado Facial / TecnologÃ­a",
-                                                                                             "link":  "shopify://collections/all"
-                                                                                         }
-                                                                        },
-                                                              "cat_2":  {
-                                                                            "type":  "category",
-                                                                            "settings":  {
-                                                                                             "title":  "Salud \u0026 Bienestar",
-                                                                                             "link":  "shopify://collections/all"
-                                                                                         }
-                                                                        },
-                                                              "cat_3":  {
-                                                                            "type":  "category",
-                                                                            "settings":  {
-                                                                                             "title":  "Joyas \u0026 Lujo",
-                                                                                             "link":  "shopify://collections/all"
-                                                                                         }
-                                                                        },
-                                                              "cat_4":  {
-                                                                            "type":  "category",
-                                                                            "settings":  {
-                                                                                             "title":  "Hogar Consciente",
-                                                                                             "link":  "shopify://collections/all"
-                                                                                         }
-                                                                        }
-                                                          },
-                                               "block_order":  [
-                                                                   "cat_1",
-                                                                   "cat_2",
-                                                                   "cat_3",
-                                                                   "cat_4"
-                                                               ],
-                                               "settings":  {
-                                                                "title_prefix":  "LO MÃS VENDIDO Y",
-                                                                "title_highlight":  "NOVEDADES",
-                                                                "title_suffix":  "",
-                                                                "title_alignment":  "center",
-                                                                "desktop_columns":  4,
-                                                                "padding_top":  40,
-                                                                "padding_bottom":  40,
-                                                                "bg_color":  "#F8FAFC",
-                                                                "color_primary_teal":  "#E5A93C",
-                                                                "color_text_dark":  "#0B0B0C"
-                                                            }
-                                           },
-                     "featured_products":  {
-                                               "type":  "cro-featured-collection",
-                                               "settings":  {
-                                                                "collection":  "all",
-                                                                "columns_desktop":  4,
-                                                                "padding_bottom":  36,
-                                                                "title":  "Ofertas Destacadas",
-                                                                "heading_size":  "h1",
-                                                                "products_to_show":  4,
-                                                                "padding_top":  36,
-                                                                "color_scheme":  "background-1"
-                                                            }
-                                           },
-                     "custom_trust_badges":  {
-                                                 "blocks":  {
-                                                                "block_3":  {
-                                                                                "settings":  {
-                                                                                                 "icon":  "🛡️",
-                                                                                                 "title":  "100% Garantía",
-                                                                                                 "text":  "Calidad premium asegurada."
-                                                                                             },
-                                                                                "type":  "trust_block"
-                                                                            },
-                                                                "block_1":  {
-                                                                                "settings":  {
-                                                                                                 "icon":  "💵",
-                                                                                                 "title":  "Pago Contra Entrega",
-                                                                                                 "text":  "Pagas en efectivo al recibir tu pedido."
-                                                                                             },
-                                                                                "type":  "trust_block"
-                                                                            },
-                                                                "block_2":  {
-                                                                                "settings":  {
-                                                                                                 "icon":  "🚚",
-                                                                                                 "title":  "Envío Rápido a Nivel Nacional",
-                                                                                                 "text":  "Cobertura a todo el Ecuador, recibe en 24/48 hrs."
-                                                                                             },
-                                                                                "type":  "trust_block"
-                                                                            }
-                                                            },
-                                                 "block_order":  [
-                                                                     "block_1",
-                                                                     "block_2",
-                                                                     "block_3"
-                                                                 ],
-                                                 "type":  "trust-blocks",
-                                                 "settings":  {
-                                                                  "bg_color":  "#F9FAFB",
-                                                                  "title":  "Compra Segura con LUXEN"
-                                                              }
-                                             },
-                     "custom_testimonials":  {
-                                                 "type":  "cro-testimonials",
-                                                 "blocks":  {
-                                                                "test_3":  {
-                                                                               "settings":  {
-                                                                                                "verified":  true,
-                                                                                                "author":  "David R.",
-                                                                                                "location":  "Cuenca",
-                                                                                                "text":  "Tienen garantía real. Tuve una duda con el uso y el soporte por WhatsApp fue inmediato."
-                                                                                            },
-                                                                               "type":  "review"
-                                                                           },
-                                                                "test_1":  {
-                                                                               "settings":  {
-                                                                                                "verified":  true,
-                                                                                                "author":  "Carlos M.",
-                                                                                                "location":  "Guayaquil",
-                                                                                                "text":  "Excelente servicio. Pedí en la mañana y me llegó por Servientrega. Pagué en efectivo al motorizado."
-                                                                                            },
-                                                                               "type":  "review"
-                                                                           },
-                                                                "test_2":  {
-                                                                               "settings":  {
-                                                                                                "verified":  true,
-                                                                                                "author":  "Andrea S.",
-                                                                                                "location":  "Quito",
-                                                                                                "text":  "Me encantó la calidad del producto, es exactamente lo que ofrecen. Súper recomendado."
-                                                                                            },
-                                                                               "type":  "review"
-                                                                           }
-                                                            },
-                                                 "block_order":  [
-                                                                     "test_1",
-                                                                     "test_2",
-                                                                     "test_3"
-                                                                 ],
-                                                 "settings":  {
-                                                                  "bg_color":  "#F9FAFB",
-                                                                  "title":  "Clientes Felices en todo Ecuador"
-                                                              }
-                                             },
-                     "cro_logo_list":  {
-                                           "blocks":  {
-                                                          "logo_2":  {
-                                                                         "type":  "logo_image"
-                                                                     },
-                                                          "logo_1":  {
-                                                                         "type":  "logo_image"
-                                                                     },
-                                                          "logo_3":  {
-                                                                         "type":  "logo_image"
-                                                                     }
-                                                      },
-                                           "block_order":  [
-                                                               "logo_1",
-                                                               "logo_2",
-                                                               "logo_3"
-                                                           ],
-                                           "type":  "cro-logo-list",
-                                           "settings":  {
-                                                            "bg_color":  "#FFFFFF",
-                                                            "title":  "Envíos Seguros a Nivel Nacional"
-                                                        }
-                                       }
-                 },
-    "order":  [
-                  "custom_hero_banner",
-                  "custom_categories",
-                  "featured_products",
-                  "custom_trust_badges",
-                  "cro_logo_list",
-                  "custom_testimonials"
-              ]
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "I AM THE BEST",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/BANNER.jpg",
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "products_to_show": 8,
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "custom_header_BzymaF": {
+      "type": "custom-header",
+      "disabled": true,
+      "name": "Custom Header & Banner",
+      "settings": {
+        "show_announcement": true,
+        "announcement_text": "Envío a todo Ecuador • Pago contra entrega • Compra 100% segura",
+        "search_placeholder": "Buscar productos de salud y belleza..."
+      }
+    },
+    "custom_testimonials_iWJJbp": {
+      "type": "custom-testimonials",
+      "blocks": {
+        "review_EUNFmb": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Compré la crema de colágeno facial. La atención por WhatsApp fue muy amable y el producto me llegó al día siguiente a Quito. Pagar en casa me dio total confianza.",
+            "author_name": "Carmen M.",
+            "verified_purchase": true
+          }
+        },
+        "review_YHj3Yq": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "El suplemento de magnesio llegó sellado y en perfecto estado. Pagué en efectivo al recibir. Excelente servicio en todo Ecuador.",
+            "author_name": "Luis G.",
+            "verified_purchase": true
+          }
+        },
+        "review_n38ptQ": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Dudaba de comprar por internet, pero el pago contra entrega me convenció. El producto para dolores articulares de mi mamá es de excelente calidad.",
+            "author_name": "Valeria T.",
+            "verified_purchase": true
+          }
+        }
+      },
+      "block_order": [
+        "review_EUNFmb",
+        "review_YHj3Yq",
+        "review_n38ptQ"
+      ],
+      "name": "Testimonios de Clientes",
+      "settings": {
+        "title": "Lo que opinan nuestros clientes",
+        "subtitle": "Más de 5,000 ecuatorianos confían en nosotros para su bienestar.",
+        "text_alignment": "center",
+        "desktop_columns": 3,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "bg_color": "#ffffff",
+        "color_bg_mint": "#f8fafc",
+        "color_primary_teal": "#0b0b0c",
+        "color_text_dark": "#000000"
+      }
+    },
+    "custom_footer_pngDfn": {
+      "type": "custom-footer",
+      "disabled": true,
+      "name": "Footer Minimalista",
+      "settings": {}
+    }
+  },
+  "order": [
+    "image_banner",
+    "featured_collection",
+    "custom_header_BzymaF",
+    "custom_testimonials_iWJJbp",
+    "custom_footer_pngDfn"
+  ]
 }
